@@ -337,3 +337,38 @@ dialog[open]{animation:pop .3s var(--ease)}
 .ig{margin-top:18px}
 
 .tiles,.rail,.rv-row{scroll-padding-inline:max(16px,env(safe-area-inset-left))}
+/* favoritos, guía de talles, foto para historia */
+.side{width:min(460px,100%);height:100%;margin-left:auto}
+.side .in{display:flex;flex-direction:column;height:100%}
+.side[open]{animation:slidein .32s var(--ease)}
+.fv{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--sale);display:grid;place-items:center}
+.fv .hrt{width:16px;height:16px}
+.fav-t[aria-pressed="true"]{color:var(--sale);border-color:var(--sale)}
+.btn .hrt,.btn svg{flex:none}
+.minis{display:flex;gap:16px;flex-wrap:wrap}
+.minis .mini{align-self:auto}
+footer .guide-link{display:block;padding-block:4px;color:inherit;text-align:left}
+footer .guide-link:hover{color:#fff}
+.gtabs{margin-top:6px}
+.gt{margin:20px 0 6px;font-size:19px;font-stretch:112%;font-weight:800}
+.gn{margin:0 0 14px;color:#3d434b;font-size:14.5px}
+.gn a{color:var(--cobalt)}
+.gtab{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-bottom:18px;background:var(--fog);border-radius:var(--r-card);overflow:hidden}
+.gtab th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:10px 12px;background:var(--ice)}
+.gtab td{padding:10px 12px;border-top:1px solid #fff;font-size:15px}
+.gtab td:first-child{font-weight:700}
+.how-m{background:var(--ice);border-radius:var(--r-card);padding:14px 16px;margin-bottom:16px}
+.how-m h4{margin:0 0 6px;font-size:15px}
+.how-m ol{margin:0;padding-left:20px;font-size:14px;color:#30353c;display:flex;flex-direction:column;gap:4px}
+.st-prev{margin-top:16px;display:grid;place-items:center}
+.st-prev img{width:min(260px,70%);aspect-ratio:9/16;border-radius:16px;background:var(--fog);box-shadow:0 0 0 1px var(--line)}
+@media (prefers-reduced-motion:reduce){.side[open]{animation:none}}
+/* precio en Argentina */
+.arc{font-size:12.5px;color:var(--ok);font-weight:700}
+.arbox{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--paper);border-radius:var(--r-card);overflow:hidden;box-shadow:inset 0 0 0 1.5px #bfe5cf}
+.arbox div{padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.arbox div+div{background:#e6f6ec}
+.arbox small{font-size:12.5px;color:var(--muted);font-weight:600}
+.arbox strong{font-size:19px;font-variant-numeric:tabular-nums}
+.arbox div+div strong{color:var(--ok)}
+.arbox p{grid-column:1/-1;margin:0;padding:8px 14px 10px;font-size:12.5px;color:var(--muted);border-top:1px solid #d5eedf}

@@ -6,7 +6,7 @@ const CAT_ORDER = ['ZA','BZ','RE','PA','JE','CA','SH','GO'];
 const TOPB = ['Nike','Jordan','Tommy Hilfiger','Calvin Klein','adidas','New Balance'];
 const $ = s => document.querySelector(s);
 const f = {sec:'all', cat:'all', brands:new Set(), sizes:new Set(), sale:false, q:'', sort:'top'};
-let CFG, DATA, BY = {}, RATE, shown = 40, cart = [], form = {nombre:'', lugar:''};
+let favs = new Set(), CFG, DATA, BY = {}, RATE, shown = 40, cart = [], form = {nombre:'', lugar:''};
 
 const money = v => '$' + Math.round(v).toLocaleString('es-AR');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -58,6 +58,8 @@ function price(p, clp, may){
   return Math.ceil((base + CFG.recargos.unidad[p.cat]) / r) * r;
 }
 const MIN = () => CFG.mayorista_desde || 5;
+const arSave = p => p.ar ? p.ar - price(p, p.clp) : 0;
+const arShow = p => arSave(p) >= (CFG.ar_min_dif || 40000);
 const AUTO = () => CFG.mayorista_modo === 'auto';
 const WA = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 function ago(iso){
@@ -73,15 +75,16 @@ function card(p){
   const now = price(p, p.clp), was = off(p) > .04 ? price(p, p.reg) : null, pct = Math.round(off(p) * 100);
   const flag = p.star ? '<span class="flag star">Producto estrella</span>' : isNew(p) ? '<span class="flag new">Nuevo</span>' : isDrop(p) ? '<span class="flag drop">Bajó de precio</span>' : was ? `<span class="flag sale">−${pct}%</span>` : '';
   return `<button class="card" type="button" data-c="${p.code}"><div class="ph"><img loading="lazy" decoding="async" alt="${esc(p.name)}" src="${esc(p.img)}">
-    ${flag}${p.units != null && p.units <= 2 ? '<span class="flag last">Últimas</span>' : ''}</div>
+    ${flag}${p.units != null && p.units <= 2 ? '<span class="flag last">Últimas</span>' : ''}${favs.has(p.code) ? '<span class="fv" aria-label="Guardado">'+HEART(true)+'</span>' : ''}</div>
     <div class="meta"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span>${sibs(p).length > 1 ? `<span class="cols">${sibs(p).length} colores</span>` : ''}
     <span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s>` : ''}</span>
+    ${arShow(p) ? `<span class="arc">En Argentina ${money(p.ar)}</span>` : ''}
     ${AUTO() && hasMay(p) ? `<span class="p2">${money(price(p, p.clp, true))} llevando ${MIN()}+ prendas</span>` : ''}</div></button>`;
 }
 // ── catálogo ──
 function pool(ignoreSize){
   const q = f.q.trim().toLowerCase();
-  return DATA.productos.filter(p => isHead(p) && (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
+  return DATA.productos.filter(p => isHead(p) && (!f.arOnly || arShow(p)) && (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
     (!f.brands.size || f.brands.has(p.brand)) && (!f.sale || off(p) > .04 || isDrop(p)) && (ignoreSize || !f.sizes.size || p.sizes.some(s => s.tg.some(x => f.sizes.has(x)))) &&
     (!q || (p.name + ' ' + p.brand + ' ' + (p.color||'') + ' ' + p.code + ' ' + CAT[p.cat]).toLowerCase().includes(q)));
 }
@@ -100,10 +103,11 @@ function render(){
   if (f.sort === 'price') list.sort((a, c) => pc(a) - pc(c));
   if (f.sort === 'price-desc') list.sort((a, c) => pc(c) - pc(a));
   if (f.sort === 'off') list.sort((a, c) => off(c) - off(a));
+  if (f.sort === 'ar') list.sort((a, c) => (arShow(c) ? arSave(c) : 0) - (arShow(a) ? arSave(a) : 0));
   const nf = f.brands.size + f.sizes.size + (f.sort !== 'top');
   $('#fbtn-n').textContent = nf ? `(${nf})` : '';
   $('#count').textContent = ''; $('#count2').textContent = `${list.length.toLocaleString('es-AR')} productos`;
-  const home = f.sec === 'all' && f.cat === 'all' && !f.sale && !f.q && !f.brands.size && !f.sizes.size;
+  const home = f.sec === 'all' && f.cat === 'all' && !f.sale && !f.arOnly && !f.q && !f.brands.size && !f.sizes.size;
   document.querySelectorAll('.home-only').forEach(e => e.hidden = !home);
   $('#grid').innerHTML = list.length ? list.slice(0, shown).map(card).join('') : '<p class="empty">No hay productos con esa búsqueda ahora mismo. Escribinos y te lo buscamos.</p>';
   $('#more').hidden = list.length <= shown;
@@ -117,6 +121,8 @@ function rails(){
   const pickTop = []; const seen = {}; for (const p of top){ const k = p.brand + p.cat; seen[k] = (seen[k]||0) + 1; if (seen[k] <= 2) pickTop.push(p); if (pickTop.length >= 12) break; }
   const sec = (id, items) => { const el = $(id); el.closest('.rail-wrap').hidden = !items.length; el.innerHTML = items.slice(0, 12).map(card).join(''); };
   const st = DATA.productos.filter(p => p.star && isHead(p)); $('#star').closest('section').hidden = !st.length; $('#star').innerHTML = st.map(card).join('');
+  const arr = DATA.productos.filter(p => isHead(p) && arShow(p)).sort((a, b) => arSave(b) - arSave(a));
+  sec('#r-ar', arr);
   sec('#r-new', nw); sec('#r-drop', dr); sec('#r-top', pickTop);
   const hero = []; const hs = new Set();
   const hk = p => p.brand + p.cat;
@@ -138,13 +144,107 @@ function filtersUI(){
   const opt = (k, v, l) => `<button type="button" class="opt" data-k="${k}" data-v="${esc(v)}" aria-pressed="${f[k] === v}">${esc(l)}</button>`;
   const grp = (t, html) => html ? `<div class="grp"><h4>${t}</h4><div class="opts">${html}</div></div>` : '';
   $('#fbody').innerHTML =
-    grp('Ordenar', [['top','Destacados'],['new','Recién llegados'],['price','Menor precio'],['price-desc','Mayor precio'],['off','Mayor descuento']].map(([v,l]) => opt('sort', v, l)).join('')) +
+    grp('Ordenar', [['top','Destacados'],['new','Recién llegados'],['price','Menor precio'],['price-desc','Mayor precio'],['off','Mayor descuento'],['ar','Más ahorro vs. Argentina']].map(([v,l]) => opt('sort', v, l)).join('')) +
     grp('Talle de ropa', LET.map(x => chip('sizes', x, x)).join('')) +
     grp('Talle de pantalón / jean (cintura)', W.map(x => chip('sizes', x, x.slice(1))).join('')) +
     grp('Talle de zapatillas', ZA.map(x => chip('sizes', x, x)).join('')) +
     grp('Talle de gorra', GO.map(x => chip('sizes', x, x.slice(6))).join('')) +
     grp('Marca', brands.map(b => chip('brands', b, b)).join(''));
 }
+
+// ── favoritos ──
+const HEART = on => `<svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20s-7.5-4.6-9.3-9.3C1.4 7.2 3.6 4 7 4c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.2 4.3 6.7C19.5 15.4 12 20 12 20z"/></svg>`;
+const ICON_STORY = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><circle cx="12" cy="10" r="3"/><path d="M9 16.5h6"/></svg>';
+function saveFavs(){ store.set('favs', [...favs]); const n = $('#favn'); n.textContent = favs.size || ''; }
+function toggleFav(code){ if (favs.has(code)) favs.delete(code); else { favs.add(code); toast('Guardado en favoritos'); } saveFavs(); render(); rails(); }
+function openFavs(){
+  const d = $('#favs'), list = [...favs].map(c => BY[c]).filter(Boolean);
+  const msg = 'Hola! Me interesan estas prendas:\n' + list.map(p => `• ${p.brand} ${p.name} (${p.code}) ${money(price(p, p.clp))}`).join('\n');
+  d.innerHTML = `<div class="in"><div class="dh pad"><span>Favoritos</span><button type="button" class="fx" aria-label="Cerrar" style="font-size:24px">×</button></div>
+    <div class="items pad">${list.length ? list.map(p => `<div class="it"><img alt="" src="${esc(p.img)}"><div class="t"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span><span class="p">${money(price(p, p.clp))}</span>
+      <div class="minis"><button type="button" class="mini" data-fo="${p.code}">Ver prenda</button><button type="button" class="mini" data-fr="${p.code}">Quitar</button></div></div></div>`).join('')
+      : '<p class="empty">Todavía no guardaste nada. Tocá "Guardar" en una prenda y aparece acá.</p>'}</div>
+    ${list.length ? `<div class="sum pad"><a class="btn g" target="_blank" rel="noopener" href="${WA(msg)}">${WA_ICON}Consultar todas por WhatsApp</a></div>` : ''}</div>`;
+  d.querySelector('.fx').onclick = () => d.close();
+  d.querySelectorAll('[data-fo]').forEach(b => b.onclick = () => { d.close(); openProduct(b.dataset.fo); });
+  d.querySelectorAll('[data-fr]').forEach(b => b.onclick = () => { toggleFav(b.dataset.fr); openFavs(); });
+  if (!d.open) d.showModal();
+}
+
+// ── guía de talles ──
+const GUIDE = {
+  ropa: {t: 'Remeras, buzos y camperas', note: 'Medí el contorno de pecho por la parte más ancha, con la cinta horizontal. Si quedás entre dos talles, elegí el más grande.',
+    head: ['Talle', 'Pecho (cm)', 'Equivale en AR'], rows: [['XS','82 – 88','XS'],['S','88 – 96','S'],['M','96 – 104','M'],['L','104 – 112','L'],['XL','112 – 124','XL'],['XXL','124 – 136','XXL']]},
+  pant: {t: 'Pantalones y jeans', note: 'El número W es la cintura en pulgadas. Medí tu cintura en cm donde usás el pantalón y buscá la fila más cercana.',
+    head: ['Talle', 'Cintura (cm)', 'Talle AR aprox.'], rows: [['W28 / S','71','38'],['W30 / S','76','40'],['W32 / M','81','42'],['W34 / L','86','44'],['W36 / XL','91','46'],['W38 / XXL','97','48']]},
+  zh: {t: 'Zapatillas de hombre', note: 'Es la tabla de Nike y Jordan; adidas y Puma son casi iguales. Lo más seguro es medir el pie en centímetros: ver cómo abajo.',
+    head: ['Pie (cm)', 'US', 'UK', 'EU'], rows: [['25','7','6','40'],['25.5','7.5','6.5','40.5'],['26','8','7','41'],['26.5','8.5','7.5','42'],['27','9','8','42.5'],['27.5','9.5','8.5','43'],['28','10','9','44'],['28.5','10.5','9.5','44.5'],['29','11','10','45'],['29.5','11.5','10.5','45.5'],['30','12','11','46']]},
+  zm: {t: 'Zapatillas de mujer', note: 'Es la tabla de Nike y Jordan para mujer. Ojo: el US de mujer es distinto al de hombre (US 8 mujer = US 6.5 hombre).',
+    head: ['Pie (cm)', 'US', 'UK', 'EU'], rows: [['22','5','2.5','35.5'],['22.5','5.5','3','36'],['23','6','3.5','36.5'],['23.5','6.5','4','37.5'],['24','7','4.5','38'],['24.5','7.5','5','38.5'],['25','8','5.5','39'],['25.5','8.5','6','40'],['26','9','6.5','40.5'],['26.5','9.5','7','41'],['27','10','7.5','42']]},
+};
+function openGuide(cat){
+  const d = $('#guide');
+  let tab = cat === 'ZA' ? 'zh' : (cat === 'PA' || cat === 'JE' || cat === 'SH') ? 'pant' : 'ropa';
+  const draw = () => {
+    const g = GUIDE[tab];
+    d.innerHTML = `<div class="in"><div class="dh pad"><span>Guía de talles</span><button type="button" class="fx" aria-label="Cerrar" style="font-size:24px">×</button></div>
+      <div class="db pad"><div class="opts gtabs">${[['ropa','Ropa'],['pant','Pantalones'],['zh','Zapatillas hombre'],['zm','Zapatillas mujer']].map(([k,l]) => `<button type="button" class="opt" data-g="${k}" aria-pressed="${k===tab}">${l}</button>`).join('')}</div>
+      <h3 class="gt">${g.t}</h3><p class="gn">${g.note}</p>
+      <table class="gtab"><thead><tr>${g.head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${g.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>
+      ${tab[0] === 'z' ? `<div class="how-m"><h4>Cómo medir tu pie</h4><ol><li>Apoyá el pie descalzo sobre una hoja, con el talón contra la pared.</li><li>Marcá la punta del dedo más largo.</li><li>Medí desde la pared hasta la marca en centímetros.</li><li>Buscá ese número en la tabla. Si estás entre dos, elegí el más grande.</li></ol></div>` : ''}
+      <p class="gn">Cada marca y modelo puede variar un poco. Si tenés dudas, <a target="_blank" rel="noopener" href="${WA('Hola! Necesito ayuda para elegir mi talle')}">escribinos por WhatsApp</a> y te ayudamos antes de reservar.</p></div></div>`;
+    d.querySelector('.fx').onclick = () => d.close();
+    d.querySelectorAll('[data-g]').forEach(b => b.onclick = () => { tab = b.dataset.g; draw(); });
+  };
+  draw(); if (!d.open) d.showModal();
+}
+
+// ── foto para historia ──
+function loadImg(src){ return new Promise((ok, ko) => { const i = new Image(); i.crossOrigin = 'anonymous'; i.onload = () => ok(i); i.onerror = ko; i.src = src; }); }
+async function storyBlob(p, txt, img){
+  const c = document.createElement('canvas'); c.width = 1080; c.height = 1920; const x = c.getContext('2d');
+  await (document.fonts ? document.fonts.ready : Promise.resolve());
+  x.fillStyle = '#e8ebef'; x.fillRect(0, 0, 1080, 1920);
+  x.fillStyle = '#ffffff'; x.beginPath(); x.roundRect(60, 160, 960, 1180, 48); x.fill();
+  if (img){ const s = Math.min(860 / img.width, 1080 / img.height), w = img.width * s, h = img.height * s;
+    x.save(); x.beginPath(); x.roundRect(60, 160, 960, 1180, 48); x.clip(); x.globalCompositeOperation = 'multiply'; x.drawImage(img, 540 - w / 2, 750 - h / 2, w, h); x.restore(); }
+  const F = (w, s, st) => `${w} ${s}px ${st || ''} Archivo, Helvetica, Arial, sans-serif`;
+  x.fillStyle = '#2337e8'; x.font = F(700, 44); x.fillText(p.brand, 60, 1430);
+  x.fillStyle = '#000'; x.font = F(800, 64);
+  const words = p.name.split(' '), lines = []; let ln = '';
+  for (const w of words){ const t = ln ? ln + ' ' + w : w; if (x.measureText(t).width > 960 && ln){ lines.push(ln); ln = w; } else ln = t; }
+  lines.push(ln); lines.slice(0, 2).forEach((l, i) => x.fillText(l, 60, 1510 + i * 74));
+  if (txt.price){ x.font = F(900, 120); x.fillStyle = '#000'; x.fillText(txt.price, 60, 1760); }
+  if (txt.sizes){ x.font = F(600, 40); x.fillStyle = '#5f6670'; x.fillText(txt.sizes, 60, 1840); }
+  return new Promise(r => c.toBlob(r, 'image/jpeg', .92));
+}
+function openStory(p, pick){
+  const d = $('#story'); let url = null, img = null, imgOk = true;
+  const def = money(price(p, p.clp)), sz = p.sizes.map(s => s.t).join(' · ');
+  d.innerHTML = `<div class="in"><div class="dh pad"><span>Foto para historia</span><button type="button" class="fx" aria-label="Cerrar" style="font-size:24px">×</button></div>
+    <div class="db pad"><p class="gn">Armá una imagen para subir a tu historia de Instagram o WhatsApp. Poné el precio al que lo vas a vender vos.</p>
+    <div class="form" style="padding:0;overflow:visible"><label>Precio que va en la foto <em>(dejalo vacío para no mostrar precio)</em><input id="st-price" inputmode="numeric" value="${esc(def)}"></label>
+    <label style="flex-direction:row;align-items:center;gap:10px;text-transform:none;letter-spacing:0"><input type="checkbox" id="st-sz" checked> Mostrar talles disponibles</label></div>
+    <div class="st-prev"><img id="st-img" alt="Vista previa de la foto para historia"></div></div>
+    <div class="df pad"><button type="button" id="st-dl">Descargar</button><button type="button" class="go" id="st-sh">Compartir</button></div></div>`;
+  const prev = d.querySelector('#st-img');
+  const fmt = v => { const n = String(v).replace(/[^\d]/g, ''); return n ? '$' + Number(n).toLocaleString('es-AR') : ''; };
+  const redraw = async () => {
+    const blob = await storyBlob(p, {price: fmt(d.querySelector('#st-price').value), sizes: d.querySelector('#st-sz').checked ? 'Talles: ' + sz : ''}, img);
+    if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); prev.src = url; prev.dataset.ready = '1'; d._blob = blob;
+  };
+  d.querySelector('.fx').onclick = () => d.close();
+  d.querySelector('#st-price').oninput = redraw; d.querySelector('#st-sz').onchange = redraw;
+  const file = () => new File([d._blob], `${p.code}.jpg`, {type: 'image/jpeg'});
+  d.querySelector('#st-dl').onclick = () => { const a = document.createElement('a'); a.href = url; a.download = `${p.code}.jpg`; document.body.appendChild(a); a.click(); a.remove(); };
+  d.querySelector('#st-sh').onclick = async () => {
+    try { if (navigator.canShare && navigator.canShare({files: [file()]})) { await navigator.share({files: [file()]}); return; } } catch(e){ return; }
+    d.querySelector('#st-dl').click();
+  };
+  if (!d.open) d.showModal();
+  loadImg(p.simg || p.img).then(i => { img = i; }).catch(() => { imgOk = false; }).finally(redraw);
+}
+
 // ── ficha ──
 const GRP = {};
 const sibs = p => p.group ? GRP[p.group] || [p] : [p];
@@ -163,16 +263,21 @@ function openProduct(code, keep){
       ${AUTO() && hasMay(p) ? `<div class="tier"><div><small>1 o 2 prendas</small><strong>${money(now)}</strong>${was ? `<s style="font-size:12px;color:var(--muted)">${money(was)}</s>` : ''}</div><div><small>Desde ${MIN()} prendas</small><strong>${money(may)}</strong><small style="text-transform:none;letter-spacing:0">c/u · ahorrás ${money(now - may)}</small></div></div>
         <p class="tier-note">Sumá ${MIN()} prendas cualquiera al carrito, pueden ser distintas, y pagás todas a precio mayorista. No aplica a zapatillas.</p>`
       : `<span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s><span class="off">−${Math.round(off(p)*100)}%</span>` : ''}</span>`}
+      ${arShow(p) ? `<div class="arbox"><div><small>En Argentina sale</small><strong>${money(p.ar)}</strong></div><div><small>Con nosotros ahorrás</small><strong>${money(arSave(p))}</strong></div><p>Precio del mismo modelo en tiendas de Argentina, revisado esta semana.</p></div>` : ''}
       ${!AUTO() && hasMay(p) ? `<a class="mini" target="_blank" rel="noopener" href="${WA('Hola! Soy revendedor y quiero el precio mayorista de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Comprás para revender? Consultá precio mayorista</a>` : ''}
       ${sb.length > 1 ? `<span class="lbl"><span>Color: ${esc(p.color || '')}</span></span><div class="sws">${sb.map(s => `<button type="button" class="sw" data-sw="${s.code}" aria-pressed="${s === p}" aria-label="${esc(s.color)}"><img alt="" src="${esc(s.img)}"><span>${esc(s.color)}</span></button>`).join('')}</div>` : ''}
       <span class="lbl"><span>Talle${pick ? ': ' + esc(pick) : ''}</span>${p.units != null && p.units <= 2 ? '<span style="color:var(--sale)">Últimas unidades</span>' : ''}</span>
       <div class="opts">${p.sizes.map(s => `<button type="button" class="opt" aria-pressed="${s.t === pick}" data-s="${esc(s.t)}">${esc(s.t)}</button>`).join('')}</div>
-      <a class="mini" target="_blank" rel="noopener" href="https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent('Hola! Tengo una duda con el talle de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Dudas con el talle? Preguntanos</a>
+      <div class="minis"><button type="button" class="mini" id="guide-open">Guía de talles</button><a class="mini" target="_blank" rel="noopener" href="https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent('Hola! Tengo una duda con el talle de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Dudas? Preguntanos</a></div>
       <button class="btn k" id="add" type="button" ${pick ? '' : 'aria-disabled="true"'}>${pick ? 'Agregar al carrito' : 'Elegí tu talle'}</button>
-      <div class="row2"><a class="btn line" target="_blank" rel="noopener" href="https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}">Consultar</a><button class="btn line" id="share" type="button">Compartir</button></div>
+      <div class="row2"><button class="btn line fav-t" id="fav" type="button" aria-pressed="${favs.has(p.code)}">${HEART(favs.has(p.code))}${favs.has(p.code) ? 'Guardado' : 'Guardar'}</button><a class="btn line" target="_blank" rel="noopener" href="https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}">Consultar</a></div>
+      <div class="row2"><button class="btn line" id="story-btn" type="button">${ICON_STORY}Para historia</button><button class="btn line" id="share" type="button">Compartir</button></div>
       <div class="perks"><div>${ICON_OK}<span>Producto 100% original, nuevo y con etiqueta.</span></div><div>${ICON_CLOCK}<span>Te confirmamos disponibilidad por WhatsApp antes de señar.</span></div><div>${ICON_BOX}<span>Envíos a todo el país por Correo Argentino, Vía Cargo, Andreani o a domicilio.</span></div></div>
       <span class="code">Código ${p.code}</span></div></div>`;
     d.querySelector('.x').onclick = () => d.close();
+    d.querySelector('#fav').onclick = () => { toggleFav(p.code); const sc = d.querySelector('.pd').scrollTop; draw(); d.querySelector('.pd').scrollTop = sc; };
+    d.querySelector('#guide-open').onclick = () => openGuide(p.cat);
+    d.querySelector('#story-btn').onclick = () => openStory(p, pick);
     d.querySelectorAll('.sw').forEach(b => b.onclick = () => { if (b.dataset.sw !== p.code) openProduct(b.dataset.sw, pick); });
     d.querySelectorAll('.info .opt').forEach(b => b.onclick = () => { pick = b.dataset.s; const sc = d.querySelector('.pd').scrollTop; draw(); d.querySelector('.pd').scrollTop = sc; });
     const add = d.querySelector('#add'); if (pick) add.onclick = () => { addToCart(p.code, pick); d.close(); };
@@ -304,6 +409,7 @@ async function start(){
   document.querySelectorAll('.wa-link').forEach(a => a.href = `https://wa.me/${CFG.whatsapp}`);
   document.querySelectorAll('.min-n').forEach(e => e.textContent = MIN());
 
+  favs = new Set(store.get('favs', [])); saveFavs();
   cart = store.get('cart', []); form = Object.assign(form, store.get('form', {})); saveCart();
   rails(); render();
   const h = decodeURIComponent(location.hash.slice(1)); if (h && BY[h]) openProduct(h);
@@ -313,9 +419,9 @@ document.addEventListener('click', e => {
   const c = e.target.closest('.card'); if (c) return openProduct(c.dataset.c);
   const bo = e.target.closest('[data-open]'); if (bo) return openProduct(bo.dataset.open);
   const s = e.target.closest('[data-sec]');
-  if (s){ if (s.dataset.sec === 'sale') f.sale = !f.sale; else { f.sec = s.dataset.sec; f.sale = false; } f.cat = 'all'; f.sizes.clear(); f.brands.clear(); shown = 40; render(); if (s.dataset.jump || s.closest('.nav')) jump(); return; }
+  if (s){ f.arOnly = false; if (s.dataset.sec === 'sale') f.sale = !f.sale; else { f.sec = s.dataset.sec; f.sale = false; } f.cat = 'all'; f.sizes.clear(); f.brands.clear(); shown = 40; render(); if (s.dataset.jump || s.closest('.nav')) jump(); return; }
   const k = e.target.closest('[data-cat]'); if (k){ f.cat = k.dataset.cat; f.sizes.clear(); shown = 40; render(); if (k.dataset.jump) jump(); return; }
-  const r = e.target.closest('[data-rail]'); if (r){ f.sort = r.dataset.rail; if (r.dataset.rail === 'off') f.sale = true; render(); jump(); return; }
+  const r = e.target.closest('[data-rail]'); if (r){ f.sort = r.dataset.rail; if (r.dataset.rail === 'off') f.sale = true; f.arOnly = r.dataset.rail === 'ar'; render(); jump(); return; }
   const o = e.target.closest('#fbody .opt');
   if (o){ if (o.dataset.m){ const s = f[o.dataset.m]; s.has(o.dataset.v) ? s.delete(o.dataset.v) : s.add(o.dataset.v); } else f[o.dataset.k] = o.dataset.v; filtersUI(); return; }
 });
@@ -325,7 +431,9 @@ $('#fapply').onclick = () => $('#filters').close();
 $('#fclear').onclick = () => { f.brands.clear(); f.sizes.clear(); f.sort = 'top'; filtersUI(); };
 $('#filters').addEventListener('close', () => { shown = 40; render(); });
 $('#product').addEventListener('close', () => { try { history.replaceState(null, '', location.pathname); } catch(e){} });
-['#filters','#product','#cart'].forEach(id => $(id).addEventListener('click', e => { if (e.target === $(id)) $(id).close(); }));
+$('#fbtn2').onclick = openFavs;
+document.querySelectorAll('.guide-link').forEach(b => b.onclick = () => openGuide('BZ'));
+['#filters','#product','#cart','#favs','#guide','#story'].forEach(id => $(id).addEventListener('click', e => { if (e.target === $(id)) $(id).close(); }));
 $('#cbtn').onclick = openCart;
 $('#sbtn').onclick = () => { const r = $('#srow'); r.hidden = !r.hidden; if (!r.hidden) $('#q').focus(); };
 $('#q').oninput = e => { f.q = e.target.value; shown = 40; render(); };
