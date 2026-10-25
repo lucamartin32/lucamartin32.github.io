@@ -2,9 +2,10 @@ import requests, json
 H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept':'application/json','Accept-Language':'es-AR,es;q=0.9'}
 out={}
 def raw(host, path='/api/catalog_system/pub/products/search', **p):
-  r=requests.get(f'https://{host}{path}',headers=H,params=p,timeout=30)
-  try: return r.json()
-  except Exception: return [r.status_code, r.text[:80]]
+  try:
+    r=requests.get(f'https://{host}{path}',headers=H,params=p,timeout=30); j=r.json()
+    return j if isinstance(j,list) else []
+  except Exception: return []
 j=raw('www.sporting.com.ar',ft='nike air force',_from=0,_to=4)
 out['sp_sample']=[(x.get('productName'),x.get('productReference'),x.get('productId'),[(it.get('itemId'),it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])]) for it in x.get('items',[])[:2]]) for x in j] if isinstance(j,list) else j
 if isinstance(j,list) and j:
