@@ -1,0 +1,26 @@
+{
+ "https://www.zara.com/cl/es/cazadora-bomber-ligera-p04302510.html?v1=557105265&ajax=true": {
+  "status": 200,
+  "len": 180095,
+  "head": "{\"noIndex\":false,\"mkSpots\":{\"ESpot_Copyright\":{\"key\":\"ESpot_Copyright\",\"content\":{\"content\":\"<span class='zds-label-s'>\u00a9 All rights reserved</span>\"}},\"ESpot_WebCommonScripts\":{\"type\":\"html\",\"content\":{\"content\":\"\\n<script>\\n   (function() {\\n      // Function to check if an element is in the viewpo",
+  "sizes": [],
+  "avail": [],
+  "colors": [],
+  "snip": "sizes__size button[data-qa-action=\\\"size-out-of-stock\\\"] {\\n\\t    pointer-events: none;\\n    }\\n    .theme--bamo .size-selector-sizes__size button[data-qa-action=\\\"size-out-of-stock\\\"] .size-selector-sizes-size__action {\\n\\t    display: none;\\n    }\\n    \\n    /* Fix bundle components text-centering in BAMO collection */\\n    .product-theme--bamo .product-detail-card-info__fixed-info-panel--bundle .product-detail-secondary-product-info__price {\\n        width: 100%;\\n    }\\n    \\n    /* Fix button gift card */\\n    .giftcard-detail-view .mds-button--secondary.mds-button--size-l {\\n        display: flex;\\n        align-items: center;\\n        justify-content: center;\\n        width: 100%;\\n        height: 40px;\\n        min-height: 40px;\\n        min-width: 160px;\\n        box-sizing: border-box;\\n        padding: 0 12px;\\n     \\n        /* Estilo del Fondo y Bordes */\\n        background-color: rgba(255, 255, 255, 0); /* Transparente */\\n        border: 0.5px solid rgb(0, 0, 0);\\n        border-radius: 0;\\n     \\n        /* Tipograf\\u00eda */\\n        color: rgb(0, 0, 0);\\n        font-family: \\\"Helvetica Now Text\\\", \\\"Helvetica Now Text Fallback: Arial\\\", \\\"Helvetica Now Text Fallback: Helvetica\\\", Arial, Helvetica;\\n        font-size: 13px;\\n        font-weight: 300;\\n        line-height: 16px;\\n        text-transform: uppercase;\\n        letter-spacing: normal;\\n     \\n        /* Interacci\\u00f3n */\\n        cursor: pointer;\\n        touch-action: manipulation;\\n        ou"
+ },
+ "https://www.zara.com/cl/es/products-details?productIds=557105265&ajax=true": {
+  "status": 403,
+  "len": 405,
+  "head": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;zara&#46;com&#47;cl&#47;es&#47;products&#45;details&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;6ecfdb17&#46;1792895781&#46;48aea2e0\n<P>https&#58;&#",
+  "json": "Expecting value: line 1 column 1 (char 0)"
+ },
+ "https://www.zara.com/cl/es/cazadora-combinado-acolchado-p08574700.html?v1=551703675&ajax=true": {
+  "status": 200,
+  "len": 132792,
+  "head": "{\"noIndex\":false,\"mkSpots\":{\"ESpot_Copyright\":{\"key\":\"ESpot_Copyright\",\"content\":{\"content\":\"<span class='zds-label-s'>\u00a9 All rights reserved</span>\"}},\"ESpot_WebCommonScripts\":{\"type\":\"html\",\"content\":{\"content\":\"\\n<script>\\n   (function() {\\n      // Function to check if an element is in the viewpo",
+  "sizes": [],
+  "avail": [],
+  "colors": [],
+  "snip": "sizes__size button[data-qa-action=\\\"size-out-of-stock\\\"] {\\n\\t    pointer-events: none;\\n    }\\n    .theme--bamo .size-selector-sizes__size button[data-qa-action=\\\"size-out-of-stock\\\"] .size-selector-sizes-size__action {\\n\\t    display: none;\\n    }\\n    \\n    /* Fix bundle components text-centering in BAMO collection */\\n    .product-theme--bamo .product-detail-card-info__fixed-info-panel--bundle .product-detail-secondary-product-info__price {\\n        width: 100%;\\n    }\\n    \\n    /* Fix button gift card */\\n    .giftcard-detail-view .mds-button--secondary.mds-button--size-l {\\n        display: flex;\\n        align-items: center;\\n        justify-content: center;\\n        width: 100%;\\n        height: 40px;\\n        min-height: 40px;\\n        min-width: 160px;\\n        box-sizing: border-box;\\n        padding: 0 12px;\\n     \\n        /* Estilo del Fondo y Bordes */\\n        background-color: rgba(255, 255, 255, 0); /* Transparente */\\n        border: 0.5px solid rgb(0, 0, 0);\\n        border-radius: 0;\\n     \\n        /* Tipograf\\u00eda */\\n        color: rgb(0, 0, 0);\\n        font-family: \\\"Helvetica Now Text\\\", \\\"Helvetica Now Text Fallback: Arial\\\", \\\"Helvetica Now Text Fallback: Helvetica\\\", Arial, Helvetica;\\n        font-size: 13px;\\n        font-weight: 300;\\n        line-height: 16px;\\n        text-transform: uppercase;\\n        letter-spacing: normal;\\n     \\n        /* Interacci\\u00f3n */\\n        cursor: pointer;\\n        touch-action: manipulation;\\n        ou"
+ }
+}
