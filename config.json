@@ -40,6 +40,6 @@
  "img_host": "https://fotos.santacruzzluca27.workers.dev",
  "ar_min_dif": 40000,
  "redondeo_abajo_hasta": {
-  "GO": 1500
+  "*": 2000
  }
 }
