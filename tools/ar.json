@@ -1,76 +1,190 @@
 {
- "bold_keys": [
-  "availableForPickup",
-  "averageRating",
-  "badges",
-  "baseOptions",
-  "brandName",
-  "categories",
-  "code",
-  "configurable",
-  "description",
-  "ean",
-  "formattedDiscount",
-  "futureStockEnabled",
-  "image360",
-  "images",
-  "images360",
-  "keywords",
-  "manufacturer",
-  "manufacturerTypeDescription",
-  "maxOrderQuantity",
-  "multidimensional",
-  "name",
-  "numberOfReviews",
-  "potentialPromotions",
-  "price",
-  "priceRange",
-  "purchasable",
-  "regularPrice",
-  "retailRocketProductId",
-  "reviews",
-  "serialRequired",
-  "stock",
-  "summary",
-  "unitSales",
-  "url",
-  "variantMatrix",
-  "variantOptions",
-  "variantSelectors",
-  "variantType",
-  "volumePrices"
- ],
- "bold_ean": [
+ "www.sporting.com.ar style": [],
+ "www.sporting.com.ar text": [
   [
-   "ean",
-   "NIIO0027010"
+   "Gorra Nike Jordan Club Unisex",
+   "HQ1963010-000",
+   "JORDAN",
+   [
+    [
+     "0197600971424",
+     54999.0
+    ]
+   ]
+  ],
+  [
+   "Gorra Under Armour Jordan Spieth Drive De Hombre",
+   "6000362001-000",
+   "UNDER ARMOUR",
+   [
+    [
+     "0197779465526",
+     50999.15
+    ]
+   ]
   ]
  ],
- "bold_variant": "{\"code\": \"NIIO002701000S\", \"priceData\": {\"currencyIso\": \"CLP\", \"formattedValue\": \"$23.990\", \"priceType\": \"BUY\", \"value\": 23990}, \"regularPrice\": {\"currencyIso\": \"CLP\", \"formattedValue\": \"$32.990\", \"priceType\": \"BUY\", \"value\": 32990}, \"retailRocketProductId\": \"8922451214337\", \"sapPickUpAvailbility\": true, \"stock\": {\"physicalStockLevelByZone\": [\"zonaSur:inStock\", \"zonaNorte:inStock\", \"regionMetropolitana:inStock\"], \"physicalStockLevelStatus\": \"inStock\", \"stockLevel\": 1, \"stockLevelStatus\": \"lowStock\"}, \"url\": \"/Categories/boldTipo/Poleras/Polera-Jordan-Brooklyn-Negro/p/NIIO002701000S\", \"variantOptionQualifiers\": [{\"name\": \"Talla\", \"qualifier\": \"size\", \"value\": \"S\"}]}",
- "grid_IO0027-010": [],
- "grid_IO0027": [],
- "grid_FD1437": [],
- "grid_jordan brooklyn": "<Response [400]>",
- "ck https://ar.calvinklein.com/api/catalog_system/pub/products/search?ft=47A804G": [
-  200,
-  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"generator\" co"
- ],
- "ck https://www.calvinklein.com.ar/": "HTTPSConnectionPool(host='www.calvinklein.com.ar', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTT",
- "ck https://calvinklein.com.ar/api/catalog_system/pub/products/search?ft=remera": "HTTPSConnectionPool(host='calvinklein.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/products/search?ft=remera (Caused by ",
- "https://www.dexter.com.ar/api/catalog_system/pub/products/search/jordan": [
+ "www.opensports.com.ar style": [
   404,
-  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_"
+  "<!DOCTYPE html><html lang=\"es\">\n    <head>\n        <script>\n    var LOCALE = 'es\\u002DAR';\n    var B"
  ],
- "https://www.moov.com.ar/api/catalog_system/pub/products/search/jordan": [
+ "www.opensports.com.ar text": [
   404,
-  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_"
+  "<!DOCTYPE html><html lang=\"es\">\n    <head>\n        <script>\n    var LOCALE = 'es\\u002DAR';\n    var B"
  ],
- "https://www.solodeportes.com.ar/api/catalog_system/pub/products/search?ft=IO0027-010": [
-  405,
-  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width"
- ],
- "https://www.nike.com.ar/IO0027-010?_q=IO0027-010": [
+ "www.digitalsport.com.ar style": [
   403,
-  "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class"
+  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd"
+ ],
+ "www.digitalsport.com.ar text": [
+  403,
+  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd"
+ ],
+ "www.stockcenter.com.ar style": [
+  404,
+  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user"
+ ],
+ "www.stockcenter.com.ar text": [
+  404,
+  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user"
+ ],
+ "www.grid.com.ar style": [],
+ "www.grid.com.ar text": [
+  [
+   "BUZO JORDAN BROOKLYN HOMBRE",
+   "302-3216",
+   "Jordan",
+   [
+    [
+     "0197596180510",
+     139999.0
+    ]
+   ]
+  ],
+  [
+   "BUZO JORDAN BROOKLYN HOMBRE",
+   "302-3183",
+   "Jordan",
+   [
+    [
+     "0198483760129",
+     149999.0
+    ]
+   ]
+  ]
+ ],
+ "www.solodeportes.com.ar style": [
+  405,
+  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content"
+ ],
+ "www.solodeportes.com.ar text": [
+  405,
+  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content"
+ ],
+ "www.thefoot.com.ar style": "HTTPSConnectionPool(host='www.thefoot.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/product",
+ "www.thefoot.com.ar text": "HTTPSConnectionPool(host='www.thefoot.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/product",
+ "ar.calvinklein.com style": [
+  200,
+  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-widt"
+ ],
+ "ar.calvinklein.com text": [
+  200,
+  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-widt"
+ ],
+ "www.vaypol.com.ar style": [
+  200,
+  "<!DOCTYPE html><html lang=\"es\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" "
+ ],
+ "www.vaypol.com.ar text": [
+  200,
+  "<!DOCTYPE html><html lang=\"es\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" "
+ ],
+ "www.dash.com.ar style": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   "Adidas Performance",
+   [
+    [
+     "4060509396734",
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   "Adidas Performance",
+   [
+    [
+     "4069987696220",
+     89999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar text": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   "Adidas Performance",
+   [
+    [
+     "4060509396734",
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   "Adidas Performance",
+   [
+    [
+     "4069987696220",
+     89999.0
+    ]
+   ]
+  ]
+ ],
+ "www.redsport.com.ar style": "HTTPSConnectionPool(host='www.redsport.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/produc",
+ "www.redsport.com.ar text": "HTTPSConnectionPool(host='www.redsport.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/produc",
+ "theline": [
+  [
+   "ZAPATILLA NIKE NIKE CORTEZ MUJER",
+   "DZ2795-604",
+   [
+    "197862756609",
+    "197862749649"
+   ],
+   [
+    "DZ2795-604-5.5",
+    "DZ2795-604-6"
+   ]
+  ],
+  [
+   "ZAPATILLA NIKE NIKE CORTEZ HOMBRE",
+   "DM4044-108",
+   [
+    "197600816619",
+    "197600816060"
+   ],
+   [
+    "DM4044-108-10",
+    "DM4044-108-10.5"
+   ]
+  ],
+  [
+   "ZAPATILLA NIKE NIKE GATO HOMBRE",
+   "HQ6019-001",
+   [
+    "197601555319",
+    "197601555784"
+   ],
+   [
+    "HQ6019-001-10",
+    "HQ6019-001-10.5"
+   ]
+  ]
  ]
 }
