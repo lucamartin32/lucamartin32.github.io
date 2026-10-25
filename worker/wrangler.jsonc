@@ -2,6 +2,5 @@
   "name": "fotos",
   "main": "src/index.js",
   "compatibility_date": "2025-06-01",
-  "workers_dev": true,
-  "routes": [{ "pattern": "img.lucaimportados.com", "custom_domain": true }]
+  "workers_dev": true
 }
