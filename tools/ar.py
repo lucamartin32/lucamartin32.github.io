@@ -1,19 +1,21 @@
 import requests, json
 H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept':'application/json','Accept-Language':'es-AR,es;q=0.9'}
 out={}
-def vt(host, **p):
-  p.update({'_from':0,'_to':2})
-  try:
-    r=requests.get(f'https://{host}/api/catalog_system/pub/products/search',headers=H,params=p,timeout=30)
-    try:
-      j=r.json()
-      return [(x.get('productName'),x.get('productReference'),[(it.get('ean'),(it.get('sellers',[{}])[0].get('commertialOffer') or {}).get('Price'),(it.get('sellers',[{}])[0].get('commertialOffer') or {}).get('ListPrice')) for it in x.get('items',[])[:1]]) for x in j[:2]]
-    except Exception: return (r.status_code, r.text[:80])
-  except Exception as e: return str(e)[:100]
-for host in ['www.sporting.com.ar','www.grid.com.ar','www.dash.com.ar']:
-  for code in ['IO0027-010','IO0027010','IM5576-070','DM4044-108','DZ2795-604','FV5029-010']:
-    out[f'{host} ft {code}']=vt(host,ft=code)
-  out[f'{host} refid']=vt(host,fq='alternateIds_RefId:DM4044108-000')
-  for e in ['0197600816619','197600816619','0197862756609']:
-    out[f'{host} ean {e}']=vt(host,fq='alternateIds_Ean:'+e)
+def raw(host, path='/api/catalog_system/pub/products/search', **p):
+  r=requests.get(f'https://{host}{path}',headers=H,params=p,timeout=30)
+  try: return r.json()
+  except Exception: return [r.status_code, r.text[:80]]
+j=raw('www.sporting.com.ar',ft='nike air force',_from=0,_to=4)
+out['sp_sample']=[(x.get('productName'),x.get('productReference'),x.get('productId'),[(it.get('itemId'),it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])]) for it in x.get('items',[])[:2]]) for x in j] if isinstance(j,list) else j
+if isinstance(j,list) and j:
+  ref=j[0].get('productReference'); it=j[0]['items'][0]; rid=(it.get('referenceId') or [{}])[0].get('Value'); ean=it.get('ean')
+  out['by_ft_ref']=len(raw('www.sporting.com.ar',ft=ref) or [])
+  out['by_ft_ref_short']=len(raw('www.sporting.com.ar',ft=ref.split('-')[0]) or [])
+  out['by_refid']=len(raw('www.sporting.com.ar',fq='alternateIds_RefId:'+str(rid)) or [])
+  out['by_ean']=len(raw('www.sporting.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
+  out['by_ean_skuapi']=str(raw('www.sporting.com.ar',path='/api/catalog_system/pub/products/search',fq='alternateIds_Ean:'+str(ean)))[:150]
+j=raw('www.grid.com.ar',ft='nike air force',_from=0,_to=4)
+out['grid_sample']=[(x.get('productName'),x.get('productReference'),[(it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])], it.get('name')) for it in x.get('items',[])[:1]], [ (k,x.get(k)) for k in x.get('allSpecifications',[]) ][:6]) for x in j] if isinstance(j,list) else j
+if isinstance(j,list) and j:
+  ean=j[0]['items'][0].get('ean'); out['grid_by_ean']=len(raw('www.grid.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
 json.dump(out,open('tools/ar.json','w'),indent=1,ensure_ascii=False)
