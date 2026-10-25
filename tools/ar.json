@@ -1,72 +1,76 @@
 {
- "https://www.nike.com.ar/api/catalog_system/pub/products/search?ft=IO0027-010": {
-  "st": 403,
-  "len": 4547,
-  "head": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-",
-  "jerr": "Expecting value: line 1 column 1 (char 0)"
- },
- "https://www.nike.com.ar/api/catalog_system/pub/products/search?ft=jordan%20brooklyn&_from=0&_to=2": {
-  "st": 403,
-  "len": 4547,
-  "head": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-",
-  "jerr": "Expecting value: line 1 column 1 (char 0)"
- },
- "https://www.grid.com.ar/api/catalog_system/pub/products/search?ft=jordan%20brooklyn&_from=0&_to=2": {
-  "st": 206,
-  "len": 151175,
-  "head": "[{\"productId\":\"55431\",\"productName\":\"BUZO JORDAN BROOKLYN HOMBRE\",\"brand\":\"Jordan\",\"brandId\":2000022,\"brandImageUrl\":\"https://essential.vteximg.com.br/arquivos/ids/1238561/jordan-100.jpg\",\"linkText\":\"",
-  "first": {
-   "name": "BUZO JORDAN BROOKLYN HOMBRE",
-   "ref": "302-3161",
-   "brand": "Jordan",
-   "link": "https://www.grid.com.ar/buzo-jordan-brooklyn-moda-hombre-3023161/p",
-   "price": 129999.0,
-   "list": 129999.0,
-   "refid": [
-    "302-3161/S  *"
-   ],
-   "n": 3
-  }
- },
- "https://www.moov.com.ar/api/catalog_system/pub/products/search?ft=jordan%20brooklyn&_from=0&_to=2": {
-  "st": 404,
-  "len": 125966,
-  "head": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_date\":null,\"newsletter_suscribe\":\"No\",\"suscription_date\":null,\"cp\":null,\"ciudad\"",
-  "jerr": "Expecting value: line 1 column 1 (char 0)"
- },
- "https://www.dexter.com.ar/api/catalog_system/pub/products/search?ft=jordan%20brooklyn&_from=0&_to=2": {
-  "st": 404,
-  "len": 139390,
-  "head": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_date\":null,\"newsletter_suscribe\":\"No\",\"suscription_date\":null,\"cp\":null,\"ciudad\"",
-  "jerr": "Expecting value: line 1 column 1 (char 0)"
- },
- "https://www.tommy.com.ar/api/catalog_system/pub/products/search?ft=MW0MW41338&_from=0&_to=2": {
-  "err": "HTTPSConnectionPool(host='www.tommy.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/products/search?ft=MW0MW41338&_from=0&_to=2 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_"
- },
- "https://ar.tommy.com/api/catalog_system/pub/products/search?ft=MW0MW41338": {
-  "st": 200,
-  "len": 91645,
-  "head": "[{\"productId\":\"8578\",\"productName\":\"Remera cuello redondo con logo estampado regular fit\",\"brand\":\"Tommy Hilfiger\",\"brandId\":2000000,\"brandImageUrl\":null,\"linkText\":\"remera-punto--logo-grafico-mw0mw41",
-  "first": {
-   "name": "Remera cuello redondo con logo estampado regular fit",
-   "ref": "MW0MW41338XLD",
-   "brand": "Tommy Hilfiger",
-   "link": "https://ar.tommy.com/remera-punto--logo-grafico-mw0mw41338xld/p",
-   "price": 56000.0,
-   "list": 88000.0,
-   "refid": [
-    "8721222432944"
-   ],
-   "n": 3
-  }
- },
- "https://www.calvinklein.com.ar/api/catalog_system/pub/products/search?ft=47A804G&_from=0&_to=2": {
-  "err": "HTTPSConnectionPool(host='www.calvinklein.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/products/search?ft=47A804G&_from=0&_to=2 (Caused by NameResolutionError(\"<urllib3.c"
- },
- "https://www.adidas.com.ar/api/search/query?query=samba": {
-  "st": 403,
-  "len": 404,
-  "head": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;adidas&#46;com&#46;ar&#47;api&#47;search&#47;query&#63;",
-  "jerr": "Expecting value: line 1 column 1 (char 0)"
- }
+ "bold_keys": [
+  "availableForPickup",
+  "averageRating",
+  "badges",
+  "baseOptions",
+  "brandName",
+  "categories",
+  "code",
+  "configurable",
+  "description",
+  "ean",
+  "formattedDiscount",
+  "futureStockEnabled",
+  "image360",
+  "images",
+  "images360",
+  "keywords",
+  "manufacturer",
+  "manufacturerTypeDescription",
+  "maxOrderQuantity",
+  "multidimensional",
+  "name",
+  "numberOfReviews",
+  "potentialPromotions",
+  "price",
+  "priceRange",
+  "purchasable",
+  "regularPrice",
+  "retailRocketProductId",
+  "reviews",
+  "serialRequired",
+  "stock",
+  "summary",
+  "unitSales",
+  "url",
+  "variantMatrix",
+  "variantOptions",
+  "variantSelectors",
+  "variantType",
+  "volumePrices"
+ ],
+ "bold_ean": [
+  [
+   "ean",
+   "NIIO0027010"
+  ]
+ ],
+ "bold_variant": "{\"code\": \"NIIO002701000S\", \"priceData\": {\"currencyIso\": \"CLP\", \"formattedValue\": \"$23.990\", \"priceType\": \"BUY\", \"value\": 23990}, \"regularPrice\": {\"currencyIso\": \"CLP\", \"formattedValue\": \"$32.990\", \"priceType\": \"BUY\", \"value\": 32990}, \"retailRocketProductId\": \"8922451214337\", \"sapPickUpAvailbility\": true, \"stock\": {\"physicalStockLevelByZone\": [\"zonaSur:inStock\", \"zonaNorte:inStock\", \"regionMetropolitana:inStock\"], \"physicalStockLevelStatus\": \"inStock\", \"stockLevel\": 1, \"stockLevelStatus\": \"lowStock\"}, \"url\": \"/Categories/boldTipo/Poleras/Polera-Jordan-Brooklyn-Negro/p/NIIO002701000S\", \"variantOptionQualifiers\": [{\"name\": \"Talla\", \"qualifier\": \"size\", \"value\": \"S\"}]}",
+ "grid_IO0027-010": [],
+ "grid_IO0027": [],
+ "grid_FD1437": [],
+ "grid_jordan brooklyn": "<Response [400]>",
+ "ck https://ar.calvinklein.com/api/catalog_system/pub/products/search?ft=47A804G": [
+  200,
+  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"generator\" co"
+ ],
+ "ck https://www.calvinklein.com.ar/": "HTTPSConnectionPool(host='www.calvinklein.com.ar', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTT",
+ "ck https://calvinklein.com.ar/api/catalog_system/pub/products/search?ft=remera": "HTTPSConnectionPool(host='calvinklein.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/products/search?ft=remera (Caused by ",
+ "https://www.dexter.com.ar/api/catalog_system/pub/products/search/jordan": [
+  404,
+  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_"
+ ],
+ "https://www.moov.com.ar/api/catalog_system/pub/products/search/jordan": [
+  404,
+  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user_id\":null,\"register_"
+ ],
+ "https://www.solodeportes.com.ar/api/catalog_system/pub/products/search?ft=IO0027-010": [
+  405,
+  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width"
+ ],
+ "https://www.nike.com.ar/IO0027-010?_q=IO0027-010": [
+  403,
+  "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class"
+ ]
 }
