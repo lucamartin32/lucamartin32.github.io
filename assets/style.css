@@ -305,3 +305,10 @@ dialog[open]{animation:pop .3s var(--ease)}
 .toast{opacity:0;pointer-events:none;transition:transform .35s var(--ease),opacity .25s}
 .toast.on{opacity:1;pointer-events:auto}
 .bar .mark{text-align:center}
+/* productos estrella */
+.star-p{margin:-4px 0 16px;color:#3d434b;max-width:52ch}
+.star-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:900px){.star-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.star-grid .card{box-shadow:inset 0 0 0 2px var(--cobalt)}
+.flag.star{background:var(--cobalt);color:#fff;display:inline-flex;gap:5px;align-items:center}
+.flag.star::before{content:"";width:10px;height:10px;background:currentColor;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}

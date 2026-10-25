@@ -50,6 +50,7 @@ function tags(t, cat){
 // ── precios ──
 const hasMay = p => CFG.recargos.mayorista[p.cat] != null;
 function price(p, clp, may){
+  if (p.fixed) return p.fixed;
   const step = CFG.redondeo || 500;
   const base = Math.ceil(clp * RATE / step) * step;
   if (may && hasMay(p)) return base + CFG.recargos.mayorista[p.cat];          // mayorista: base + recargo, sin redondear
@@ -70,7 +71,7 @@ function sk(t){ const sys = {US:100,UK:200,EU:300,CL:400}; const m0 = t.match(/^
 // ── tarjeta ──
 function card(p){
   const now = price(p, p.clp), was = off(p) > .04 ? price(p, p.reg) : null, pct = Math.round(off(p) * 100);
-  const flag = isNew(p) ? '<span class="flag new">Nuevo</span>' : isDrop(p) ? '<span class="flag drop">Bajó de precio</span>' : was ? `<span class="flag sale">−${pct}%</span>` : '';
+  const flag = p.star ? '<span class="flag star">Producto estrella</span>' : isNew(p) ? '<span class="flag new">Nuevo</span>' : isDrop(p) ? '<span class="flag drop">Bajó de precio</span>' : was ? `<span class="flag sale">−${pct}%</span>` : '';
   return `<button class="card" type="button" data-c="${p.code}"><div class="ph"><img loading="lazy" decoding="async" alt="${esc(p.name)}" src="${esc(p.img)}">
     ${flag}${p.units != null && p.units <= 2 ? '<span class="flag last">Últimas</span>' : ''}</div>
     <div class="meta"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span>
@@ -92,7 +93,7 @@ function setNav(){
 function render(){
   setNav();
   const pc = p => price(p, p.clp);
-  const rank = p => { const i = TOPB.indexOf(p.brand); return (i < 0 ? 9 : i) - off(p) * 4 - (isNew(p) ? 2 : 0); };
+  const rank = p => p.star ? -99 : (i => (i < 0 ? 9 : i) - off(p) * 4 - (isNew(p) ? 2 : 0))(TOPB.indexOf(p.brand));
   let list = pool();
   if (f.sort === 'top') list.sort((a, c) => rank(a) - rank(c) || pc(a) - pc(c));
   if (f.sort === 'new') list.sort((a, c) => (c.first||'').localeCompare(a.first||'') || rank(a) - rank(c));
@@ -115,6 +116,7 @@ function rails(){
   const top = DATA.productos.filter(p => TOPB.slice(0,4).includes(p.brand) && off(p) > .2).sort((a,b) => off(b) - off(a));
   const pickTop = []; const seen = {}; for (const p of top){ const k = p.brand + p.cat; seen[k] = (seen[k]||0) + 1; if (seen[k] <= 2) pickTop.push(p); if (pickTop.length >= 12) break; }
   const sec = (id, items) => { const el = $(id); el.closest('.rail-wrap').hidden = !items.length; el.innerHTML = items.slice(0, 12).map(card).join(''); };
+  const st = DATA.productos.filter(p => p.star); $('#star').closest('section').hidden = !st.length; $('#star').innerHTML = st.map(card).join('');
   sec('#r-new', nw); sec('#r-drop', dr); sec('#r-top', pickTop);
   const hero = []; const hs = new Set();
   const hk = p => p.brand + p.cat;
@@ -282,6 +284,12 @@ async function start(){
     CFG = await getJSON([RAW + 'config.json', BASE + '/config.json']);
     DATA = await getJSON([RAW + 'data/catalogo.json', BASE + '/data/catalogo.json']);
   } catch(e){ $('#grid').innerHTML = '<p class="empty">No pudimos cargar el catálogo. Recargá la página en un momento.</p>'; return; }
+  try {
+    const D = await getJSON([RAW + 'data/destacados.json', BASE + '/data/destacados.json']);
+    const star = (D.productos || []).map(s => ({code: s.code, brand: s.brand, name: s.name, cat: s.cat, secs: s.secs || ['H','M'], fixed: s.precio, clp: 0, reg: 0,
+      img: s.img, imgs: s.imgs || [s.img], sizes: (s.sizes || []).map(t => ({t, u: null})), units: null, first: '2000-01-01', star: true, store: 'z'}));
+    DATA.productos = star.concat(DATA.productos);
+  } catch(e){}
   RATE = Number(CFG.cambio) || 1.67;
   const est = DATA.estado || {}, lim = 6 * 3600 * 1000;
   DATA.productos = DATA.productos.filter(p => { const e = est[p.store]; return !e || !e.ultimo_ok || (Date.now() - new Date(e.ultimo_ok)) < lim; });

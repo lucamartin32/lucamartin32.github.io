@@ -1,0 +1,11 @@
+{
+ "nota": "Productos cargados a mano (no los revisa el robot). precio = precio fijo en pesos argentinos por unidad.",
+ "productos": [
+  {"code":"LI-ZB1N","brand":"Zara","name":"Campera Bomber Técnica Negra","cat":"CA","secs":["H"],"precio":95000,
+   "img":"https://static.zara.net/assets/public/3c1c/8deb/057b435385ed/0af4cbf378a0/04302510800-p/04302510800-p.jpg?ts=1788772717256&w=750",
+   "sizes":["S","M","L","XL"]},
+  {"code":"LI-ZA1N","brand":"Zara","name":"Campera Acolchada Combinada Negra","cat":"CA","secs":["H"],"precio":105000,
+   "img":"https://static.zara.net/assets/public/9f7d/1c56/a1dc4727b223/aff11f4f02f4/08574700800-p/08574700800-p.jpg?ts=1788879717840&w=750",
+   "sizes":["S","M","L","XL"]}
+ ]
+}
