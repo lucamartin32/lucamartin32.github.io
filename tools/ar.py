@@ -6,7 +6,7 @@ def raw(host, path='/api/catalog_system/pub/products/search', **p):
     r=requests.get(f'https://{host}{path}',headers=H,params=p,timeout=30); j=r.json()
     return j if isinstance(j,list) else []
   except Exception: return []
-j=raw('www.sporting.com.ar',ft='nike air force',_from=0,_to=4)
+j=raw('www.sporting.com.ar',ft='zapatillas',_from=0,_to=4)
 out['sp_sample']=[(x.get('productName'),x.get('productReference'),x.get('productId'),[(it.get('itemId'),it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])]) for it in x.get('items',[])[:2]]) for x in j] if isinstance(j,list) else j
 if isinstance(j,list) and j:
   ref=j[0].get('productReference'); it=j[0]['items'][0]; rid=(it.get('referenceId') or [{}])[0].get('Value'); ean=it.get('ean')
@@ -15,7 +15,7 @@ if isinstance(j,list) and j:
   out['by_refid']=len(raw('www.sporting.com.ar',fq='alternateIds_RefId:'+str(rid)) or [])
   out['by_ean']=len(raw('www.sporting.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
   out['by_ean_skuapi']=str(raw('www.sporting.com.ar',path='/api/catalog_system/pub/products/search',fq='alternateIds_Ean:'+str(ean)))[:150]
-j=raw('www.grid.com.ar',ft='nike air force',_from=0,_to=4)
+j=raw('www.grid.com.ar',ft='zapatillas',_from=0,_to=4)
 out['grid_sample']=[(x.get('productName'),x.get('productReference'),[(it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])], it.get('name')) for it in x.get('items',[])[:1]], [ (k,x.get(k)) for k in x.get('allSpecifications',[]) ][:6]) for x in j] if isinstance(j,list) else j
 if isinstance(j,list) and j:
   ean=j[0]['items'][0].get('ean'); out['grid_by_ean']=len(raw('www.grid.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
