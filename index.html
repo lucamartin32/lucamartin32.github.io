@@ -6,14 +6,14 @@
 <title>Luca Importados · Ropa y zapatillas originales</title>
 <meta name="description" content="Nike, Jordan, Tommy Hilfiger, Calvin Klein, Lacoste y más. 100% originales. Encargá por WhatsApp.">
 <meta property="og:title" content="Luca Importados"><meta property="og:description" content="Ropa y zapatillas 100% originales. Encargá por WhatsApp.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#e8ebef">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230d0d0d'/%3E%3Ctext x='32' y='44' font-family='Impact,Arial Narrow,sans-serif' font-size='34' fill='%23fff' text-anchor='middle'%3ELI%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="./assets/style.css?v=202610241937">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="stylesheet" href="./assets/style.css?v=202610250214">
 </head>
 <body data-base=".">
-<div class="announce"><span>100% originales &nbsp;·&nbsp; Envíos a todo el país &nbsp;·&nbsp; Encargá por WhatsApp &nbsp;·&nbsp; ¿Revendés? Consultá precio mayorista &nbsp;·&nbsp; 100% originales &nbsp;·&nbsp; Envíos a todo el país &nbsp;·&nbsp; Encargá por WhatsApp &nbsp;·&nbsp; ¿Revendés? Consultá precio mayorista &nbsp;·&nbsp;</span></div>
+<div class="announce" aria-label="Novedades"><div class="mq"><span>Ropa y zapatillas originales</span><span>Envíos a todo el país</span><span>Pedí por WhatsApp</span><span>Precio especial para revendedores</span><span>Ropa y zapatillas originales</span><span>Envíos a todo el país</span><span>Pedí por WhatsApp</span><span>Precio especial para revendedores</span></div></div>
 <header class="site">
 <div class="bar pad">
 <div class="l"><button id="sbtn" class="ico" type="button" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button></div>
@@ -22,26 +22,28 @@
 <button class="ico-btn" id="cbtn" type="button" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="n" id="cartn"></span></button></div>
 </div>
 <div class="search pad" id="srow" hidden><input id="q" type="search" placeholder="Buscar: Jordan, hoodie, negro…" aria-label="Buscar"></div>
-<nav class="nav pad"><button type="button" data-sec="all">Todo</button><button type="button" data-sec="H">Hombre</button><button type="button" data-sec="M">Mujer</button><button type="button" data-sec="sale" style="color:var(--sale)">Ofertas</button></nav>
+<nav class="nav pad"><button type="button" data-sec="all">Todo</button><button type="button" data-sec="H">Hombre</button><button type="button" data-sec="M">Mujer</button><button type="button" data-sec="sale" class="hot">Ofertas</button></nav>
 </header>
 
-<section class="hero2 home-only"><div class="bg" id="herobg"></div><div class="in pad">
-<span class="kick">Nike · Jordan · Tommy · Calvin Klein</span>
-<h1>Originales. A otro precio.</h1>
-<p>Las marcas que querés, a mejor precio. Elegí, armá tu pedido y te lo traemos.</p>
-<div class="ctas"><button class="btn w" type="button" data-sec="H" data-jump="1">Hombre</button><button class="btn o" type="button" data-sec="M" data-jump="1">Mujer</button></div>
-</div></section>
-<section class="promo home-only"><div class="in pad"><b>¿Revendés ropa?</b><span>Tenemos precio mayorista para revendedores.</span><a class="btn w wa-may" target="_blank" rel="noopener" href="https://wa.me/5491135648471?text=Hola!%20Soy%20revendedor%20y%20quiero%20info%20del%20precio%20mayorista">Consultar precio mayorista</a></div></section>
+<section class="hero home-only">
+<div class="hero-in pad">
+<h1><span>Lo que no</span> <span>llega a</span> <span>Argentina.</span></h1>
+<div class="hero-side"><p>Nike, Jordan, Tommy Hilfiger y Calvin Klein originales, en modelos que acá no se consiguen. Elegí, armá tu pedido y te lo traemos.</p>
+<div class="ctas"><button class="btn k" type="button" data-sec="H" data-jump="1">Ver hombre</button><button class="btn line" type="button" data-sec="M" data-jump="1">Ver mujer</button></div></div>
+</div>
+<div class="belt" id="belt"></div>
+</section>
+<section class="promo home-only"><div class="in pad"><div><b>¿Revendés ropa?</b><span>Tenemos precio especial por cantidad para revendedores.</span></div><a class="btn w wa-may" target="_blank" rel="noopener" href="https://wa.me/5491135648471?text=Hola!%20Soy%20revendedor%20y%20quiero%20info%20del%20precio%20mayorista">Consultar precio mayorista</a></div></section>
 
 <main class="pad">
 <div class="home-only">
-<div class="sec-h"><h2>Comprá por categoría</h2></div>
+<div class="sec-h"><h2>Categorías</h2></div>
 <div class="tiles" id="tiles"></div>
 <div class="rail-wrap" hidden><div class="sec-h"><h2>Recién llegados</h2><button type="button" data-rail="new">Ver todo</button></div><div class="rail" id="r-new"></div></div>
 <div class="rail-wrap" hidden><div class="sec-h"><h2>Bajaron de precio</h2><button type="button" data-rail="off">Ver ofertas</button></div><div class="rail" id="r-drop"></div></div>
 <div class="rail-wrap"><div class="sec-h"><h2>Los más buscados</h2><button type="button" data-rail="off">Ver ofertas</button></div><div class="rail" id="r-top"></div></div>
 </div>
-<div id="catalogo" style="scroll-margin-top:110px"><div class="sec-h"><h2>Catálogo</h2></div>
+<div id="catalogo" style="scroll-margin-top:110px"><div class="sec-h"><h2>Todo el catálogo</h2></div>
 <div class="brands" id="cats"></div>
 <div class="toolbar"><span class="live" id="count2"></span><button id="fbtn" type="button">Filtrar <span id="fbtn-n"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button></div>
 <p class="count" id="count"></p>
@@ -82,6 +84,6 @@
 <dialog id="filters"><div class="in"><div class="dh pad"><span>Filtrar y ordenar</span><button id="fclose" type="button" aria-label="Cerrar" style="font-size:22px">×</button></div><div class="db pad" id="fbody"></div><div class="df pad"><button id="fclear" type="button">Limpiar</button><button id="fapply" class="go" type="button">Ver productos</button></div></div></dialog>
 <dialog id="product"></dialog>
 <dialog id="cart"></dialog>
-<script src="./assets/app.js?v=202610241937"></script>
+<script src="./assets/app.js?v=202610250214"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ async function getJSON(urls){
   throw new Error('sin datos');
 }
 // ── normalización ──
-const AR_RULES = [[new RegExp("(?<!\\p{L})Parka Vest(?!\\p{L})",'giu'),"Chaleco"],[new RegExp("(?<!\\p{L})Con Gorro(?!\\p{L})",'giu'),"Con Capucha"],[new RegExp("(?<!\\p{L})con gorro(?!\\p{L})",'giu'),"con capucha"],[new RegExp("^Buzo(?!\\p{L})",'giu'),"Conjunto"],[new RegExp("(?<!\\p{L})B\u00e1sico Buzo(?!\\p{L})",'giu'),"B\u00e1sico Jogging"],[new RegExp("(?<!\\p{L})Pantal[o\u00f3]n de Buzo(?!\\p{L})",'giu'),"Jogging"],[new RegExp("(?<!\\p{L})Poleras(?!\\p{L})",'giu'),"Remeras"],[new RegExp("(?<!\\p{L})Polera(?!\\p{L})",'giu'),"Remera"],[new RegExp("(?<!\\p{L})Remera Polo(?!\\p{L})",'giu'),"Chomba"],[new RegExp("(?<!\\p{L})Poler[o\u00f3]nes(?!\\p{L})",'giu'),"Buzos"],[new RegExp("(?<!\\p{L})Poler[o\u00f3]n(?!\\p{L})",'giu'),"Buzo"],[new RegExp("(?<!\\p{L})Pole[o\u00f3]n(?!\\p{L})",'giu'),"Buzo"],[new RegExp("(?<!\\p{L})Jockeys?(?!\\p{L})",'giu'),"Gorra"],[new RegExp("(?<!\\p{L})Chaquetas(?!\\p{L})",'giu'),"Camperas"],[new RegExp("(?<!\\p{L})Chaqueta",'giu'),"Campera "],[new RegExp("(?<!\\p{L})Parkas?(?!\\p{L})",'giu'),"Campera"],[new RegExp("(?<!\\p{L})Cortavientos(?!\\p{L})",'giu'),"Rompevientos"],[new RegExp("(?<!\\p{L})Bototos?(?!\\p{L})",'giu'),"Borcegos"],[new RegExp("(?<!\\p{L})Peto(?!\\p{L})",'giu'),"Top"],[new RegExp("(?<!\\p{L})Pantalon(?!\\p{L})",'giu'),"Pantal\u00f3n"],[new RegExp("(?<!\\p{L})Caf[e\u00e9](?!\\p{L})",'giu'),"Marr\u00f3n"],[new RegExp("(?<!\\p{L})Burdeo(?!\\p{L})",'giu'),"Bord\u00f3"],[new RegExp("(?<!\\p{L})Naranjo(?!\\p{L})",'giu'),"Naranja"],[new RegExp("(?<!\\p{L})Rosado(?!\\p{L})",'giu'),"Rosa"],[new RegExp("(?<!\\p{L})Plomo(?!\\p{L})",'giu'),"Gris"],[new RegExp("(?<!\\p{L})Zapatillas? Vulcanizadas(?!\\p{L})",'giu'),"Zapatillas"]];
+const AR_RULES = [[new RegExp("(?<!\\p{L})Parka Vest(?!\\p{L})",'giu'),"Chaleco"],[new RegExp("(?<!\\p{L})Con Gorro(?!\\p{L})",'giu'),"Con Capucha"],[new RegExp("(?<!\\p{L})con gorro(?!\\p{L})",'giu'),"con capucha"],[new RegExp("(?<!\\p{L})B\u00e1sico Buzo(?!\\p{L})",'giu'),"B\u00e1sico Jogging"],[new RegExp("(?<!\\p{L})Pantal[o\u00f3]n de Buzo(?!\\p{L})",'giu'),"Jogging"],[new RegExp("(?<!\\p{L})Poleras(?!\\p{L})",'giu'),"Remeras"],[new RegExp("(?<!\\p{L})Polera(?!\\p{L})",'giu'),"Remera"],[new RegExp("(?<!\\p{L})Remera Polo(?!\\p{L})",'giu'),"Chomba"],[new RegExp("(?<!\\p{L})Poler[o\u00f3]nes(?!\\p{L})",'giu'),"Buzos"],[new RegExp("(?<!\\p{L})Poler[o\u00f3]n(?!\\p{L})",'giu'),"Buzo"],[new RegExp("(?<!\\p{L})Pole[o\u00f3]n(?!\\p{L})",'giu'),"Buzo"],[new RegExp("(?<!\\p{L})Jockeys?(?!\\p{L})",'giu'),"Gorra"],[new RegExp("(?<!\\p{L})Chaquetas(?!\\p{L})",'giu'),"Camperas"],[new RegExp("(?<!\\p{L})Chaqueta",'giu'),"Campera "],[new RegExp("(?<!\\p{L})Parkas?(?!\\p{L})",'giu'),"Campera"],[new RegExp("(?<!\\p{L})Cortavientos(?!\\p{L})",'giu'),"Rompevientos"],[new RegExp("(?<!\\p{L})Bototos?(?!\\p{L})",'giu'),"Borcegos"],[new RegExp("(?<!\\p{L})Peto(?!\\p{L})",'giu'),"Top"],[new RegExp("(?<!\\p{L})Pantalon(?!\\p{L})",'giu'),"Pantal\u00f3n"],[new RegExp("(?<!\\p{L})Caf[e\u00e9](?!\\p{L})",'giu'),"Marr\u00f3n"],[new RegExp("(?<!\\p{L})Burdeo(?!\\p{L})",'giu'),"Bord\u00f3"],[new RegExp("(?<!\\p{L})Naranjo(?!\\p{L})",'giu'),"Naranja"],[new RegExp("(?<!\\p{L})Rosado(?!\\p{L})",'giu'),"Rosa"],[new RegExp("(?<!\\p{L})Plomo(?!\\p{L})",'giu'),"Gris"],[new RegExp("(?<!\\p{L})Zapatillas? Vulcanizadas(?!\\p{L})",'giu'),"Zapatillas"]];
 const arName = n => AR_RULES.reduce((s,[a,b]) => s.replace(a,b), n||'').replace(/\s{2,}/g,' ').trim();
 const BRAND_FIX = {joran:'Jordan', jordan:'Jordan', nike:'Nike', 'nike aps':'Nike', adidas:'adidas', mitchellyness:'Mitchell & Ness', 'mitchell and ness':'Mitchell & Ness', 'mitchell y ness':'Mitchell & Ness', joia:'JOIA', levis:"Levi's", "levi's":"Levi's", puma:'Puma', 'new balance':'New Balance', lacoste:'Lacoste', vans:'Vans', converse:'Converse', 'new era':'New Era', on:'On'};
 const CAPS = {'718':'7-1/8','714':'7-1/4','738':'7-3/8','712':'7-1/2','758':'7-5/8','734':'7-3/4'};
@@ -109,7 +109,7 @@ function render(){
 }
 function rails(){
   const tiles = CAT_ORDER.map(c => { const p = DATA.productos.filter(x => x.cat === c && TOPB.includes(x.brand)).sort((a,b) => off(b)-off(a))[0] || DATA.productos.find(x => x.cat === c); return p && [c, p]; }).filter(Boolean);
-  $('#tiles').innerHTML = tiles.map(([c, p]) => `<button class="tile" type="button" data-cat="${c}" data-jump="1" style="background-image:url('${esc(p.img)}')"><span>${CAT[c]}</span></button>`).join('');
+  $('#tiles').innerHTML = tiles.map(([c, p]) => `<button class="tile" type="button" data-cat="${c}" data-jump="1"><span class="tph"><img loading="lazy" decoding="async" alt="" src="${esc(p.img)}"></span><span class="tl">${CAT[c]}</span></button>`).join('');
   const nw = DATA.productos.filter(isNew).sort((a, b) => (b.first||'').localeCompare(a.first||''));
   const dr = DATA.productos.filter(isDrop).sort((a, b) => off(b) - off(a));
   const top = DATA.productos.filter(p => TOPB.slice(0,4).includes(p.brand) && off(p) > .2).sort((a,b) => off(b) - off(a));
@@ -117,9 +117,11 @@ function rails(){
   const sec = (id, items) => { const el = $(id); el.closest('.rail-wrap').hidden = !items.length; el.innerHTML = items.slice(0, 12).map(card).join(''); };
   sec('#r-new', nw); sec('#r-drop', dr); sec('#r-top', pickTop);
   const hero = []; const hs = new Set();
-  for (const p of DATA.productos.filter(p => TOPB.slice(0,4).includes(p.brand) && ['BZ','RE','CA'].includes(p.cat)).sort((a,b) => off(b)-off(a))){ if (hero.length >= 5) break; if (hs.has(p.brand)) continue; hs.add(p.brand); hero.push(p); }
-  for (const p of DATA.productos){ if (hero.length >= 5) break; if (!hero.includes(p) && p.cat !== 'GO') hero.push(p); }
-  $('#herobg').innerHTML = hero.map(p => `<div style="background-image:url('${esc(p.img)}')"></div>`).join('');
+  const hk = p => p.brand + p.cat;
+  for (const p of DATA.productos.filter(p => TOPB.includes(p.brand) && ['BZ','ZA','CA','RE'].includes(p.cat)).sort((a,b) => off(b)-off(a))){ if (hero.length >= 12) break; if (hs.has(hk(p))) continue; hs.add(hk(p)); hero.push(p); }
+  const bi = p => `<button class="bi" type="button" data-open="${p.code}" aria-label="${esc(p.brand + ' ' + p.name)}"><img decoding="async" alt="" src="${esc(p.img)}"><span>${esc(p.brand)}</span></button>`;
+  $('#belt').innerHTML = `<div class="belt-track">${hero.map(bi).join('')}</div><div class="belt-track" aria-hidden="true">${hero.map(bi).join('')}</div>`;
+  $('#belt').querySelectorAll('[aria-hidden] button').forEach(b => b.tabIndex = -1);
 }
 function filtersUI(){
   const base = DATA.productos.filter(p => (f.sec==='all'||p.secs.includes(f.sec)) && (f.cat==='all'||p.cat===f.cat));
@@ -190,7 +192,7 @@ function totals(){
   for (const l of L){ unit += price(l.p, l.p.clp) * l.qty; total += price(l.p, l.p.clp, may) * l.qty; }
   return {L, count, may, unit, total, saving: unit - total, items: L.reduce((n, l) => n + l.qty, 0)};
 }
-function saveCart(){ store.set('cart', cart); const t = totals(); $('#cartn').textContent = t.items || ''; }
+function saveCart(){ store.set('cart', cart); const t = totals(), n = $('#cartn'); if (n.textContent !== String(t.items || '')){ n.textContent = t.items || ''; n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); } }
 function addToCart(code, size){
   const l = cart.find(x => x.code === code && x.size === size);
   if (l) l.qty++; else cart.push({code, size, qty: 1});
@@ -301,6 +303,7 @@ async function start(){
 const jump = () => document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'});
 document.addEventListener('click', e => {
   const c = e.target.closest('.card'); if (c) return openProduct(c.dataset.c);
+  const bo = e.target.closest('[data-open]'); if (bo) return openProduct(bo.dataset.open);
   const s = e.target.closest('[data-sec]');
   if (s){ if (s.dataset.sec === 'sale') f.sale = !f.sale; else { f.sec = s.dataset.sec; f.sale = false; } f.cat = 'all'; f.sizes.clear(); f.brands.clear(); shown = 40; render(); if (s.dataset.jump || s.closest('.nav')) jump(); return; }
   const k = e.target.closest('[data-cat]'); if (k){ f.cat = k.dataset.cat; f.sizes.clear(); shown = 40; render(); if (k.dataset.jump) jump(); return; }
