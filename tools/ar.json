@@ -1,354 +1,236 @@
 {
- "sp_sample": [
+ "grid_nike": [
   [
-   "Zapatillas Running adidas Galaxy 8 de Mujer",
-   "6IH9795-000",
-   "68140",
-   [
-    [
-     "310319188",
-     "null",
-     [
-      "6IH9795-000-30"
-     ]
-    ],
-    [
-     "310319189",
-     "4069987532337",
-     [
-      "6IH9795-000-35"
-     ]
-    ]
-   ]
+   "BUZO NIKE LOCKUP HOMBRE",
+   "057-0074",
+   ""
   ],
   [
-   "Zapatillas Running adidas Duramo SL 2 de Mujer",
-   "6KJ4151-000",
-   "70585",
-   [
-    [
-     "310340503",
-     "null",
-     [
-      "6KJ4151-000-10"
-     ]
-    ],
-    [
-     "310340505",
-     "null",
-     [
-      "6KJ4151-000-30"
-     ]
-    ]
-   ]
+   "BUZO NIKE LOCKUP HOMBRE",
+   "057-0077",
+   ""
   ],
   [
-   "Zapatillas Running adidas Duramo RC 2 de Hombre",
-   "6JS4429-000",
-   "59070",
-   [
-    [
-     "310240517",
-     "4067907622380",
-     [
-      "6JS4429-000-65"
-     ]
-    ],
-    [
-     "310240518",
-     "4067907622373",
-     [
-      "6JS4429-000-85"
-     ]
-    ]
-   ]
+   "BUZO NIKE CLUB HOMBRE",
+   "057-0081",
+   ""
   ],
   [
-   "Zapatillas Urbanas adidas Streettalk Unisex",
-   "6JP8276-000",
-   "59540",
-   [
-    [
-     "310243608",
-     "4068801373583",
-     [
-      "6JP8276-000-35"
-     ]
-    ],
-    [
-     "310243609",
-     "4068801377284",
-     [
-      "6JP8276-000-50"
-     ]
-    ]
-   ]
+   "CAMPERA NIKE SPORTSWEAR  MUJER",
+   "302-2708",
+   ""
   ],
   [
-   "Zapatillas Urbanas adidas Adizero Pacer de Hombre",
-   "6KZ6848-000",
-   "70499",
-   [
-    [
-     "310339937",
-     "4069991310211",
-     [
-      "6KZ6848-000-10"
-     ]
-    ],
-    [
-     "310339938",
-     "4069991310242",
-     [
-      "6KZ6848-000-11"
-     ]
-    ]
-   ]
+   "BUZO NIKE NFL HOMBRE",
+   "057-0040",
+   ""
+  ],
+  [
+   "BUZO NIKE LOCKUP HOMBRE",
+   "057-0075",
+   ""
+  ],
+  [
+   "BUZO NIKE CREWNECK MUJER",
+   "057-0089",
+   ""
+  ],
+  [
+   "CAMPERA NIKE WINDRUNNER HOMBRE",
+   "302-3192",
+   ""
+  ],
+  [
+   "BUZO NIKE CREWNECK HOMBRE",
+   "057-0088",
+   ""
+  ],
+  [
+   "BUZO NIKE CREWNECK MUJER",
+   "057-0073",
+   ""
   ]
  ],
- "by_ft_ref": 0,
- "by_ft_ref_short": 1,
- "by_refid": 1,
- "by_ean": 10,
- "by_ean_skuapi": "[{'productId': '66361', 'productName': 'Zapatillas Running adidas Runfalcon 6 de Mujer', 'brand': 'ADIDAS', 'brandId': 2000007, 'brandImageUrl': 'http",
- "grid_sample": [
+ "grid_ft_prov": [
   [
-   "ZAPATILLAS ADIDAS ORIGINALS SAMBA OG",
-   "261-7883",
-   [
-    [
-     "4059811988508",
-     [
-      "261-7883-03.5"
-     ],
-     "261-7883-03.5"
-    ]
-   ],
-   [
-    [
-     "Género",
-     [
-      "Hombre"
-     ]
-    ],
-    [
-     "Color",
-     [
-      "Negro"
-     ]
-    ],
-    [
-     "Proveedor",
-     [
-      "B75807"
-     ]
-    ],
-    [
-     "Pensado para",
-     [
-      "Lifestyle"
-     ]
-    ],
-    [
-     "Marca",
-     [
-      "Adidas"
-     ]
-    ],
-    [
-     "Disciplina",
-     [
-      "Moda"
-     ]
-    ]
-   ]
+   "ZAPATILLAS NIKE AIR FORCE 1 '07 LOW HOMBRE",
+   "Cw2288-001"
   ],
   [
-   "ZAPATILLAS ADIDAS ORIGINALS SAMBA OG",
-   "261-5806",
-   [
-    [
-     "4062061443031",
-     [
-      "261-5806-03.0"
-     ],
-     "261-5806-03.0"
-    ]
-   ],
-   [
-    [
-     "Género",
-     [
-      "Hombre"
-     ]
-    ],
-    [
-     "Color",
-     [
-      "Blanco"
-     ]
-    ],
-    [
-     "Proveedor",
-     [
-      "B75806"
-     ]
-    ],
-    [
-     "Pensado para",
-     [
-      "Lifestyle"
-     ]
-    ],
-    [
-     "Marca",
-     [
-      "Adidas"
-     ]
-    ],
-    [
-     "Disciplina",
-     [
-      "Moda"
-     ]
-    ]
-   ]
+   "Zapatillas Nike Sportswear AIR FORCE 1 07 HOMBRE",
+   "Cw2288-111"
   ],
   [
-   "ZAPATILLAS ADIDAS ORIGINALS SAMBAE MUJER",
-   "268-1275",
-   [
-    [
-     "4068805840302",
-     [
-      "268-1275/03.5"
-     ],
-     "268-1275/03.5"
-    ]
-   ],
-   [
-    [
-     "Género",
-     [
-      "Mujer"
-     ]
-    ],
-    [
-     "Color",
-     [
-      "Negro"
-     ]
-    ],
-    [
-     "Marca",
-     [
-      "Adidas Originals"
-     ]
-    ],
-    [
-     "Disciplina",
-     [
-      "Moda"
-     ]
-    ],
-    [
-     "Proveedor",
-     [
-      "Ih4045"
-     ]
-    ]
-   ]
+   "ZAPATILLAS AIR JORDAN 1 LOW HOMBRE",
+   "553558-045"
   ],
   [
-   "ZAPATILLAS ADIDAS PERFORMANCE GAMECHASER HOMBRE",
-   "268-1268",
-   [
-    [
-     "",
-     [
-      "268-1268/03 *"
-     ],
-     "268-1268/03 *"
-    ]
-   ],
-   [
-    [
-     "Género",
-     [
-      "Hombre"
-     ]
-    ],
-    [
-     "Color",
-     [
-      "Negro"
-     ]
-    ],
-    [
-     "Marca",
-     [
-      "Adidas Performance"
-     ]
-    ],
-    [
-     "Disciplina",
-     [
-      "Basket"
-     ]
-    ],
-    [
-     "Proveedor",
-     [
-      "Jq7918"
-     ]
-    ]
-   ]
+   "SHORT MLB NEW YORK YANKEES HOMBRE",
+   ""
   ],
   [
-   "ZAPATILLAS ADIDAS ORIGINALS SAMBAE MUJER",
-   "268-1536",
-   [
-    [
-     "4069987409257",
-     [
-      "268-1536/03 *"
-     ],
-     "268-1536/03 *"
-    ]
-   ],
-   [
-    [
-     "Género",
-     [
-      "Mujer"
-     ]
-    ],
-    [
-     "Color",
-     [
-      "Blanco"
-     ]
-    ],
-    [
-     "Marca",
-     [
-      "Adidas Originals"
-     ]
-    ],
-    [
-     "Disciplina",
-     [
-      "Moda"
-     ]
-    ],
-    [
-     "Proveedor",
-     [
-      "Ki2153"
-     ]
-    ]
-   ]
+   "ZAPATILLAS NIKE SPORTSWEAR AIR MAX AURA MUJER",
+   "Fv1920-001"
+  ],
+  [
+   "ZAPATILLAS NIKE SPORTSWEAR AIR FORCE 1 '07 LV8 HOMBRE",
+   "Hf2898-100"
+  ],
+  [
+   "Zapatillas Adidas Originals SUPERSTAR II UNISEX",
+   "Ji0079"
+  ],
+  [
+   "Zapatillas Nike Sportswear AIR FORCE 1 '07 HOMBRE",
+   "Fj4146-112"
+  ],
+  [
+   "ZAPATILLAS PUMA SUEDE XL ADP UNISEX",
+   "395205/02"
+  ],
+  [
+   "ZAPATILLAS NIKE AIR FORCE 1",
+   "CT3839-100"
   ]
  ],
- "grid_by_ean": 1
+ "grid_ft_prov_nodash": [
+  [
+   "ZAPATILLAS NIKE AIR FORCE 1 '07 LOW HOMBRE",
+   "Cw2288-001"
+  ],
+  [
+   "Zapatillas Nike Sportswear AIR FORCE 1 07 HOMBRE",
+   "Cw2288-111"
+  ],
+  [
+   "ZAPATILLAS AIR JORDAN 1 LOW HOMBRE",
+   "553558-045"
+  ],
+  [
+   "SHORT MLB NEW YORK YANKEES HOMBRE",
+   ""
+  ],
+  [
+   "ZAPATILLAS NIKE SPORTSWEAR AIR MAX AURA MUJER",
+   "Fv1920-001"
+  ],
+  [
+   "ZAPATILLAS NIKE SPORTSWEAR AIR FORCE 1 '07 LV8 HOMBRE",
+   "Hf2898-100"
+  ],
+  [
+   "Zapatillas Adidas Originals SUPERSTAR II UNISEX",
+   "Ji0079"
+  ],
+  [
+   "Zapatillas Nike Sportswear AIR FORCE 1 '07 HOMBRE",
+   "Fj4146-112"
+  ],
+  [
+   "ZAPATILLAS PUMA SUEDE XL ADP UNISEX",
+   "395205/02"
+  ],
+  [
+   "ZAPATILLAS NIKE AIR FORCE 1",
+   "CT3839-100"
+  ]
+ ],
+ "grid_ft_B75807": [
+  [
+   "ZAPATILLAS ADIDAS ORIGINALS SAMBA OG",
+   "B75807"
+  ]
+ ],
+ "sp_nike": [
+  [
+   "Zapatillas Running Nike Revolution 8 de Hombre",
+   "HJ9198003-000"
+  ],
+  [
+   "Zapatillas Running Nike Revolution 8 de Mujer",
+   "HJ8485001-000"
+  ],
+  [
+   "Zapatillas Running Nike Cosmic Runner de Niños",
+   "HM4400003-000"
+  ],
+  [
+   "Remera Nike Dri-FIT De Mujer",
+   "DX0687010-000"
+  ],
+  [
+   "Short Nike Dri-FIT Academy De Hombre",
+   "FZ1253657-000"
+  ],
+  [
+   "Zapatillas Pádel Nike Vapor Lite 3 De Mujer",
+   "HQ5291001-000"
+  ],
+  [
+   "Zapatillas Running Nike Winflo 11 de Hombre",
+   "FJ9509001-000"
+  ],
+  [
+   "Zapatillas Running Nike Cosmic Runner de Niños",
+   "HM4402003-000"
+  ],
+  [
+   "Zapatillas Urbanas Nike Dunk Low Retro de Hombre",
+   "HF5441100-000"
+  ],
+  [
+   "Zapatillas Running Nike Downshifter 14 de Hombre",
+   "IB1895101-000"
+  ]
+ ],
+ "sp_ft_short": [
+  [
+   "Zapatillas Running Nike Revolution 8 de Hombre",
+   "HJ9198003-000"
+  ]
+ ],
+ "sp_puma": [
+  [
+   "Zapatillas Running Puma Skyrocket Lite 2 De Mujer",
+   "31334301-000"
+  ],
+  [
+   "Zapatillas Running Puma Skyrocket Lite 2 Alt Unisex",
+   "31173109-000"
+  ],
+  [
+   "Zapatillas Urbanas Puma Rickie Classic Unisex",
+   "39425116-000"
+  ],
+  [
+   "Zapatillas Running Puma Dasher Lite de Mujer",
+   "31399804-000"
+  ],
+  [
+   "Zapatillas Running Puma Flyer Lite 3 de Mujer",
+   "31333918-000"
+  ]
+ ],
+ "grid_puma": [
+  [
+   "CAMPERA PUMA FUTURE.PUMA.ARCHIVE MUJER",
+   ""
+  ],
+  [
+   "CAMPERA PUMA FUTURE.PUMA.ARCHIVE MUJER",
+   ""
+  ],
+  [
+   "CAMPERA PUMA FUTURE.PUMA.ARCHIVE KING HOMBRE",
+   ""
+  ],
+  [
+   "CAMPERA PUMA FUTURE.PUMA.ARCHIVE KING HOMBRE",
+   ""
+  ],
+  [
+   "CAMPERA PUMA FUTURE.PUMA.ARCHIVE KING HOMBRE",
+   ""
+  ]
+ ]
 }
