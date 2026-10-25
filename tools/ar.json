@@ -1,112 +1,32 @@
 {
- "www.sporting.com.ar style": [],
- "www.sporting.com.ar text": [
-  [
-   "Gorra Nike Jordan Club Unisex",
-   "HQ1963010-000",
-   "JORDAN",
-   [
-    [
-     "0197600971424",
-     54999.0
-    ]
-   ]
-  ],
-  [
-   "Gorra Under Armour Jordan Spieth Drive De Hombre",
-   "6000362001-000",
-   "UNDER ARMOUR",
-   [
-    [
-     "0197779465526",
-     50999.15
-    ]
-   ]
-  ]
- ],
- "www.opensports.com.ar style": [
-  404,
-  "<!DOCTYPE html><html lang=\"es\">\n    <head>\n        <script>\n    var LOCALE = 'es\\u002DAR';\n    var B"
- ],
- "www.opensports.com.ar text": [
-  404,
-  "<!DOCTYPE html><html lang=\"es\">\n    <head>\n        <script>\n    var LOCALE = 'es\\u002DAR';\n    var B"
- ],
- "www.digitalsport.com.ar style": [
-  403,
-  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd"
- ],
- "www.digitalsport.com.ar text": [
-  403,
-  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd"
- ],
- "www.stockcenter.com.ar style": [
-  404,
-  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user"
- ],
- "www.stockcenter.com.ar text": [
-  404,
-  "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n\n\n    <script>\n    var userIdData = {\"event\":\"User ID\",\"user"
- ],
- "www.grid.com.ar style": [],
- "www.grid.com.ar text": [
-  [
-   "BUZO JORDAN BROOKLYN HOMBRE",
-   "302-3216",
-   "Jordan",
-   [
-    [
-     "0197596180510",
-     139999.0
-    ]
-   ]
-  ],
-  [
-   "BUZO JORDAN BROOKLYN HOMBRE",
-   "302-3183",
-   "Jordan",
-   [
-    [
-     "0198483760129",
-     149999.0
-    ]
-   ]
-  ]
- ],
- "www.solodeportes.com.ar style": [
-  405,
-  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content"
- ],
- "www.solodeportes.com.ar text": [
-  405,
-  "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content"
- ],
- "www.thefoot.com.ar style": "HTTPSConnectionPool(host='www.thefoot.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/product",
- "www.thefoot.com.ar text": "HTTPSConnectionPool(host='www.thefoot.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/product",
- "ar.calvinklein.com style": [
-  200,
-  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-widt"
- ],
- "ar.calvinklein.com text": [
-  200,
-  "\n<!DOCTYPE html>\n  <html lang=\"es-AR\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-widt"
- ],
- "www.vaypol.com.ar style": [
-  200,
-  "<!DOCTYPE html><html lang=\"es\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" "
- ],
- "www.vaypol.com.ar text": [
-  200,
-  "<!DOCTYPE html><html lang=\"es\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" "
- ],
- "www.dash.com.ar style": [
+ "www.sporting.com.ar ft IO0027-010": [],
+ "www.sporting.com.ar ft IO0027010": [],
+ "www.sporting.com.ar ft IM5576-070": [],
+ "www.sporting.com.ar ft DM4044-108": [],
+ "www.sporting.com.ar ft DZ2795-604": [],
+ "www.sporting.com.ar ft FV5029-010": [],
+ "www.sporting.com.ar refid": [],
+ "www.sporting.com.ar ean 0197600816619": [],
+ "www.sporting.com.ar ean 197600816619": [],
+ "www.sporting.com.ar ean 0197862756609": [],
+ "www.grid.com.ar ft IO0027-010": [],
+ "www.grid.com.ar ft IO0027010": [],
+ "www.grid.com.ar ft IM5576-070": [],
+ "www.grid.com.ar ft DM4044-108": [],
+ "www.grid.com.ar ft DZ2795-604": [],
+ "www.grid.com.ar ft FV5029-010": [],
+ "www.grid.com.ar refid": [],
+ "www.grid.com.ar ean 0197600816619": [],
+ "www.grid.com.ar ean 197600816619": [],
+ "www.grid.com.ar ean 0197862756609": [],
+ "www.dash.com.ar ft IO0027-010": [
   [
    "OJOTAS ADIDAS ADILETTE AQUA",
    "261-6247",
-   "Adidas Performance",
    [
     [
      "4060509396734",
+     49999.0,
      49999.0
     ]
    ]
@@ -114,23 +34,23 @@
   [
    "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
    "268-1544",
-   "Adidas Performance",
    [
     [
      "4069987696220",
-     89999.0
+     89999.0,
+     119999.0
     ]
    ]
   ]
  ],
- "www.dash.com.ar text": [
+ "www.dash.com.ar ft IO0027010": [
   [
    "OJOTAS ADIDAS ADILETTE AQUA",
    "261-6247",
-   "Adidas Performance",
    [
     [
      "4060509396734",
+     49999.0,
      49999.0
     ]
    ]
@@ -138,52 +58,204 @@
   [
    "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
    "268-1544",
-   "Adidas Performance",
    [
     [
      "4069987696220",
-     89999.0
+     89999.0,
+     119999.0
     ]
    ]
   ]
  ],
- "www.redsport.com.ar style": "HTTPSConnectionPool(host='www.redsport.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/produc",
- "www.redsport.com.ar text": "HTTPSConnectionPool(host='www.redsport.com.ar', port=443): Max retries exceeded with url: /api/catalog_system/pub/produc",
- "theline": [
+ "www.dash.com.ar ft IM5576-070": [
   [
-   "ZAPATILLA NIKE NIKE CORTEZ MUJER",
-   "DZ2795-604",
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
    [
-    "197862756609",
-    "197862749649"
-   ],
-   [
-    "DZ2795-604-5.5",
-    "DZ2795-604-6"
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
    ]
   ],
   [
-   "ZAPATILLA NIKE NIKE CORTEZ HOMBRE",
-   "DM4044-108",
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
    [
-    "197600816619",
-    "197600816060"
-   ],
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ft DM4044-108": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
    [
-    "DM4044-108-10",
-    "DM4044-108-10.5"
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
    ]
   ],
   [
-   "ZAPATILLA NIKE NIKE GATO HOMBRE",
-   "HQ6019-001",
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
    [
-    "197601555319",
-    "197601555784"
-   ],
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ft DZ2795-604": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
    [
-    "HQ6019-001-10",
-    "HQ6019-001-10.5"
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ft FV5029-010": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   [
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar refid": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   [
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ean 0197600816619": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   [
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ean 197600816619": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   [
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
+   ]
+  ]
+ ],
+ "www.dash.com.ar ean 0197862756609": [
+  [
+   "OJOTAS ADIDAS ADILETTE AQUA",
+   "261-6247",
+   [
+    [
+     "4060509396734",
+     49999.0,
+     49999.0
+    ]
+   ]
+  ],
+  [
+   "ZAPATILLAS ADIDAS PERFORMANCE GALAXY 8 MUJER",
+   "268-1544",
+   [
+    [
+     "4069987696220",
+     89999.0,
+     119999.0
+    ]
    ]
   ]
  ]
