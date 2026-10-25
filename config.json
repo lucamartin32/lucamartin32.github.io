@@ -1,32 +1,33 @@
 {
-  "marca": "Luca Importados",
-  "whatsapp": "5491135648471",
-  "cambio": 1.67,
-  "redondeo": 500,
-  "recargos": {
-    "unidad": {
-      "BZ": 30000,
-      "PA": 30000,
-      "JE": 30000,
-      "SH": 30000,
-      "CA": 30000,
-      "RE": 25000,
-      "GO": 25000,
-      "ZA": 50000
-    },
-    "mayorista": {
-      "BZ": 15000,
-      "PA": 15000,
-      "JE": 15000,
-      "SH": 15000,
-      "CA": 15000,
-      "RE": 15000,
-      "GO": 15000,
-      "ZA": null
-    }
+ "marca": "Luca Importados",
+ "whatsapp": "5491135648471",
+ "cambio": 1.67,
+ "redondeo": 500,
+ "recargos": {
+  "unidad": {
+   "BZ": 30000,
+   "PA": 30000,
+   "JE": 30000,
+   "SH": 30000,
+   "CA": 30000,
+   "RE": 25000,
+   "GO": 25000,
+   "ZA": 50000
   },
-  "mayorista_desde": 5,
-  "mayorista_cuenta_zapatillas": false,
-  "redondeo_unidad": 5000,
-  "mayorista_modo": "consultar"
+  "mayorista": {
+   "BZ": 15000,
+   "PA": 15000,
+   "JE": 15000,
+   "SH": 15000,
+   "CA": 15000,
+   "RE": 15000,
+   "GO": 15000,
+   "ZA": null
+  }
+ },
+ "mayorista_desde": 5,
+ "mayorista_cuenta_zapatillas": false,
+ "redondeo_unidad": 5000,
+ "mayorista_modo": "consultar",
+ "img_host": "https://fotos.santacruzzluca27.workers.dev"
 }
