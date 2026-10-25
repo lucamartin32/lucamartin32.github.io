@@ -1,357 +1,94 @@
 {
- "bold_facets": [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null
+ "keys": [
+  "type",
+  "currentQuery",
+  "freeTextSearch",
+  "pagination",
+  "products",
+  "sorts",
+  "statsInfo"
  ],
- "TOM": [
+ "facets": [],
+ "t_mochilas": [
+  0,
+  []
+ ],
+ "t_billeteras": [
+  0,
+  []
+ ],
+ "t_bolsos": [
+  0,
+  []
+ ],
+ "t_banano": [
+  0,
+  []
+ ],
+ "t_bananos": [
+  1,
   [
-   "Accesorios",
-   2,
-   "https://cl.tommy.com/accesorios"
-  ],
-  [
-   "Accesorios/Pañuelos",
-   3,
-   "https://cl.tommy.com/accesorios/panuelos"
-  ],
-  [
-   "Accesorios/Carteras",
-   4,
-   "https://cl.tommy.com/accesorios/carteras"
-  ],
-  [
-   "Accesorios/Bufandas",
-   5,
-   "https://cl.tommy.com/accesorios/bufandas"
-  ],
-  [
-   "Accesorios/Billeteras",
-   6,
-   "https://cl.tommy.com/accesorios/billeteras"
-  ],
-  [
-   "Accesorios/Cinturones",
-   7,
-   "https://cl.tommy.com/accesorios/cinturones"
-  ],
-  [
-   "Accesorios/Corbatas",
-   8,
-   "https://cl.tommy.com/accesorios/corbatas"
-  ],
-  [
-   "Accesorios/Jockeys",
-   9,
-   "https://cl.tommy.com/accesorios/jockeys"
-  ],
-  [
-   "Accesorios/Gorros",
-   10,
-   "https://cl.tommy.com/accesorios/gorros"
-  ],
-  [
-   "Accesorios/Mochilas",
-   11,
-   "https://cl.tommy.com/accesorios/mochilas"
-  ],
-  [
-   "Accesorios/Maletas",
-   12,
-   "https://cl.tommy.com/accesorios/maletas"
-  ],
-  [
-   "Accesorios/Bolsos",
-   13,
-   "https://cl.tommy.com/accesorios/bolsos"
-  ],
-  [
-   "Accesorios/Bananos",
-   59,
-   "https://cl.tommy.com/accesorios/bananos"
-  ],
-  [
-   "Accesorios/Neceseres",
-   60,
-   "https://cl.tommy.com/accesorios/neceseres"
-  ],
-  [
-   "Accesorios/Perfumes",
-   62,
-   "https://cl.tommy.com/accesorios/perfumes"
-  ],
-  [
-   "Accesorios/Mascarillas",
-   64,
-   "https://cl.tommy.com/accesorios/mascarillas"
-  ],
-  [
-   "Accesorios/Llaveros",
-   65,
-   "https://cl.tommy.com/accesorios/llaveros"
-  ],
-  [
-   "Accesorios/Paraguas",
-   67,
-   "https://cl.tommy.com/accesorios/paraguas"
-  ],
-  [
-   "Accesorios/Electrónicos",
-   70,
-   "https://cl.tommy.com/accesorios/electronicos"
-  ],
-  [
-   "Accesorios/Toallas",
-   71,
-   "https://cl.tommy.com/accesorios/toallas"
-  ],
-  [
-   "Accesorios/Toallas/Toallas Playeras",
-   75,
-   "https://cl.tommy.com/accesorios/toallas/toallas-playeras"
-  ],
-  [
-   "Accesorios/Relojes",
-   72,
-   "https://cl.tommy.com/accesorios/relojes"
+   "Banano Nike Heritage 2.0 Verde"
   ]
  ],
- "CK": [
+ "t_necessaires": [
+  0,
+  []
+ ],
+ "t_neceser": [
+  0,
+  []
+ ],
+ "t_neceseres": [
+  0,
+  []
+ ],
+ "t_accesorios": [
+  0,
+  []
+ ],
+ "t_canguros": [
+  0,
+  []
+ ],
+ "t_carteras": [
+  0,
+  []
+ ],
+ "t_estuches": [
+  0,
+  []
+ ],
+ "q_mochila": [
+  37,
   [
-   "Accesorios",
-   21,
-   "https://www.calvinklein.cl/accesorios"
-  ],
-  [
-   "Accesorios/Bolsos",
-   22,
-   "https://www.calvinklein.cl/accesorios/bolsos"
-  ],
-  [
-   "Accesorios/Carteras",
-   24,
-   "https://www.calvinklein.cl/accesorios/carteras"
-  ],
-  [
-   "Accesorios/Bufanda",
-   25,
-   "https://www.calvinklein.cl/accesorios/bufanda"
-  ],
-  [
-   "Accesorios/Bandana",
-   28,
-   "https://www.calvinklein.cl/accesorios/bandana"
-  ],
-  [
-   "Accesorios/Cinturones",
-   33,
-   "https://www.calvinklein.cl/accesorios/cinturones"
-  ],
-  [
-   "Accesorios/Jockeys y Gorros",
-   86,
-   "https://www.calvinklein.cl/accesorios/jockeys-y-gorros"
-  ],
-  [
-   "Accesorios/Mochilas",
-   87,
-   "https://www.calvinklein.cl/accesorios/mochilas"
-  ],
-  [
-   "Accesorios/Billeteras",
-   88,
-   "https://www.calvinklein.cl/accesorios/billeteras"
-  ],
-  [
-   "Accesorios/Llaveros",
-   89,
-   "https://www.calvinklein.cl/accesorios/llaveros"
-  ],
-  [
-   "Accesorios/Relojes y Joyas",
-   163,
-   "https://www.calvinklein.cl/accesorios/relojes-y-joyas"
+   "<em class=\"search-results-highlight\">Mochila</em> Nike Essential Negro",
+   "<em class=\"search-results-highlight\">Mochila</em> Nike Brasilia Negro",
+   "<em class=\"search-results-highlight\">Mochila</em> Nike Heritage Negro"
   ]
  ],
- "LIN": [
+ "q_billetera": [
+  0,
+  []
+ ],
+ "q_banano": [
+  69,
   [
-   "ACCESORIOS",
-   20,
-   "https://www.theline.cl/accesorios"
-  ],
+   "<em class=\"search-results-highlight\">Banano</em> Nike Heritage Negro",
+   "<em class=\"search-results-highlight\">Banano</em> Nike Heritage 2.0 Verde",
+   "<em class=\"search-results-highlight\">Banano</em> Nike Heritage 2.0 Negro"
+  ]
+ ],
+ "q_neceser": [
+  0,
+  []
+ ],
+ "q_bolso": [
+  37,
   [
-   "ACCESORIOS/GUANTES",
-   20001101,
-   "https://www.theline.cl/accesorios/guantes"
-  ],
-  [
-   "ACCESORIOS/MATE",
-   20010054,
-   "https://www.theline.cl/accesorios/mate"
-  ],
-  [
-   "ACCESORIOS/CALCETINES",
-   20010101,
-   "https://www.theline.cl/accesorios/calcetines"
-  ],
-  [
-   "ACCESORIOS/GORROS",
-   20010102,
-   "https://www.theline.cl/accesorios/gorros"
-  ],
-  [
-   "ACCESORIOS/BALONES",
-   20010303,
-   "https://www.theline.cl/accesorios/balones"
-  ],
-  [
-   "ACCESORIOS/BOLSOS",
-   20010304,
-   "https://www.theline.cl/accesorios/bolsos"
-  ],
-  [
-   "ACCESORIOS/MOCHILAS",
-   20010307,
-   "https://www.theline.cl/accesorios/mochilas"
-  ],
-  [
-   "ACCESORIOS/SET",
-   20010308,
-   "https://www.theline.cl/accesorios/set"
-  ],
-  [
-   "ACCESORIOS/CINTILLOS",
-   20010311,
-   "https://www.theline.cl/accesorios/cintillos"
-  ],
-  [
-   "ACCESORIOS/MUNEQUERAS",
-   20010312,
-   "https://www.theline.cl/accesorios/munequeras"
-  ],
-  [
-   "ACCESORIOS/BOMBIN",
-   20010313,
-   "https://www.theline.cl/accesorios/bombin"
-  ],
-  [
-   "ACCESORIOS/CAMISETA",
-   20010392,
-   "https://www.theline.cl/accesorios/camiseta"
-  ],
-  [
-   "ACCESORIOS/CUIDADO Y LIMPIEZA",
-   20010401,
-   "https://www.theline.cl/accesorios/cuidado-y-limpieza"
-  ],
-  [
-   "ACCESORIOS/BUFANDA",
-   20010502,
-   "https://www.theline.cl/accesorios/bufanda"
-  ],
-  [
-   "ACCESORIOS/WTR BOTTLE",
-   20010646,
-   "https://www.theline.cl/accesorios/wtr-bottle"
-  ],
-  [
-   "ACCESORIOS/ICEFLOW",
-   20010647,
-   "https://www.theline.cl/accesorios/iceflow"
-  ],
-  [
-   "ACCESORIOS/SHAKER",
-   20010648,
-   "https://www.theline.cl/accesorios/shaker"
-  ],
-  [
-   "ACCESORIOS/TERMO 1 LT",
-   20010652,
-   "https://www.theline.cl/accesorios/termo-1-lt"
-  ],
-  [
-   "ACCESORIOS/TERMO 1.2 LT",
-   20010653,
-   "https://www.theline.cl/accesorios/termo-1-2-lt"
-  ],
-  [
-   "ACCESORIOS/TERMO 0.8 LT",
-   20010655,
-   "https://www.theline.cl/accesorios/termo-0-8-lt"
-  ],
-  [
-   "ACCESORIOS/WIPES",
-   20011411,
-   "https://www.theline.cl/accesorios/wipes"
-  ],
-  [
-   "ACCESORIOS/PROTECTOR",
-   20011412,
-   "https://www.theline.cl/accesorios/protector"
-  ],
-  [
-   "ACCESORIOS/SOLUCION",
-   20011413,
-   "https://www.theline.cl/accesorios/solucion"
-  ],
-  [
-   "ACCESORIOS/ICE FLOW",
-   20014001,
-   "https://www.theline.cl/accesorios/ice-flow"
-  ],
-  [
-   "ACCESORIOS/QUENCHER",
-   20014002,
-   "https://www.theline.cl/accesorios/quencher"
-  ],
-  [
-   "ACCESORIOS/QUENCHER PROTOUR",
-   20014003,
-   "https://www.theline.cl/accesorios/quencher-protour"
-  ],
-  [
-   "ACCESORIOS/FLIP STRAW",
-   20014004,
-   "https://www.theline.cl/accesorios/flip-straw"
-  ],
-  [
-   "ACCESORIOS/GO FLIP",
-   20014005,
-   "https://www.theline.cl/accesorios/go-flip"
-  ],
-  [
-   "ACCESORIOS/CAFÉ",
-   20015001,
-   "https://www.theline.cl/accesorios/cafe"
-  ],
-  [
-   "ACCESORIOS/MASCARILLAS",
-   20020104,
-   "https://www.theline.cl/accesorios/mascarillas"
-  ],
-  [
-   "ACCESORIOS/CINTURONES",
-   20020107,
-   "https://www.theline.cl/accesorios/cinturones"
-  ],
-  [
-   "ACCESORIOS/ROPA INTERIOR",
-   20020108,
-   "https://www.theline.cl/accesorios/ropa-interior"
-  ],
-  [
-   "ACCESORIOS/BOTELLA",
-   20020111,
-   "https://www.theline.cl/accesorios/botella"
-  ],
-  [
-   "ACCESORIOS/GUANTES",
-   200106002,
-   "https://www.theline.cl/accesorios/guantes"
+   "<em class=\"search-results-highlight\">Bolso</em> adidas Classic Negro",
+   "<em class=\"search-results-highlight\">Bolso</em> Nike Heritage Negro",
+   "<em class=\"search-results-highlight\">Bolso</em> Puma 1976 Micro Lila"
   ]
  ]
 }
