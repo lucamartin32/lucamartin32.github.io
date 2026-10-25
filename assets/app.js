@@ -84,7 +84,7 @@ function card(p){
 // ── catálogo ──
 function pool(ignoreSize){
   const q = f.q.trim().toLowerCase();
-  return DATA.productos.filter(p => isHead(p) && (!f.arOnly || arShow(p)) && (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
+  return DATA.productos.filter(p => (isHead(p) || (q && p.code.toLowerCase() === q)) && (!f.arOnly || arShow(p)) && (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
     (!f.brands.size || f.brands.has(p.brand)) && (!f.sale || off(p) > .04 || isDrop(p)) && (ignoreSize || !f.sizes.size || p.sizes.some(s => s.tg.some(x => f.sizes.has(x)))) &&
     (!q || (p.name + ' ' + p.brand + ' ' + (p.color||'') + ' ' + p.code + ' ' + CAT[p.cat]).toLowerCase().includes(q)));
 }
@@ -199,50 +199,155 @@ function openGuide(cat){
   draw(); if (!d.open) d.showModal();
 }
 
-// ── foto para historia ──
+// ── fotos para revendedores (historia y catálogo) ──
 function loadImg(src){ return new Promise((ok, ko) => { const i = new Image(); i.crossOrigin = 'anonymous'; i.onload = () => ok(i); i.onerror = ko; i.src = src; }); }
-async function storyBlob(p, txt, img){
-  const c = document.createElement('canvas'); c.width = 1080; c.height = 1920; const x = c.getContext('2d');
+const LOGO_KEY = 'rev-logo';
+let LOGO = null;
+async function getLogo(){ if (LOGO) return LOGO; const d = store.get(LOGO_KEY, null); if (!d) return null; try { LOGO = await loadImg(d); } catch(e){ LOGO = null; } return LOGO; }
+function readLogo(file){ return new Promise((ok, ko) => { const r = new FileReader(); r.onload = async () => {
+  const i = await loadImg(r.result); const c = document.createElement('canvas'), s = Math.min(1, 600 / Math.max(i.width, i.height));
+  c.width = Math.round(i.width * s); c.height = Math.round(i.height * s); c.getContext('2d').drawImage(i, 0, 0, c.width, c.height);
+  const d = c.toDataURL('image/png'); store.set(LOGO_KEY, d); LOGO = await loadImg(d); ok(LOGO); }; r.onerror = ko; r.readAsDataURL(file); }); }
+const fmtPrice = v => { const n = String(v ?? '').replace(/[^\d]/g, ''); return n ? '$' + Number(n).toLocaleString('es-AR') : ''; };
+const FONT = (w, s) => `${w} ${s}px Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif`;
+function wrap(x, text, max, lines){ const out = []; let ln = ''; for (const w of text.split(' ')){ const t = ln ? ln + ' ' + w : w; if (x.measureText(t).width > max && ln){ out.push(ln); ln = w; } else ln = t; } out.push(ln);
+  if (out.length > lines){ out.length = lines; out[lines - 1] = out[lines - 1].replace(/\s*\S*$/, '') + '…'; } return out; }
+/* Foto limpia: fondo blanco, la prenda grande y abajo el precio y los talles. Sin marco tipo página. */
+async function drawPhoto(p, o, W, H){
+  const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
   await (document.fonts ? document.fonts.ready : Promise.resolve());
-  x.fillStyle = '#e8ebef'; x.fillRect(0, 0, 1080, 1920);
-  x.fillStyle = '#ffffff'; x.beginPath(); x.roundRect(60, 160, 960, 1180, 48); x.fill();
-  if (img){ const s = Math.min(860 / img.width, 1080 / img.height), w = img.width * s, h = img.height * s;
-    x.save(); x.beginPath(); x.roundRect(60, 160, 960, 1180, 48); x.clip(); x.globalCompositeOperation = 'multiply'; x.drawImage(img, 540 - w / 2, 750 - h / 2, w, h); x.restore(); }
-  const F = (w, s, st) => `${w} ${s}px ${st || ''} Archivo, Helvetica, Arial, sans-serif`;
-  x.fillStyle = '#2337e8'; x.font = F(700, 44); x.fillText(p.brand, 60, 1430);
-  x.fillStyle = '#000'; x.font = F(800, 64);
-  const words = p.name.split(' '), lines = []; let ln = '';
-  for (const w of words){ const t = ln ? ln + ' ' + w : w; if (x.measureText(t).width > 960 && ln){ lines.push(ln); ln = w; } else ln = t; }
-  lines.push(ln); lines.slice(0, 2).forEach((l, i) => x.fillText(l, 60, 1510 + i * 74));
-  if (txt.price){ x.font = F(900, 120); x.fillStyle = '#000'; x.fillText(txt.price, 60, 1760); }
-  if (txt.sizes){ x.font = F(600, 40); x.fillStyle = '#5f6670'; x.fillText(txt.sizes, 60, 1840); }
-  return new Promise(r => c.toBlob(r, 'image/jpeg', .92));
+  x.fillStyle = '#fff'; x.fillRect(0, 0, W, H);
+  const u = W / 1080, M = 64 * u;
+  const foot = (o.price ? 150 : 0) + (o.sizes ? 110 : 0) + (o.name ? 120 : 0) + (o.code ? 60 : 0);
+  const imgH = H - foot * u - M;
+  if (o.img){ const im = o.img, ph = p.store === 'z' || p.store === 'e';
+    const s = ph ? Math.max(W / im.width, imgH / im.height) : Math.min((W - 2 * M) / im.width, (imgH - M) / im.height);
+    const w = im.width * s, h = im.height * s; x.save(); x.beginPath(); x.rect(0, 0, W, imgH); x.clip();
+    x.drawImage(im, (W - w) / 2, ph ? 0 : (imgH - h) / 2 + M / 2, w, h); x.restore(); }
+  let y = imgH + 40 * u;
+  if (o.name){ x.fillStyle = '#5f6670'; x.font = FONT(600, 40 * u); x.textBaseline = 'top';
+    wrap(x, o.name, W - 2 * M, 2).forEach((l, i) => x.fillText(l, M, y + i * 50 * u)); y += 120 * u; }
+  x.textBaseline = 'alphabetic';
+  if (o.price){ x.fillStyle = '#000'; x.font = FONT(900, 120 * u); x.fillText(o.price, M - 4 * u, y + 105 * u); y += 150 * u; }
+  if (o.sizes && o.sizes.length){ let sx = M; x.font = FONT(700, 38 * u);
+    for (const t of o.sizes){ const tw = x.measureText(t).width + 44 * u; if (sx + tw > W - M) break;
+      x.strokeStyle = '#000'; x.lineWidth = 3 * u; x.beginPath(); x.roundRect(sx, y, tw, 70 * u, 35 * u); x.stroke();
+      x.fillStyle = '#000'; x.fillText(t, sx + 22 * u, y + 48 * u); sx += tw + 14 * u; } y += 110 * u; }
+  if (o.code){ x.fillStyle = '#5f6670'; x.font = FONT(600, 34 * u); x.fillText('Código ' + p.code, M, y + 34 * u); }
+  if (o.logo){ const L = o.logo, lw = (o.logoSize || 220) * u, lh = lw * L.height / L.width, pad = 48 * u;
+    const pos = o.logoPos || 'tr', lx = pos[1] === 'l' ? pad : W - pad - lw, ly = pos[0] === 't' ? pad : imgH - pad - lh;
+    x.globalAlpha = o.logoAlpha ?? 1; x.drawImage(L, lx, ly, lw, lh); x.globalAlpha = 1; }
+  return c;
 }
+const toBlob = (c, q) => new Promise(r => c.toBlob(r, 'image/jpeg', q || .9));
+function logoControls(id){ return `<div class="grp"><h4>Tu logo <em class="opt-l">(opcional)</em></h4>
+  <div class="logo-row"><label class="btn line logo-up">Subir logo<input type="file" accept="image/*" id="${id}-file" hidden></label><button type="button" class="mini" id="${id}-rm">Quitar</button></div>
+  <div class="opts" id="${id}-pos">${[['tl','Arriba izq.'],['tr','Arriba der.'],['bl','Abajo izq.'],['br','Abajo der.']].map(([v,l]) => `<button type="button" class="opt" data-pos="${v}">${l}</button>`).join('')}</div>
+  <label class="rng">Tamaño<input type="range" id="${id}-size" min="120" max="420" step="10"></label>
+  <label class="rng">Transparencia<input type="range" id="${id}-alpha" min="30" max="100" step="5"></label></div>`; }
+function bindLogo(d, id, cfg, onChange){
+  const sync = async () => { const has = !!(await getLogo()); d.querySelector(`#${id}-rm`).hidden = !has;
+    d.querySelectorAll(`#${id}-pos [data-pos]`).forEach(b => b.setAttribute('aria-pressed', b.dataset.pos === cfg.logoPos));
+    d.querySelectorAll(`#${id}-pos, label.rng`).forEach(e => e.hidden = !has); };
+  d.querySelector(`#${id}-size`).value = cfg.logoSize; d.querySelector(`#${id}-alpha`).value = Math.round(cfg.logoAlpha * 100);
+  d.querySelector(`#${id}-file`).onchange = async e => { const f = e.target.files[0]; if (!f) return; await readLogo(f); await sync(); onChange(); };
+  d.querySelector(`#${id}-rm`).onclick = async () => { store.set(LOGO_KEY, null); LOGO = null; await sync(); onChange(); };
+  d.querySelectorAll(`#${id}-pos [data-pos]`).forEach(b => b.onclick = () => { cfg.logoPos = b.dataset.pos; save(); sync(); onChange(); });
+  d.querySelector(`#${id}-size`).oninput = e => { cfg.logoSize = +e.target.value; save(); onChange(); };
+  d.querySelector(`#${id}-alpha`).oninput = e => { cfg.logoAlpha = e.target.value / 100; save(); onChange(); };
+  function save(){ store.set('rev-cfg', {logoPos: cfg.logoPos, logoSize: cfg.logoSize, logoAlpha: cfg.logoAlpha}); }
+  sync();
+}
+const revCfg = () => Object.assign({logoPos: 'tr', logoSize: 240, logoAlpha: 1}, store.get('rev-cfg', {}));
+function shareOrDownload(files){
+  return (async () => {
+    try { if (navigator.canShare && navigator.canShare({files})) { await navigator.share({files}); return; } } catch(e){ if (e && e.name === 'AbortError') return; }
+    for (const f of files){ const u = URL.createObjectURL(f), a = document.createElement('a'); a.href = u; a.download = f.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000); }
+  })();
+}
+
 function openStory(p, pick){
-  const d = $('#story'); let url = null, img = null, imgOk = true;
-  const def = money(price(p, p.clp)), sz = p.sizes.map(s => s.t).join(' · ');
+  const d = $('#story'), cfg = revCfg(); let img = null, url = null, busy = 0;
+  const def = money(price(p, p.clp)), sz = p.sizes.map(s => s.t);
   d.innerHTML = `<div class="in"><div class="dh pad"><span>Foto para historia</span><button type="button" class="fx" aria-label="Cerrar" style="font-size:24px">×</button></div>
-    <div class="db pad"><p class="gn">Armá una imagen para subir a tu historia de Instagram o WhatsApp. Poné el precio al que lo vas a vender vos.</p>
-    <div class="form" style="padding:0;overflow:visible"><label>Precio que va en la foto <em>(dejalo vacío para no mostrar precio)</em><input id="st-price" inputmode="numeric" value="${esc(def)}"></label>
-    <label style="flex-direction:row;align-items:center;gap:10px;text-transform:none;letter-spacing:0"><input type="checkbox" id="st-sz" checked> Mostrar talles disponibles</label></div>
-    <div class="st-prev"><img id="st-img" alt="Vista previa de la foto para historia"></div></div>
+    <div class="db pad"><div class="st-prev"><img id="st-img" alt="Vista previa de la foto"></div>
+    <div class="form" style="padding:16px 0 0;overflow:visible"><label>Precio que va en la foto <em>(vacío = sin precio)</em><input id="st-price" inputmode="numeric" value="${esc(def)}"></label>
+    <label class="chk"><input type="checkbox" id="st-sz" checked> Mostrar talles disponibles</label>
+    <label class="chk"><input type="checkbox" id="st-nm"> Mostrar nombre de la prenda</label>
+    <label class="chk"><input type="checkbox" id="st-cd"> Mostrar código</label></div>
+    ${logoControls('st')}</div>
     <div class="df pad"><button type="button" id="st-dl">Descargar</button><button type="button" class="go" id="st-sh">Compartir</button></div></div>`;
-  const prev = d.querySelector('#st-img');
-  const fmt = v => { const n = String(v).replace(/[^\d]/g, ''); return n ? '$' + Number(n).toLocaleString('es-AR') : ''; };
-  const redraw = async () => {
-    const blob = await storyBlob(p, {price: fmt(d.querySelector('#st-price').value), sizes: d.querySelector('#st-sz').checked ? 'Talles: ' + sz : ''}, img);
-    if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); prev.src = url; prev.dataset.ready = '1'; d._blob = blob;
-  };
-  d.querySelector('.fx').onclick = () => d.close();
-  d.querySelector('#st-price').oninput = redraw; d.querySelector('#st-sz').onchange = redraw;
+  const prev = d.querySelector('#st-img'), q = s => d.querySelector(s);
+  const redraw = async () => { const n = ++busy;
+    const c = await drawPhoto(p, {img, price: fmtPrice(q('#st-price').value), sizes: q('#st-sz').checked ? sz : null, name: q('#st-nm').checked ? `${p.brand} ${p.name}` : '',
+      code: q('#st-cd').checked, logo: await getLogo(), ...cfg}, 1080, 1920);
+    if (n !== busy) return; const blob = await toBlob(c, .92); if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); prev.src = url; d._blob = blob; };
+  q('.fx').onclick = () => d.close();
+  ['#st-price','#st-sz','#st-nm','#st-cd'].forEach(s => q(s).addEventListener('input', redraw));
+  bindLogo(d, 'st', cfg, redraw);
   const file = () => new File([d._blob], `${p.code}.jpg`, {type: 'image/jpeg'});
-  d.querySelector('#st-dl').onclick = () => { const a = document.createElement('a'); a.href = url; a.download = `${p.code}.jpg`; document.body.appendChild(a); a.click(); a.remove(); };
-  d.querySelector('#st-sh').onclick = async () => {
-    try { if (navigator.canShare && navigator.canShare({files: [file()]})) { await navigator.share({files: [file()]}); return; } } catch(e){ return; }
-    d.querySelector('#st-dl').click();
-  };
+  q('#st-dl').onclick = () => { const a = document.createElement('a'); a.href = url; a.download = `${p.code}.jpg`; document.body.appendChild(a); a.click(); a.remove(); };
+  q('#st-sh').onclick = () => shareOrDownload([file()]);
   if (!d.open) d.showModal();
-  loadImg(p.simg || p.img).then(i => { img = i; }).catch(() => { imgOk = false; }).finally(redraw);
+  loadImg(p.simg || p.img).then(i => { img = i; }).catch(() => {}).finally(redraw);
+}
+
+// ── catálogo para revendedores ──
+const LIBS = {pdf: BASE + '/assets/vendor/jspdf.umd.min.js', zip: BASE + '/assets/vendor/jszip.min.js'};
+const libP = {};
+const lib = k => libP[k] ||= new Promise((ok, ko) => { const s = document.createElement('script'); s.src = LIBS[k]; s.onload = ok; s.onerror = ko; document.head.appendChild(s); });
+function openCatalog(){
+  const d = $('#catdl'), cfg = Object.assign(revCfg(), store.get('cat-cfg', {sec: 'all', cat: 'all', brand: 'all', mode: 'mine', margin: 30, fmt: 'pdf'}));
+  const save = () => store.set('cat-cfg', {sec: cfg.sec, cat: cfg.cat, brand: cfg.brand, mode: cfg.mode, margin: cfg.margin, fmt: cfg.fmt});
+  const MAX = 60;
+  const list = () => DATA.productos.filter(p => isHead(p) && (cfg.sec === 'all' || p.secs.includes(cfg.sec)) && (cfg.cat === 'all' || p.cat === cfg.cat) && (cfg.brand === 'all' || p.brand === cfg.brand))
+    .sort((a, b) => (b.star ? 1 : 0) - (a.star ? 1 : 0) || (TOPB.indexOf(a.brand) + 99) % 99 - (TOPB.indexOf(b.brand) + 99) % 99 || off(b) - off(a));
+  const pr = p => { const base = price(p, p.clp); return cfg.mode === 'none' ? '' : money(cfg.mode === 'margin' ? Math.ceil(base * (1 + cfg.margin / 100) / 1000) * 1000 : base); };
+  const draw = () => {
+    const L = list(), brands = [...new Set(DATA.productos.filter(p => (cfg.sec === 'all' || p.secs.includes(cfg.sec)) && (cfg.cat === 'all' || p.cat === cfg.cat)).map(p => p.brand))].sort();
+    const opt = (k, v, l) => `<button type="button" class="opt" data-k="${k}" data-v="${esc(v)}" aria-pressed="${cfg[k] === v}">${esc(l)}</button>`;
+    d.innerHTML = `<div class="in"><div class="dh pad"><span>Catálogo para revendedores</span><button type="button" class="fx" aria-label="Cerrar" style="font-size:24px">×</button></div>
+      <div class="db pad"><p class="gn">Descargá las fotos con talles, código y el precio que quieras, para mandarle a tus clientes. Si te piden una prenda, buscá el código en la lupa de esta página y vas a ver si sigue disponible.</p>
+      <div class="grp"><h4>Para</h4><div class="opts">${opt('sec','all','Todos')}${opt('sec','H','Hombre')}${opt('sec','M','Mujer')}</div></div>
+      <div class="grp"><h4>Categoría</h4><div class="opts">${opt('cat','all','Todas')}${CAT_ORDER.map(c => opt('cat', c, CAT[c])).join('')}</div></div>
+      <div class="grp"><h4>Marca</h4><div class="opts">${opt('brand','all','Todas')}${brands.map(b => opt('brand', b, b)).join('')}</div></div>
+      <div class="grp"><h4>Precio en las fotos</h4><div class="opts">${opt('mode','mine','Mi precio de compra')}${opt('mode','margin','Con mi ganancia')}${opt('mode','none','Sin precio')}</div>
+        ${cfg.mode === 'margin' ? `<label class="rng">Ganancia: <b id="mg-v">${cfg.margin}%</b><input type="range" id="mg" min="5" max="150" step="5" value="${cfg.margin}"></label>` : ''}</div>
+      <div class="grp"><h4>Formato</h4><div class="opts">${opt('fmt','pdf','PDF (para mandar por WhatsApp)')}${opt('fmt','zip','Fotos sueltas')}</div></div>
+      ${logoControls('cg')}
+      <p class="gn" id="cg-n">${L.length ? `${Math.min(L.length, MAX)} prendas${L.length > MAX ? ` (de ${L.length}; elegí una categoría o marca para ver el resto)` : ''}.` : 'No hay prendas con esa selección.'}</p></div>
+      <div class="df pad"><button type="button" class="go" id="cg-go" ${L.length ? '' : 'disabled'}>Descargar catálogo</button></div></div>`;
+    d.querySelector('.fx').onclick = () => d.close();
+    d.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { cfg[b.dataset.k] = b.dataset.v; if (b.dataset.k !== 'brand' && b.dataset.k !== 'mode' && b.dataset.k !== 'fmt') cfg.brand = 'all'; save(); const sc = d.querySelector('.db').scrollTop; draw(); d.querySelector('.db').scrollTop = sc; });
+    const mg = d.querySelector('#mg'); if (mg) mg.oninput = e => { cfg.margin = +e.target.value; d.querySelector('#mg-v').textContent = cfg.margin + '%'; save(); };
+    bindLogo(d, 'cg', cfg, () => {});
+    d.querySelector('#cg-go').onclick = () => build(list().slice(0, MAX));
+  };
+  const build = async items => {
+    const btn = d.querySelector('#cg-go'), n = d.querySelector('#cg-n'); btn.disabled = true;
+    try {
+      await lib(cfg.fmt === 'pdf' ? 'pdf' : 'zip'); const logo = await getLogo(); const out = [];
+      for (let i = 0; i < items.length; i++){
+        const p = items[i]; btn.textContent = `Armando ${i + 1} de ${items.length}…`;
+        let im = null; try { im = await loadImg(p.simg || p.img); } catch(e){}
+        const c = await drawPhoto(p, {img: im, price: pr(p), sizes: p.sizes.map(s => s.t), name: `${p.brand} ${p.name}`, code: true, logo, ...cfg}, cfg.fmt === 'pdf' ? 720 : 1080, cfg.fmt === 'pdf' ? 1000 : 1500);
+        out.push({p, c});
+      }
+      btn.textContent = 'Preparando archivo…';
+      const tag = [cfg.sec === 'H' ? 'hombre' : cfg.sec === 'M' ? 'mujer' : '', cfg.cat !== 'all' ? CAT[cfg.cat].toLowerCase() : '', cfg.brand !== 'all' ? cfg.brand.toLowerCase() : ''].filter(Boolean).join('-') || 'todo';
+      if (cfg.fmt === 'pdf'){
+        const {jsPDF} = window.jspdf, doc = new jsPDF({unit: 'mm', format: 'a4'}), cw = 90, ch = cw * 1000 / 720, gx = 10, gy = 8;
+        out.forEach(({c}, i) => { const k = i % 4; if (i && !k) doc.addPage(); doc.addImage(c.toDataURL('image/jpeg', .82), 'JPEG', 10 + (k % 2) * (cw + gx), 10 + Math.floor(k / 2) * (ch + gy), cw, ch, undefined, 'FAST'); });
+        await shareOrDownload([new File([doc.output('blob')], `catalogo-${tag}.pdf`, {type: 'application/pdf'})]);
+      } else {
+        const z = new JSZip(); for (const {p, c} of out) z.file(`${p.code}.jpg`, await toBlob(c, .88));
+        await shareOrDownload([new File([await z.generateAsync({type: 'blob'})], `catalogo-${tag}.zip`, {type: 'application/zip'})]);
+      }
+      btn.textContent = 'Listo. Descargar de nuevo';
+    } catch(e){ btn.textContent = 'No se pudo armar. Probá de nuevo'; }
+    btn.disabled = false;
+  };
+  draw(); if (!d.open) d.showModal();
 }
 
 // ── ficha ──
@@ -433,10 +538,11 @@ $('#filters').addEventListener('close', () => { shown = 40; render(); });
 $('#product').addEventListener('close', () => { try { history.replaceState(null, '', location.pathname); } catch(e){} });
 $('#fbtn2').onclick = openFavs;
 document.querySelectorAll('.guide-link').forEach(b => b.onclick = () => openGuide('BZ'));
-['#filters','#product','#cart','#favs','#guide','#story'].forEach(id => $(id).addEventListener('click', e => { if (e.target === $(id)) $(id).close(); }));
+document.querySelectorAll('.cat-dl').forEach(b => b.onclick = openCatalog);
+['#filters','#product','#cart','#favs','#guide','#story','#catdl'].forEach(id => $(id).addEventListener('click', e => { if (e.target === $(id)) $(id).close(); }));
 $('#cbtn').onclick = openCart;
 $('#sbtn').onclick = () => { const r = $('#srow'); r.hidden = !r.hidden; if (!r.hidden) $('#q').focus(); };
-$('#q').oninput = e => { f.q = e.target.value; shown = 40; render(); };
+$('#q').oninput = e => { f.q = e.target.value; shown = 40; render(); const c = f.q.trim().toUpperCase().replace(/^(LI)[\s-]?/, 'LI-'); if (/^LI-[A-Z0-9]{4,}$/.test(c) && BY[c]) openProduct(c); };
 $('#more').onclick = () => { shown += 40; render(); };
 start();
 })();
