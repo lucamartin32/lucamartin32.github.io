@@ -54,8 +54,10 @@ function price(p, clp, may){
   const step = CFG.redondeo || 500;
   const base = Math.ceil(clp * RATE / step) * step;
   if (may && hasMay(p)) return base + CFG.recargos.mayorista[p.cat];          // mayorista: base + recargo, sin redondear
-  const r = CFG.redondeo_unidad || 1;                                        // unidad: redondeado hacia arriba (ej. a $5.000)
-  return Math.ceil((base + CFG.recargos.unidad[p.cat]) / r) * r;
+  const r = CFG.redondeo_unidad || 1, v = base + CFG.recargos.unidad[p.cat], rem = v % r;
+  const tol = (CFG.redondeo_abajo_hasta || {})[p.cat] || 0;                 // si se pasa poquito (ej. gorras hasta $1.500) redondea para abajo
+  if (rem && rem <= tol) return v - rem;
+  return Math.ceil(v / r) * r;                                               // si no, redondea hacia arriba a $5.000
 }
 const MIN = () => CFG.mayorista_desde || 5;
 const arSave = p => p.ar ? p.ar - price(p, p.clp) : 0;

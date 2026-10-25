@@ -38,5 +38,8 @@
  "redondeo_unidad": 5000,
  "mayorista_modo": "consultar",
  "img_host": "https://fotos.santacruzzluca27.workers.dev",
- "ar_min_dif": 40000
+ "ar_min_dif": 40000,
+ "redondeo_abajo_hasta": {
+  "GO": 1500
+ }
 }
