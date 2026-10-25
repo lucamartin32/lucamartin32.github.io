@@ -1,22 +1,22 @@
 import requests, json
 H={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept':'application/json','Accept-Language':'es-AR,es;q=0.9'}
-out={}
-def raw(host, path='/api/catalog_system/pub/products/search', **p):
+def raw(host, **p):
   try:
-    r=requests.get(f'https://{host}{path}',headers=H,params=p,timeout=30); j=r.json()
+    r=requests.get(f'https://{host}/api/catalog_system/pub/products/search',headers=H,params=p,timeout=30); j=r.json()
     return j if isinstance(j,list) else []
   except Exception: return []
-j=raw('www.sporting.com.ar',ft='zapatillas',_from=0,_to=4)
-out['sp_sample']=[(x.get('productName'),x.get('productReference'),x.get('productId'),[(it.get('itemId'),it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])]) for it in x.get('items',[])[:2]]) for x in j] if isinstance(j,list) else j
-if isinstance(j,list) and j:
-  ref=j[0].get('productReference'); it=j[0]['items'][0]; rid=(it.get('referenceId') or [{}])[0].get('Value'); ean=it.get('ean')
-  out['by_ft_ref']=len(raw('www.sporting.com.ar',ft=ref) or [])
-  out['by_ft_ref_short']=len(raw('www.sporting.com.ar',ft=ref.split('-')[0]) or [])
-  out['by_refid']=len(raw('www.sporting.com.ar',fq='alternateIds_RefId:'+str(rid)) or [])
-  out['by_ean']=len(raw('www.sporting.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
-  out['by_ean_skuapi']=str(raw('www.sporting.com.ar',path='/api/catalog_system/pub/products/search',fq='alternateIds_Ean:'+str(ean)))[:150]
-j=raw('www.grid.com.ar',ft='zapatillas',_from=0,_to=4)
-out['grid_sample']=[(x.get('productName'),x.get('productReference'),[(it.get('ean'),[r.get('Value') for r in (it.get('referenceId') or [])], it.get('name')) for it in x.get('items',[])[:1]], [ (k,x.get(k)) for k in x.get('allSpecifications',[]) ][:6]) for x in j] if isinstance(j,list) else j
-if isinstance(j,list) and j:
-  ean=j[0]['items'][0].get('ean'); out['grid_by_ean']=len(raw('www.grid.com.ar',fq='alternateIds_Ean:'+str(ean)) or [])
+def spec(x,k): return (x.get(k) or [''])[0] if isinstance(x.get(k),list) else ''
+out={}
+j=raw('www.grid.com.ar',ft='nike',_from=0,_to=9)
+out['grid_nike']=[(x.get('productName'),x.get('productReference'),spec(x,'Proveedor')) for x in j]
+if j:
+  pv=spec(j[0],'Proveedor'); out['grid_ft_prov']=[(x.get('productName'),spec(x,'Proveedor')) for x in raw('www.grid.com.ar',ft=pv)]
+  out['grid_ft_prov_nodash']=[(x.get('productName'),spec(x,'Proveedor')) for x in raw('www.grid.com.ar',ft=pv.replace('-',''))]
+out['grid_ft_B75807']=[(x.get('productName'),spec(x,'Proveedor')) for x in raw('www.grid.com.ar',ft='B75807')]
+j=raw('www.sporting.com.ar',ft='nike',_from=0,_to=9)
+out['sp_nike']=[(x.get('productName'),x.get('productReference')) for x in j]
+if j:
+  ref=j[0].get('productReference'); out['sp_ft_short']=[(x.get('productName'),x.get('productReference')) for x in raw('www.sporting.com.ar',ft=ref.split('-')[0])]
+j=raw('www.sporting.com.ar',ft='puma',_from=0,_to=4); out['sp_puma']=[(x.get('productName'),x.get('productReference')) for x in j]
+j=raw('www.grid.com.ar',ft='puma',_from=0,_to=4); out['grid_puma']=[(x.get('productName'),spec(x,'Proveedor')) for x in j]
 json.dump(out,open('tools/ar.json','w'),indent=1,ensure_ascii=False)
