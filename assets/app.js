@@ -74,14 +74,14 @@ function card(p){
   const flag = p.star ? '<span class="flag star">Producto estrella</span>' : isNew(p) ? '<span class="flag new">Nuevo</span>' : isDrop(p) ? '<span class="flag drop">Bajó de precio</span>' : was ? `<span class="flag sale">−${pct}%</span>` : '';
   return `<button class="card" type="button" data-c="${p.code}"><div class="ph"><img loading="lazy" decoding="async" alt="${esc(p.name)}" src="${esc(p.img)}">
     ${flag}${p.units != null && p.units <= 2 ? '<span class="flag last">Últimas</span>' : ''}</div>
-    <div class="meta"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span>
+    <div class="meta"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span>${sibs(p).length > 1 ? `<span class="cols">${sibs(p).length} colores</span>` : ''}
     <span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s>` : ''}</span>
     ${AUTO() && hasMay(p) ? `<span class="p2">${money(price(p, p.clp, true))} llevando ${MIN()}+ prendas</span>` : ''}</div></button>`;
 }
 // ── catálogo ──
 function pool(ignoreSize){
   const q = f.q.trim().toLowerCase();
-  return DATA.productos.filter(p => (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
+  return DATA.productos.filter(p => isHead(p) && (f.sec === 'all' || p.secs.includes(f.sec)) && (f.cat === 'all' || p.cat === f.cat) &&
     (!f.brands.size || f.brands.has(p.brand)) && (!f.sale || off(p) > .04 || isDrop(p)) && (ignoreSize || !f.sizes.size || p.sizes.some(s => s.tg.some(x => f.sizes.has(x)))) &&
     (!q || (p.name + ' ' + p.brand + ' ' + (p.color||'') + ' ' + p.code + ' ' + CAT[p.cat]).toLowerCase().includes(q)));
 }
@@ -116,7 +116,7 @@ function rails(){
   const top = DATA.productos.filter(p => TOPB.slice(0,4).includes(p.brand) && off(p) > .2).sort((a,b) => off(b) - off(a));
   const pickTop = []; const seen = {}; for (const p of top){ const k = p.brand + p.cat; seen[k] = (seen[k]||0) + 1; if (seen[k] <= 2) pickTop.push(p); if (pickTop.length >= 12) break; }
   const sec = (id, items) => { const el = $(id); el.closest('.rail-wrap').hidden = !items.length; el.innerHTML = items.slice(0, 12).map(card).join(''); };
-  const st = DATA.productos.filter(p => p.star); $('#star').closest('section').hidden = !st.length; $('#star').innerHTML = st.map(card).join('');
+  const st = DATA.productos.filter(p => p.star && isHead(p)); $('#star').closest('section').hidden = !st.length; $('#star').innerHTML = st.map(card).join('');
   sec('#r-new', nw); sec('#r-drop', dr); sec('#r-top', pickTop);
   const hero = []; const hs = new Set();
   const hk = p => p.brand + p.cat;
@@ -146,11 +146,14 @@ function filtersUI(){
     grp('Marca', brands.map(b => chip('brands', b, b)).join(''));
 }
 // ── ficha ──
-function openProduct(code){
+const GRP = {};
+const sibs = p => p.group ? GRP[p.group] || [p] : [p];
+const isHead = p => !p.group || sibs(p)[0] === p;
+function openProduct(code, keep){
   const p = BY[code]; if (!p) return;
   const now = price(p, p.clp), may = price(p, p.clp, true), was = off(p) > .04 ? price(p, p.reg) : null;
-  let pick = p.sizes.length === 1 ? p.sizes[0].t : null;
-  const d = $('#product'), im = imgs(p);
+  let pick = keep && p.sizes.some(s => s.t === keep) ? keep : p.sizes.length === 1 ? p.sizes[0].t : null;
+  const d = $('#product'), im = imgs(p), sb = sibs(p);
   const draw = () => {
     const msg = `Hola! Tengo una consulta por: ${p.brand} ${p.name}${pick ? ' · talle ' + pick : ''} (código ${p.code})`;
     d.innerHTML = `<div class="pd"><div class="gal"><button class="x" type="button" aria-label="Cerrar">×</button>
@@ -161,6 +164,7 @@ function openProduct(code){
         <p class="tier-note">Sumá ${MIN()} prendas cualquiera al carrito, pueden ser distintas, y pagás todas a precio mayorista. No aplica a zapatillas.</p>`
       : `<span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s><span class="off">−${Math.round(off(p)*100)}%</span>` : ''}</span>`}
       ${!AUTO() && hasMay(p) ? `<a class="mini" target="_blank" rel="noopener" href="${WA('Hola! Soy revendedor y quiero el precio mayorista de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Comprás para revender? Consultá precio mayorista</a>` : ''}
+      ${sb.length > 1 ? `<span class="lbl"><span>Color: ${esc(p.color || '')}</span></span><div class="sws">${sb.map(s => `<button type="button" class="sw" data-sw="${s.code}" aria-pressed="${s === p}" aria-label="${esc(s.color)}"><img alt="" src="${esc(s.img)}"><span>${esc(s.color)}</span></button>`).join('')}</div>` : ''}
       <span class="lbl"><span>Talle${pick ? ': ' + esc(pick) : ''}</span>${p.units != null && p.units <= 2 ? '<span style="color:var(--sale)">Últimas unidades</span>' : ''}</span>
       <div class="opts">${p.sizes.map(s => `<button type="button" class="opt" aria-pressed="${s.t === pick}" data-s="${esc(s.t)}">${esc(s.t)}</button>`).join('')}</div>
       <a class="mini" target="_blank" rel="noopener" href="https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent('Hola! Tengo una duda con el talle de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Dudas con el talle? Preguntanos</a>
@@ -169,6 +173,7 @@ function openProduct(code){
       <div class="perks"><div>${ICON_OK}<span>Producto 100% original, nuevo y con etiqueta.</span></div><div>${ICON_CLOCK}<span>Te confirmamos disponibilidad por WhatsApp antes de señar.</span></div><div>${ICON_BOX}<span>Envíos a todo el país por Correo Argentino, Vía Cargo, Andreani o a domicilio.</span></div></div>
       <span class="code">Código ${p.code}</span></div></div>`;
     d.querySelector('.x').onclick = () => d.close();
+    d.querySelectorAll('.sw').forEach(b => b.onclick = () => { if (b.dataset.sw !== p.code) openProduct(b.dataset.sw, pick); });
     d.querySelectorAll('.info .opt').forEach(b => b.onclick = () => { pick = b.dataset.s; const sc = d.querySelector('.pd').scrollTop; draw(); d.querySelector('.pd').scrollTop = sc; });
     const add = d.querySelector('#add'); if (pick) add.onclick = () => { addToCart(p.code, pick); d.close(); };
     d.querySelector('#share').onclick = async () => {
@@ -179,7 +184,7 @@ function openProduct(code){
     const tr = d.querySelector('.track'), dots = d.querySelectorAll('.dots i');
     tr.onscroll = () => { const i = Math.round(tr.scrollLeft / tr.clientWidth); dots.forEach((x, j) => x.classList.toggle('on', j === i)); };
   };
-  draw(); d.showModal();
+  draw(); if (!d.open) d.showModal();
   try { history.replaceState(null, '', '#' + p.code); } catch(e){}
 }
 // ── carrito ──
@@ -284,12 +289,6 @@ async function start(){
     CFG = await getJSON([RAW + 'config.json', BASE + '/config.json']);
     DATA = await getJSON([RAW + 'data/catalogo.json', BASE + '/data/catalogo.json']);
   } catch(e){ $('#grid').innerHTML = '<p class="empty">No pudimos cargar el catálogo. Recargá la página en un momento.</p>'; return; }
-  try {
-    const D = await getJSON([RAW + 'data/destacados.json', BASE + '/data/destacados.json']);
-    const star = (D.productos || []).map(s => ({code: s.code, brand: s.brand, name: s.name, cat: s.cat, secs: s.secs || ['H','M'], fixed: s.precio, clp: 0, reg: 0,
-      img: s.img, imgs: s.imgs || [s.img], sizes: (s.sizes || []).map(t => ({t, u: null})), units: null, first: '2000-01-01', star: true, store: 'z'}));
-    DATA.productos = star.concat(DATA.productos);
-  } catch(e){}
   RATE = Number(CFG.cambio) || 1.67;
   const est = DATA.estado || {}, lim = 6 * 3600 * 1000;
   DATA.productos = DATA.productos.filter(p => { const e = est[p.store]; return !e || !e.ultimo_ok || (Date.now() - new Date(e.ultimo_ok)) < lim; });
@@ -300,6 +299,7 @@ async function start(){
     const seenS = new Set(); p.sizes = p.sizes.filter(s => !seenS.has(s.t) && seenS.add(s.t));
     p.sizes.forEach(s => s.tg = tags(s.t, p.cat));
     BY[p.code] = p;
+    if (p.group) (GRP[p.group] = GRP[p.group] || []).push(p);
   });
   document.querySelectorAll('.wa-link').forEach(a => a.href = `https://wa.me/${CFG.whatsapp}`);
   document.querySelectorAll('.min-n').forEach(e => e.textContent = MIN());
