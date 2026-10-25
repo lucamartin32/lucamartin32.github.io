@@ -324,3 +324,14 @@ dialog[open]{animation:pop .3s var(--ease)}
 .hero h1 .cl{display:inline-block;height:.62em;width:auto;vertical-align:.08em;margin-left:.08em;border-radius:.08em;box-shadow:0 0 0 1px rgba(0,0,0,.08);transform-origin:20% 90%}
 @media (prefers-reduced-motion:no-preference){.hero h1 .cl{animation:wave 1.2s .9s var(--ease) both}}
 @keyframes wave{0%{transform:rotate(-14deg) scale(.4);opacity:0}60%{transform:rotate(6deg) scale(1.05);opacity:1}100%{transform:none}}
+/* reseñas de clientes */
+.revs{margin-top:8px}
+.rv-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,62%);gap:12px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:6px}
+@media (min-width:800px){.rv-row{grid-auto-columns:minmax(220px,1fr)}}
+.rv-row::-webkit-scrollbar{display:none}
+.rv{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+.rv img{width:100%;aspect-ratio:640/860;object-fit:cover;object-position:bottom;border-radius:22px;background:#0b141a;box-shadow:0 0 0 6px var(--paper)}
+.rv figcaption{display:flex;flex-direction:column;gap:2px;padding-inline:4px}
+.rv b{font-size:15px;line-height:1.3}
+.rv span{font-size:13px;color:var(--muted)}
+.ig{margin-top:18px}
