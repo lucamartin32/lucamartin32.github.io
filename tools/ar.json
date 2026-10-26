@@ -1,14 +1,13 @@
 {
- "all": [
-  200,
-  "{\"data\":{\"products\":{\"total_count\":1,\"aggregations\":[{\"attribute_code\":\"price\",\"label\":\"Precio\",\"count\":1,\"options\":[{\"label\":\"24990-25000\",\"value\":\"24990_25000\",\"count\":1}]},{\"attribute_code\":\"retiro_express\",\"label\":\"Env\\u00edo Express RM\",\"count\":1,\"options\":[{\"label\":\"si\",\"value\":\"41\",\"count\":1}]},{\"attribute_code\":\"new_arrival\",\"label\":\"New Arrival\",\"count\":1,\"options\":[{\"label\":\"No\",\"value\":\"0\",\"count\":1}]},{\"attribute_code\":\"marca\",\"label\":\"Marca\",\"count\":1,\"options\":[{\"label\":\"Lacoste\",\"value\":\"22982\",\"count\":1}]},{\"attribute_code\":\"lc_color_accesories\",\"label\":\"LC Color Accesories\",\"count\":1,\"options\":[{\"label\":\"Blanco\",\"value\":\"27329\",\"count\":1}]},{\"attribute_code\":\"lc_color\",\"label\":\"LC Color\",\"count\":1,\"options\":[{\"label\":\"Blanco\",\"value\":\"22096\",\"count\":1}]},{\"attribute_code\":\"lc_product_type\",\"label\":\"LC Product type\",\"count\":1,\"options\":[{\"label\":\"Calcetines\",\"value\":\"27308\",\"count\":1}]},{\"attribute_code\":\"lc_size\",\"label\":\"Talla\",\"count\":2,\"options\":[{\"label\":\"35\",\"value\":\"27362\",\"count\":1},{\"label\":\"39\",\"value\":\"22904\",\"count\":1}]},{\"attribute_code\":\"genero\",\"label\":\"G\\u00e9nero\",\"count\":1,\"options\":[{\"label\":\"UNISEX\",\"value\":\"92\",\"count\":1}]}]}}}"
- ],
- "catlist": [
-  200,
-  "{\"data\":{\"categoryList\":[{\"id\":2,\"name\":\"Default Category\",\"children_count\":\"0\",\"children\":[]}]}}"
- ],
- "retiro": [
-  200,
-  "{\"data\":{\"products\":{\"total_count\":0,\"items\":[]}}}"
- ]
+ "store": [],
+ "currency": [],
+ "graphql": [],
+ "retiro_txt": [],
+ "menu": [],
+ "gql_vs": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</",
+ "gql_victoriassecret": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</",
+ "gql_vs_cl": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</",
+ "gql_victoria": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</",
+ "gql_default_vs": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</",
+ "gql_vscl": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>405 Not allowed</title>\n  </head>\n  <body>\n    <h1>Error 405 Not allowed</h1>\n    <p>Not allowed</p>\n    <h3>Error 54113</"
 }
