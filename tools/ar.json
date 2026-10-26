@@ -1,0 +1,26 @@
+{
+ "worker": [
+  200,
+  "image/webp",
+  143842,
+  ""
+ ],
+ "direct": [
+  200,
+  "image/jpeg",
+  175631,
+  ""
+ ],
+ "direct_ref": [
+  200,
+  "image/jpeg",
+  175631,
+  ""
+ ],
+ "direct_noua": [
+  200,
+  "image/jpeg",
+  175631,
+  ""
+ ]
+}
