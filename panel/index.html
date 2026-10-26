@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel de compras</title>
+<style>
+:root{--fog:#e8ebef;--paper:#fff;--ink:#000;--muted:#5f6670;--line:#d3d8df;--cobalt:#2337e8;--ok:#14804a;--sale:#e0262d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--fog:#0f1115;--paper:#1a1d23;--ink:#f2f4f7;--muted:#9aa3ad;--line:#2c313a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fog);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 18px}
+.box{background:var(--paper);border-radius:16px;padding:16px;margin-bottom:14px}
+label{display:block;font-weight:700;margin-bottom:6px}
+input,textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper);color:var(--ink)}
+textarea{min-height:160px;resize:vertical}
+button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:12px 18px;cursor:pointer}
+.go{background:var(--cobalt);color:#fff}
+.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.msg{margin:8px 0 0;font-size:14px}
+.err{color:var(--sale)}
+.store{margin-top:22px}
+.store h2{display:flex;justify-content:space-between;align-items:baseline;font-size:19px;margin:0 0 8px}
+.store h2 small{font-size:14px;color:var(--muted);font-weight:600}
+.it{display:grid;grid-template-columns:28px 64px 1fr;gap:12px;align-items:center;background:var(--paper);border-radius:14px;padding:10px 12px;margin-bottom:8px}
+.it.done{opacity:.45}
+.it.done .nm{text-decoration:line-through}
+.it input[type=checkbox]{width:24px;height:24px;accent-color:var(--ok)}
+.it img{width:64px;height:76px;object-fit:contain;background:#fff;border-radius:10px}
+.nm{font-weight:700;font-size:14.5px}
+.meta{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;background:var(--cobalt);color:#fff;border-radius:999px;padding:2px 10px;font-weight:800;font-size:14px;margin-right:6px}
+.it a{color:var(--cobalt);font-weight:700;font-size:14px}
+.warn{background:#fdecec;color:#8a1116;border-radius:12px;padding:10px 12px;font-size:14px;margin-top:10px}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+<h1>Panel de compras</h1>
+<p class="sub">Pegá los pedidos del día y te armo la lista ordenada por tienda, con el link para comprar cada prenda.</p>
+
+<div class="box" id="keybox">
+  <label for="key">Clave</label>
+  <input id="key" type="password" autocomplete="off" placeholder="Pegá tu clave una sola vez">
+  <div class="row"><button class="go" id="savekey" type="button">Guardar clave</button></div>
+  <p class="msg" id="keymsg"></p>
+</div>
+
+<div class="box">
+  <label for="orders">Pedidos</label>
+  <textarea id="orders" placeholder="Pegá acá los mensajes de pedidos de WhatsApp (los que traen los códigos LI-…). También podés escribir uno por línea: LI-ABC12 M x2"></textarea>
+  <div class="row"><button class="go" id="build" type="button">Armar lista de compras</button><button class="ghost" id="clear" type="button">Borrar tildes</button></div>
+  <p class="msg" id="msg"></p>
+</div>
+
+<div id="out"></div>
+</main>
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const store = { get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }, set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} } };
+const b64u = s => { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return Uint8Array.from(atob(s), c => c.charCodeAt(0)); };
+const clp = v => 'CLP ' + Math.round(v).toLocaleString('es-CL');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let KEY = null, DATA = null, BY = {}, SRC = {};
+
+async function importKey(k){ return crypto.subtle.importKey('raw', b64u(k), 'AES-GCM', false, ['decrypt']); }
+async function dec(t){ const b = b64u(t); return new TextDecoder().decode(await crypto.subtle.decrypt({name: 'AES-GCM', iv: b.slice(0, 12)}, KEY, b.slice(12))); }
+async function loadData(){
+  if (DATA) return;
+  const r = await fetch('../data/catalogo.json?t=' + Date.now(), {cache: 'no-store'}); DATA = await r.json();
+  DATA.productos.forEach(p => BY[p.code] = p);
+}
+async function loadSrc(code){
+  const k = code.slice(-1).toLowerCase();
+  if (!SRC[k]) SRC[k] = fetch('../data/src/' + k + '.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  return (await SRC[k])[code];
+}
+async function setKey(k){
+  try { KEY = await importKey(k.trim()); } catch(e){ KEY = null; return false; }
+  await loadData();
+  const sample = DATA.productos.find(p => p.store === 'a') || DATA.productos[0];
+  const t = await loadSrc(sample.code);
+  if (!t) return true;
+  try { await dec(t); return true; } catch(e){ KEY = null; return false; }
+}
+function parse(text){
+  const out = {};
+  for (const line of text.split(/\n/)){
+    const codes = line.toUpperCase().match(/LI-[A-Z0-9]{4,}/g); if (!codes) continue;
+    for (const code of codes){
+      let size = (line.match(/talle\s+([^·|\n]+?)\s*(?:·|\||$)/i) || [])[1];
+      let qty = +((line.match(/\bx\s?(\d+)\b/i) || [])[1] || 1);
+      if (!size){ const rest = line.slice(line.toUpperCase().indexOf(code) + code.length).replace(/\bx\s?\d+\b/i, '').trim(); size = rest.split(/\s+/)[0] || ''; }
+      const k = code + '|' + (size || '').trim();
+      out[k] = out[k] || {code, size: (size || '').trim(), qty: 0}; out[k].qty += qty;
+    }
+  }
+  return Object.values(out);
+}
+async function build(){
+  const msg = $('#msg'), outEl = $('#out'); msg.className = 'msg'; outEl.innerHTML = '';
+  if (!KEY){ msg.className = 'msg err'; msg.textContent = 'Primero guardá la clave.'; return; }
+  const raw = $('#orders').value; store.set('panel-orders', raw);
+  const items = parse(raw);
+  if (!items.length){ msg.className = 'msg err'; msg.textContent = 'No encontré códigos LI-… en el texto.'; return; }
+  msg.textContent = 'Armando la lista…';
+  await loadData();
+  const groups = {}, missing = [];
+  for (const it of items){
+    const p = BY[it.code];
+    if (!p){ missing.push(it); continue; }
+    let s = {u: '', s: 'Otra tienda'};
+    try { const t = await loadSrc(it.code); if (t) s = JSON.parse(await dec(t)); } catch(e){}
+    const sz = (p.sizes || []).find(x => x.t === it.size);
+    (groups[s.s] = groups[s.s] || []).push({...it, p, url: s.u, stock: !it.size || !!sz});
+  }
+  const done = store.get('panel-done', {});
+  let total = 0, html = '';
+  for (const [name, list] of Object.entries(groups).sort((a, b) => b[1].length - a[1].length)){
+    const sub = list.reduce((a, x) => a + (x.p.clp || 0) * x.qty, 0); total += sub;
+    html += `<section class="store"><h2>${esc(name)} <small>${list.reduce((a, x) => a + x.qty, 0)} prendas · ${clp(sub)}</small></h2>` +
+      list.map(x => { const k = x.code + '|' + x.size; return `<div class="it ${done[k] ? 'done' : ''}"><input type="checkbox" data-k="${esc(k)}" ${done[k] ? 'checked' : ''} aria-label="Comprado">
+        <img alt="" src="${esc(x.p.img)}"><div><div class="nm">${esc(x.p.brand)} · ${esc(x.p.name)}</div>
+        <div class="meta"><span class="tag">${esc(x.size || 'sin talle')}</span>x${x.qty} · ${clp((x.p.clp || 0) * x.qty)} · ${esc(x.code)}${x.p.color ? ' · ' + esc(x.p.color) : ''}</div>
+        ${x.stock ? '' : '<div class="meta" style="color:var(--sale)">Ese talle ya no figura con stock</div>'}
+        ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">Abrir en ${esc(name)}</a>` : ''}</div></div>`; }).join('') + '</section>';
+  }
+  if (missing.length) html += `<div class="warn">No están en el catálogo actual (agotados o código mal copiado): ${missing.map(m => esc(m.code) + (m.size ? ' ' + esc(m.size) : '')).join(', ')}</div>`;
+  html += `<div class="tot"><span>Total a comprar</span><span>${clp(total)}</span></div>`;
+  outEl.innerHTML = html; msg.textContent = `${items.reduce((a, x) => a + x.qty, 0)} prendas en ${Object.keys(groups).length} tiendas.`;
+  outEl.querySelectorAll('input[type=checkbox]').forEach(c => c.onchange = () => { const d = store.get('panel-done', {}); if (c.checked) d[c.dataset.k] = 1; else delete d[c.dataset.k]; store.set('panel-done', d); c.closest('.it').classList.toggle('done', c.checked); });
+}
+$('#savekey').onclick = async () => {
+  const k = $('#key').value, m = $('#keymsg'); m.className = 'msg'; m.textContent = 'Revisando…';
+  if (await setKey(k)){ store.set('panel-key', k.trim()); m.textContent = 'Clave guardada en este celular.'; $('#keybox').hidden = true; }
+  else { m.className = 'msg err'; m.textContent = 'La clave no es correcta.'; }
+};
+$('#build').onclick = build;
+$('#clear').onclick = () => { store.set('panel-done', {}); build(); };
+$('#orders').value = store.get('panel-orders', '');
+const saved = store.get('panel-key', null);
+if (saved) setKey(saved).then(ok => { if (ok) $('#keybox').hidden = true; else store.set('panel-key', null); });
+})();
+</script>
+</body>
+</html>
