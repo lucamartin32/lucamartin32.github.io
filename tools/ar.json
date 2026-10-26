@@ -1,126 +1,145 @@
 {
- "nblocks": 33,
- "jc_keys": [
-  "attributes",
-  "template",
-  "currencyFormat",
-  "optionPrices",
-  "priceFormat",
-  "prices",
-  "productId",
-  "chooseText",
-  "images",
-  "index",
-  "salable",
-  "canDisplayShowOutOfStockStatus",
-  "preSelectedGallery",
-  "channel",
-  "salesChannelCode",
-  "sku",
-  "skus",
-  "preSelectedSwatch"
- ],
- "images_sample": {},
- "optionPrices": [
+ "/bras": [
+  1883033,
   [
-   "49565",
+   "515"
+  ]
+ ],
+ "/panties": [
+  1030182,
+  [
+   "464"
+  ]
+ ],
+ "/pijamas": [
+  946341,
+  [
+   "85"
+  ]
+ ],
+ "/beauty": [
+  631503,
+  [
+   "317"
+  ]
+ ],
+ "/pink": [
+  254990,
+  null
+ ],
+ "/lenceria": [
+  890531,
+  [
+   "83"
+  ]
+ ],
+ "/ropa-deportiva": [
+  0,
+  null
+ ],
+ "/deporte": [
+  0,
+  null
+ ],
+ "/trajes-de-bano": [
+  1008819,
+  [
+   "137"
+  ]
+ ],
+ "/accesorios": [
+  614803,
+  [
+   "104"
+  ]
+ ],
+ "/novedades": [
+  816371,
+  [
+   "71"
+  ]
+ ],
+ "/ofertas": [
+  276178,
+  null
+ ],
+ "parsed": 34,
+ "attrs": [
+  [
+   "vs_color_panties_2",
+   [
+    "Black",
+    "Iconic Stripe",
+    "Victoria Pink"
+   ]
+  ],
+  [
+   "vs_size_panties",
+   [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+   ]
+  ]
+ ],
+ "salable": "[]",
+ "index0": [
+  [
+   "275230",
    {
-    "baseOldPrice": {
-     "amount": 89990
-    },
-    "oldPrice": {
-     "amount": 89990
-    },
-    "basePrice": {
-     "amount": 89990
-    },
-    "finalPrice": {
-     "amount": 89990
-    },
-    "tierPrices": [],
-    "msrpPrice": {
-     "amount": 0
-    }
+    "873": "32830",
+    "821": "3527",
+    "name": "Panty BoyShort De Algodón Con Logo Brillante Negro",
+    "sku": "11293751_V54A2_33903"
    }
   ],
   [
-   "49568",
+   "275245",
    {
-    "baseOldPrice": {
-     "amount": 89990
-    },
-    "oldPrice": {
-     "amount": 89990
-    },
-    "basePrice": {
-     "amount": 89990
-    },
-    "finalPrice": {
-     "amount": 89990
-    },
-    "tierPrices": [],
-    "msrpPrice": {
-     "amount": 0
-    }
+    "873": "32833",
+    "821": "3527",
+    "name": "Panty BoyShort De Algodón Con Logo Brillante Rayas Icónicas",
+    "sku": "11293751_V74FJ_33903"
    }
   ]
  ],
- "productId": 277904,
- "index": [
-  [
-   "49565",
-   {
-    "824": "7781",
-    "827": "3599",
-    "905": "27179",
-    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
-    "sku": "11254141_V5W3S_30901"
-   }
-  ],
-  [
-   "49568",
-   {
-    "824": "7781",
-    "827": "3605",
-    "905": "27179",
-    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
-    "sku": "11254141_V5W3S_30902"
-   }
-  ],
-  [
-   "49571",
-   {
-    "824": "7781",
-    "827": "3608",
-    "905": "27179",
-    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
-    "sku": "11254141_V5W3S_30903"
-   }
-  ]
- ],
- "swatch_sample": {
-  "824": {
-   "7781": {
-    "type": "2",
-    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112541415w3s_pink_iconic_stripes.jpg",
-    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112541415w3s_pink_iconic_stripes.jpg",
-    "label": "Pink Iconic Stripes"
-   },
-   "10182": {
-    "type": "2",
-    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112650577bhk_sw.jpg",
-    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112650577bhk_sw.jpg",
-    "label": "Marzipan"
-   },
-   "33185": {
-    "type": "2",
-    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112541417wby_sw.jpg",
-    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112541417wby_sw.jpg",
-    "label": "Angel Pink Wings"
-   }
-  }
+ "p0": {
+  "pid": "275260",
+  "name": "Panty BoyShort De Algodón Con Logo Brillante",
+  "href": "https://www.victoriassecret.cl/panty-boyshort-de-algodon-con-logo-brillante-11293751?vs_color_panties_2=32836&color=3656",
+  "brand": "Algodón",
+  "img": "https://www.victoriassecret.cl/media/catalog/product/1/1/11293751_v98s4_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=424&width=318&canvas=318:424",
+  "fin": 15990.0,
+  "old": 15990.0
  },
- "mediaCallback": [
-  "https\\u003A\\u002F\\u002Fwww.victoriassecret.cl\\u002Fswatches\\u002Fajax\\u002Fmedia\\u002F"
+ "media": [
+  "https://www.victoriassecret.cl/media/catalog/product/1/1/11293751_v54a2_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:",
+  "https://www.victoriassecret.cl/media/catalog/product/1/1/11293751_v54a2_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:",
+  "https://www.victoriassecret.cl/media/catalog/product/1/1/11293751_v54a2_2.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:",
+  "https://www.victoriassecret.cl/media/catalog/product/1/1/11293751_v54a2_4.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
+ ],
+ "beauty_simple": [
+  [
+   "Perfume Bombshell Runway Fashion Show 2026 100ml",
+   169990.0,
+   "https://www.victoriassecret.cl/media/catalog/product/1/1/11283209_v1885_1.jpg?op"
+  ],
+  [
+   "Set De Regalo Runway Edición Limitada",
+   299990.0,
+   "https://www.victoriassecret.cl/media/catalog/product/1/1/11283201_v0086_1.jpg?op"
+  ],
+  [
+   "Mist Corporal Con Brillos Angel Fantasy 250ml",
+   20990.0,
+   "https://www.victoriassecret.cl/media/catalog/product/1/1/11283301_v8253_1.jpg?op"
+  ],
+  [
+   "Crema Corporal Con Brillo Spotlight 236ml",
+   20990.0,
+   "https://www.victoriassecret.cl/media/catalog/product/1/1/11287001_v8256_1.jpg?op"
+  ]
  ]
 }
