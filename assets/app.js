@@ -12,6 +12,13 @@ const money = v => '$' + Math.round(v).toLocaleString('es-AR');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const off = p => p.reg > p.clp + 1 ? (p.reg - p.clp) / p.reg : 0;
 const imgs = p => (p.imgs && p.imgs.length ? p.imgs : [p.img]).filter(Boolean);
+const U = t => !t || /^https?:/.test(t) ? t : String(CFG.img_host || '').replace(/\/$/, '') + '/' + t;   // foto: token corto -> link del servidor de fotos
+const GS = {};
+async function loadGal(p){
+  const k = p.code.slice(-1).toLowerCase();
+  GS[k] = GS[k] || fetch(BASE + '/data/gal/' + k + '.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const g = await GS[k]; p.imgs = [p.img, ...(g[p.code] || []).map(U)];
+}
 const store = { get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }, set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} } };
 
 async function getJSON(urls){
@@ -361,7 +368,7 @@ function openProduct(code, keep){
   const p = BY[code]; if (!p) return;
   const now = price(p, p.clp), may = price(p, p.clp, true), was = off(p) > .04 ? price(p, p.reg) : null;
   let pick = keep && p.sizes.some(s => s.t === keep) ? keep : p.sizes.length === 1 ? p.sizes[0].t : null;
-  const d = $('#product'), im = imgs(p), sb = sibs(p);
+  let im = imgs(p); const d = $('#product'), sb = sibs(p);
   const draw = () => {
     const msg = `Hola! Tengo una consulta por: ${p.brand} ${p.name}${pick ? ' · talle ' + pick : ''} (código ${p.code})`;
     d.innerHTML = `<div class="pd"><div class="gal"><button class="x" type="button" aria-label="Cerrar">×</button>
@@ -399,6 +406,7 @@ function openProduct(code, keep){
   };
   draw(); if (!d.open) d.showModal();
   try { history.replaceState(null, '', '#' + p.code); } catch(e){}
+  if (!p.imgs) loadGal(p).then(() => { if (d.open && decodeURIComponent(location.hash.slice(1)) === p.code && imgs(p).length > im.length){ im = imgs(p); const pd = d.querySelector('.pd'), sc = pd.scrollTop; draw(); d.querySelector('.pd').scrollTop = sc; } });
 }
 // ── carrito ──
 function lines(){
@@ -506,6 +514,7 @@ async function start(){
   const est = DATA.estado || {}, lim = 6 * 3600 * 1000;
   DATA.productos = DATA.productos.filter(p => { const e = est[p.store]; return !e || !e.ultimo_ok || (Date.now() - new Date(e.ultimo_ok)) < lim; });
   DATA.productos.forEach(p => {
+    p.img = U(p.img); if (p.simg) p.simg = U(p.simg);
     p.name = arName(p.name);
     p.brand = BRAND_FIX[(p.brand || '').trim().toLowerCase()] || (p.brand || '').trim();
     p.sizes = p.sizes.map(s => ({...s, t: cleanSize(s.t, p.cat)}));
