@@ -1,0 +1,290 @@
+{
+ "TOM": [
+  [
+   "ROPA INTERIOR",
+   36
+  ],
+  [
+   "ROPA INTERIOR/Boxers",
+   37
+  ],
+  [
+   "ROPA INTERIOR/Calcetines",
+   39
+  ],
+  [
+   "ROPA INTERIOR/Camisetas",
+   40
+  ],
+  [
+   "ROPA INTERIOR/Calzones",
+   41
+  ],
+  [
+   "ROPA INTERIOR/Pijamas",
+   42
+  ],
+  [
+   "ROPA INTERIOR/Ropa interior",
+   43
+  ],
+  [
+   "ROPA INTERIOR/Pantimedias",
+   69
+  ],
+  [
+   "ROPA INTERIOR/Brassier",
+   81
+  ]
+ ],
+ "CK": [
+  [
+   "Underwear",
+   15
+  ],
+  [
+   "Underwear/Bras",
+   16
+  ],
+  [
+   "Underwear/Panties",
+   17
+  ],
+  [
+   "Underwear/Pijama",
+   18
+  ],
+  [
+   "Underwear/Trajes de baño",
+   19
+  ],
+  [
+   "Underwear/Calzoncillos",
+   20
+  ],
+  [
+   "Underwear/Calzoncillos/Packs",
+   157
+  ],
+  [
+   "Underwear/Calcetines",
+   69
+  ],
+  [
+   "Underwear/Camisetas",
+   77
+  ],
+  [
+   "Underwear/Panty Table",
+   154
+  ],
+  [
+   "Underwear/petos deportivos",
+   158
+  ],
+  [
+   "Underwear/Ropa Interior Ninas",
+   159
+  ],
+  [
+   "Underwear/Ropa Interior Ninos",
+   160
+  ],
+  [
+   "Underwear/petos infantiles",
+   161
+  ],
+  [
+   "Underwear/Shapewear",
+   164
+  ],
+  [
+   "Calzado",
+   29
+  ],
+  [
+   "Calzado/Zapatillas",
+   30
+  ],
+  [
+   "Calzado/Sandalia",
+   31
+  ],
+  [
+   "Calzado/De Taco",
+   81
+  ],
+  [
+   "Calzado/Flip Flop",
+   82
+  ],
+  [
+   "Calzado/Botas",
+   90
+  ],
+  [
+   "Calzado/De Vestir",
+   91
+  ],
+  [
+   "Calzado/Mocasines",
+   92
+  ],
+  [
+   "Calzado/Pantuflas",
+   93
+  ],
+  [
+   "Calzado/Flats",
+   94
+  ]
+ ],
+ "LIN": [
+  [
+   "ROPA/SHORT y CALZAS",
+   10010107
+  ],
+  [
+   "ROPA/BODY",
+   10013131
+  ],
+  [
+   "ACCESORIOS/CALCETINES",
+   20010101
+  ],
+  [
+   "ACCESORIOS/ROPA INTERIOR",
+   20020108
+  ],
+  [
+   "ZAPATILLAS/SLIP ON",
+   30015229
+  ],
+  [
+   "ZAPATILLAS/SLIPSTREAM",
+   30021555
+  ]
+ ],
+ "bold_boxer": [
+  239,
+  [
+   "Polera Puma Boxy Wardrobe Essentials Blanco",
+   "Polera Puma Boxy Wardrobe Essentials Negro",
+   "Polera Puma Better Classics Boxy Beige",
+   "Polera Puma Vintage Cat Boxy House of Graphics Negro"
+  ]
+ ],
+ "bold_calcetin": [
+  59,
+  [
+   "Tripack Calcetas Puma Negro",
+   "Calcetas Stance Icon Gris",
+   "Calcetas Stance Icon Blanco",
+   "Tripack Calcetas Jordan Everyday Negro"
+  ]
+ ],
+ "bold_calcetines": [
+  59,
+  [
+   "Tripack Calcetas Puma Negro",
+   "Calcetas Stance Icon Gris",
+   "Calcetas Stance Icon Blanco",
+   "Tripack Calcetas Jordan Everyday Negro"
+  ]
+ ],
+ "bold_calzoncillo": [
+  0,
+  []
+ ],
+ "bold_bralette": [
+  0,
+  []
+ ],
+ "bold_peto": [
+  60,
+  [
+   "Beanie Nike Peak Negro",
+   "Beanie Jordan Peak Negro",
+   "Polera Puma Better Classics Rojo",
+   "Polera Puma Better Classics Boxy Beige"
+  ]
+ ],
+ "bold_ropa interior": [
+  174,
+  [
+   "Polera Crop Top JOIA Mujer Logo Blanco",
+   "Polera Crop Jordan Mujer Retro P6 Negro/Rojo",
+   "Polerón adidas Mujer Italia Coppa del Mondo Crew Crema/Negro/Rojo",
+   "Tripack Calcetas Logo JOIA Rojo/Rosado/Blanco"
+  ]
+ ],
+ "bold_trunk": [
+  37,
+  [
+   "Trunner O.S. Zapatillas Jordan  Beige",
+   "Trunner OS Zapatillas Jordan Hombre Café",
+   "Trunner O/S Zapatillas Jordan Hombre Purpura",
+   "Dunk Low Zapatillas Nike Bebé Blanco"
+  ]
+ ],
+ "bold_brief": [
+  0,
+  []
+ ],
+ "bold_pack": [
+  140,
+  [
+   "Polera Puma Mujer Lace Pack Oversized Blanco",
+   "Falda Puma Mujer Lace Pack T7 Blanco",
+   "Calcetines Puma Invisibles Sneaker Pack de 3 Negro",
+   "Polera Nike Mad 90 Pack \"Laser 90\" Negro"
+  ]
+ ],
+ "vs https://www.victoriassecret.cl": [
+  200,
+  "https://www.victoriassecret.cl/",
+  320759,
+  false,
+  [
+   "Victoria&#039;s Secret Chile | Bras, Panties, Pijamas, Beauty y más"
+  ],
+  null,
+  null
+ ],
+ "vs https://victoriassecret.cl": [
+  200,
+  "https://www.victoriassecret.cl/",
+  320759,
+  false,
+  [
+   "Victoria&#039;s Secret Chile | Bras, Panties, Pijamas, Beauty y más"
+  ],
+  null,
+  null
+ ],
+ "vs https://www.victoriassecret.com/cl/": [
+  200,
+  "https://sp.victoriassecret.com/cl/",
+  23622,
+  false,
+  [
+   "Victoria's Secret: brasieres, trajes de baño, lencería, deporte y belleza"
+  ],
+  "cloudflare",
+  null
+ ],
+ "vs https://cl.victoriassecret.com": "HTTPSConnectionPool(host='cl.victoriassecret.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTT",
+ "vs https://www.vsbeautychile.cl": "HTTPSConnectionPool(host='www.vsbeautychile.cl', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPS",
+ "vsapi /api/catalog_system/pub/category/tree/2": [
+  404,
+  " <!doctype html><html lang=\"es\"><head > <meta charset=\"utf-8\"/>\n<meta name=\"title\" content=\"Página no encontrada - Victoria&#039;s Secret Chile |\"/>\n<meta name=\"description\" content=\"La página que buscas no existe. Descubre nuestra colección completa de lencería, ropa interior y productos de belleza en Victoria&#039;s Secret Chile.\"/>\n<meta name=\"keywords\" content=\"victoria secret chile, error 404, página no encontrada, lencería, ropa interior femenina\"/>\n<meta name=\"robots\" content=\"INDEX,FOLLOW\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<meta name=\"format-detect"
+ ],
+ "vsapi /api/catalog_system/pub/products/search?_from=0&_to=2": [
+  404,
+  " <!doctype html><html lang=\"es\"><head > <meta charset=\"utf-8\"/>\n<meta name=\"title\" content=\"Página no encontrada - Victoria&#039;s Secret Chile |\"/>\n<meta name=\"description\" content=\"La página que buscas no existe. Descubre nuestra colección completa de lencería, ropa interior y productos de belleza en Victoria&#039;s Secret Chile.\"/>\n<meta name=\"keywords\" content=\"victoria secret chile, error 404, página no encontrada, lencería, ropa interior femenina\"/>\n<meta name=\"robots\" content=\"INDEX,FOLLOW\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<meta name=\"format-detect"
+ ],
+ "vsapi /api/checkout/pub/pickup-points?geoCoordinates=-70.6082;-33.4182": [
+  404,
+  " <!doctype html><html lang=\"es\"><head > <meta charset=\"utf-8\"/>\n<meta name=\"title\" content=\"Página no encontrada - Victoria&#039;s Secret Chile |\"/>\n<meta name=\"description\" content=\"La página que buscas no existe. Descubre nuestra colección completa de lencería, ropa interior y productos de belleza en Victoria&#039;s Secret Chile.\"/>\n<meta name=\"keywords\" content=\"victoria secret chile, error 404, página no encontrada, lencería, ropa interior femenina\"/>\n<meta name=\"robots\" content=\"INDEX,FOLLOW\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<meta name=\"format-detect"
+ ]
+}
