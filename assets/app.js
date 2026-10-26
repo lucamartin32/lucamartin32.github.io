@@ -512,7 +512,7 @@ async function start(){
   } catch(e){ $('#grid').innerHTML = '<p class="empty">No pudimos cargar el catálogo. Recargá la página en un momento.</p>'; return; }
   RATE = Number(CFG.cambio) || 1.67;
   const est = DATA.estado || {}, lim = 6 * 3600 * 1000;
-  DATA.productos = DATA.productos.filter(p => CAT[p.cat]);
+  DATA.productos = DATA.productos.filter(p => CAT[p.cat] && p.store !== 'f');
   DATA.productos = DATA.productos.filter(p => { const e = est[p.store]; return !e || !e.ultimo_ok || (Date.now() - new Date(e.ultimo_ok)) < lim; });
   DATA.productos.forEach(p => {
     p.img = U(p.img); if (p.simg) p.simg = U(p.simg);
