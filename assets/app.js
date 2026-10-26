@@ -106,7 +106,7 @@ function setNav(){
 function render(){
   setNav();
   const pc = p => price(p, p.clp);
-  const rank = p => p.star ? -99 : (i => (i < 0 ? 9 : i) - off(p) * 4 - (isNew(p) ? 2 : 0))(TOPB.indexOf(p.brand));
+  const rank = p => p.star ? -99 : (p.brand === "Victoria's Secret" && f.sec === 'M' && ['RI','PJ','BE'].includes(p.cat)) ? -1 - off(p) : (i => (i < 0 ? 9 : i) - off(p) * 4 - (isNew(p) ? 2 : 0))(TOPB.indexOf(p.brand));
   let list = pool();
   if (f.sort === 'top') list.sort((a, c) => rank(a) - rank(c) || pc(a) - pc(c));
   if (f.sort === 'new') list.sort((a, c) => (c.first||'').localeCompare(a.first||'') || rank(a) - rank(c));
