@@ -1,8 +1,8 @@
 (() => {
 const BASE = document.body.dataset.base || '.';
 const RAW = 'https://raw.githubusercontent.com/lucamartin32/lucamartin32.github.io/main/';
-const CAT = {RE:'Remeras',BZ:'Buzos',PA:'Pantalones',JE:'Jeans',SH:'Shorts',CA:'Camperas',GO:'Gorras',ZA:'Zapatillas',MO:'Mochilas',NE:'Bolsos y neceseres',BI:'Billeteras',CR:'Carteras'};
-const CAT_ORDER = ['ZA','BZ','RE','PA','JE','CA','SH','GO','NE','MO','CR','BI'];
+const CAT = {RE:'Remeras',BZ:'Buzos',PA:'Pantalones',JE:'Jeans',SH:'Shorts',CA:'Camperas',GO:'Gorras',ZA:'Zapatillas',MO:'Mochilas',NE:'Bolsos y neceseres',BI:'Billeteras',CR:'Carteras',RI:'Ropa interior',PJ:'Pijamas',BE:'Belleza y accesorios'};
+const CAT_ORDER = ['ZA','BZ','RE','PA','JE','CA','SH','GO','RI','PJ','NE','MO','CR','BI','BE'];
 const TOPB = ['Nike','Jordan','Tommy Hilfiger','Calvin Klein','adidas','New Balance'];
 const $ = s => document.querySelector(s);
 const f = {sec:'all', cat:'all', brands:new Set(), sizes:new Set(), sale:false, q:'', sort:'top'};
@@ -53,8 +53,9 @@ function price(p, clp, may){
   if (p.fixed) return p.fixed;
   const step = CFG.redondeo || 500;
   const base = Math.ceil(clp * RATE / step) * step;
-  if (may && hasMay(p)) return base + CFG.recargos.mayorista[p.cat];          // mayorista: base + recargo, sin redondear
-  const r = CFG.redondeo_unidad || 1, v = base + CFG.recargos.unidad[p.cat], rem = v % r;
+  const K = p.pack && CFG.recargos.unidad[p.cat + 'P'] != null ? p.cat + 'P' : p.cat;   // packs de ropa interior llevan otro recargo
+  if (may && hasMay(p)) return base + (CFG.recargos.mayorista[K] ?? CFG.recargos.mayorista[p.cat]);          // mayorista: base + recargo, sin redondear
+  const r = CFG.redondeo_unidad || 1, v = base + CFG.recargos.unidad[K], rem = v % r;
   const RA = CFG.redondeo_abajo_hasta || {}, tol = RA[p.cat] ?? RA['*'] ?? 0;                 // si se pasa poquito (ej. gorras hasta $1.500) redondea para abajo
   if (rem && rem <= tol) return v - rem;
   return Math.ceil(v / r) * r;                                               // si no, redondea hacia arriba a $5.000
