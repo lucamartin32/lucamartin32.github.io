@@ -1,40 +1,126 @@
 {
- "n": 33,
- "len_item": 5474,
- "href": [
-  "https://www.victoriassecret.cl/set-de-pijama-pantalon-de-satin-11254141?vs_color_pajamas=33185&amp;color=3692",
-  "https://www.victoriassecret.cl/set-de-pijama-pantalon-de-satin-11254141?vs_color_pajamas=33185&amp;color=3692"
+ "nblocks": 33,
+ "jc_keys": [
+  "attributes",
+  "template",
+  "currencyFormat",
+  "optionPrices",
+  "priceFormat",
+  "prices",
+  "productId",
+  "chooseText",
+  "images",
+  "index",
+  "salable",
+  "canDisplayShowOutOfStockStatus",
+  "preSelectedGallery",
+  "channel",
+  "salesChannelCode",
+  "sku",
+  "skus",
+  "preSelectedSwatch"
  ],
- "price": [
+ "images_sample": {},
+ "optionPrices": [
   [
-   "89990",
-   "finalPrice"
+   "49565",
+   {
+    "baseOldPrice": {
+     "amount": 89990
+    },
+    "oldPrice": {
+     "amount": 89990
+    },
+    "basePrice": {
+     "amount": 89990
+    },
+    "finalPrice": {
+     "amount": 89990
+    },
+    "tierPrices": [],
+    "msrpPrice": {
+     "amount": 0
+    }
+   }
   ],
   [
-   "89990",
-   "oldPrice"
+   "49568",
+   {
+    "baseOldPrice": {
+     "amount": 89990
+    },
+    "oldPrice": {
+     "amount": 89990
+    },
+    "basePrice": {
+     "amount": 89990
+    },
+    "finalPrice": {
+     "amount": 89990
+    },
+    "tierPrices": [],
+    "msrpPrice": {
+     "amount": 0
+    }
+   }
   ]
  ],
- "name": [
-  "Set De Pijama Pantalón De Satín"
+ "productId": 277904,
+ "index": [
+  [
+   "49565",
+   {
+    "824": "7781",
+    "827": "3599",
+    "905": "27179",
+    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
+    "sku": "11254141_V5W3S_30901"
+   }
+  ],
+  [
+   "49568",
+   {
+    "824": "7781",
+    "827": "3605",
+    "905": "27179",
+    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
+    "sku": "11254141_V5W3S_30902"
+   }
+  ],
+  [
+   "49571",
+   {
+    "824": "7781",
+    "827": "3608",
+    "905": "27179",
+    "name": "Set De Pijama Pantalón De Satín Rayas Icónicas",
+    "sku": "11254141_V5W3S_30903"
+   }
+  ]
  ],
- "k_jsonConfig": null,
- "k_swatch": "VjdF9saXN0X2xpbWl0PTM2\"}}' role=\"button\"><span>Comparar</span></a> </div><div class=\"product details product-item-details configurable\">  <div class=\"swatch-opt content-swatch\">     <div class=\"swatch-opt-277904\" data-role=\"swatch-option-277904\"></div></div> <div class=\"product-item-brand\"> <span>Victoria&#039;s Secret</span> </div> <strong class=\"product name product-item-name\"><a class=\"product-item-link\" href=\"https://www.victoriassecret.cl/set-de-pijama-pantalon-de-satin-11254141?vs_color_pajamas=33185&amp;color=3692\">Set De Pijama Pantalón De Satín</a></strong>  <div class=\"price-box price-final_price\" data-role=\"priceBox\" data-product-id=\"277904\" data-price-box=\"product-id-277904\"> <span class=\"normal-price \">  <span class=\"price-container price-final_price&#x20;tax&#x20;weee\" > <span  id=\"product-price-277904\"  data-price-amount=\"8",
- "k_spConfig": null,
- "k_salable": null,
- "k_optionPrices": null,
- "k_\"index\"": null,
- "k_quick-add": "glabel-placeholder placeholder-bottom-center position-BC direction-horizontal\" data-placeholder=\"bottom-center\"></div>   <button type=\"button\" class=\"quick-add-trigger\" data-product-id=\"277904\" title=\"Agregar&#x20;al&#x20;Carrito\" aria-label=\"Agregar&#x20;al&#x20;Carrito\"></button> </a> <div data-role=\"add-to-links\" class=\"actions-secondary\">   <a href=\"#\" class=\"action towishlist\" title=\"Agregar&#x20;a&#x20;los&#x20;favoritos\" aria-label=\"Agregar&#x20;a&#x20;los&#x20;favoritos\" data-post='{\"action\":\"https:\\/\\/www.victoriassecret.cl\\/wishlist\\/index\\/add\\/?super_attribute%5B824%5D=33185\",\"data\":{\"product\":49787,\"uenc\":\"aHR0cHM6Ly93d3cudmljdG9yaWFzc2VjcmV0LmNsL3BpamFtYXM_cHJvZHVjdF9saXN0X2xpbWl0PTM2\"}}' data-action=\"add-to-wishlist\" role=\"button\"><span>Agregar a los favoritos</span></a>  <a href=\"#\" class=\"action tocompare\" title=\"Comparar",
- "k_data-product-id": "placeholder-bottom-center position-BC direction-horizontal\" data-placeholder=\"bottom-center\"></div>   <button type=\"button\" class=\"quick-add-trigger\" data-product-id=\"277904\" title=\"Agregar&#x20;al&#x20;Carrito\" aria-label=\"Agregar&#x20;al&#x20;Carrito\"></button> </a> <div data-role=\"add-to-links\" class=\"actions-secondary\">   <a href=\"#\" class=\"action towishlist\" title=\"Agregar&#x20;a&#x20;los&#x20;favoritos\" aria-label=\"Agregar&#x20;a&#x20;los&#x20;favoritos\" data-post='{\"action\":\"https:\\/\\/www.victoriassecret.cl\\/wishlist\\/index\\/add\\/?super_attribute%5B824%5D=33185\",\"data\":{\"product\":49787,\"uenc\":\"aHR0cHM6Ly93d3cudmljdG9yaWFzc2VjcmV0LmNsL3BpamFtYXM_cHJvZHVjdF9saXN0X2xpbWl0PTM2\"}}' data-action=\"add-to-wishlist\" role=\"button\"><span>Agregar a los favoritos</span></a>  <a href=\"#\" class=\"action tocompare\" title=\"Comparar\" aria-label=\"Compa",
- "global_cfg": [
-  624261,
-  636424,
-  649247,
-  660840,
-  668060
- ],
- "global_snip": "=swatch-option-277904]\": {\n                \"Magento_Swatches/js/swatch-renderer\": {\n                    \"selectorProduct\": \".product-item-details\",\n                    \"onlySwatches\": true,\n                    \"enableControlLabel\": false,\n                    \"numberToShow\": 16,\n                    \"jsonConfig\": {\"attributes\":{\"824\":{\"id\":\"824\",\"code\":\"vs_color_pajamas\",\"label\":\"Color: \",\"options\":[{\"id\":\"7775\",\"label\":\"New Peony\",\"products\":[]},{\"id\":\"7781\",\"label\":\"Pink Iconic Stripes\",\"products\":[\"49565\",\"49568\",\"49571\",\"49574\",\"49577\"]},{\"id\":\"10182\",\"label\":\"Marzipan\",\"products\":[\"77283\",\"77286\"]},{\"id\":\"13514\",\"label\":\"Pretty\",\"products\":[]},{\"id\":\"14953\",\"label\":\"Black\",\"products\":[]},{\"id\":\"18037\",\"label\":\"Red Lacquer\",\"products\":[]},{\"id\":\"19539\",\"label\":\"Angel Pink Botanical\",\"products\":[]},{\"id\":\"19542\",\"label\":\"Angel Pink Stripes\",\"products\":[]},{\"id\":\"19545\",\"label\":\"Black Botanical\",\"products\":[]},{\"id\":\"19548\",\"label\":\"Lemonade\",\"products\":[]},{\"id\":\"20175\",\"label\":\"Backstage Lipstick W Graphic\",\"products\":[]},{\"id\":\"23150\",\"label\":\"Pretty Blossom Lemons\",\"products\":[]},{\"id\":\"23177\",\"label\":\"Tan & Black Dots\",\"products\":[]},{\"id\":\"24760\",\"label\":\"Print\",\"products\":[]},{\"id\":\"27089\",\"label\":\"Scattedhrts\",\"products\":[]},{\"id\":\"27092\",\"label\":\"Expldcherries\",\"products\":[]},{\"id\":\"27095\",\"label\":\"Strip\",\"products\":[]},{\"id\":\"27098\",\"label\":\"Heartstrips\",\"products\":[]},{\"id\":\"30767\",\"label\":\"Print\",\"products\":[]},{\"id\":\"32260\",\"label\":\"Dark Bloomy Floral\",\"products\":[]},{\"id\":\"33185\",\"label\":\"Angel Pink Wings\",\"products\":[\"277901\",\"277904\",\"277910\"]}],\"position\":\"0\"},\"827\":{\"id\":\"827\",\"code\":\"vs_size_pajamas\",\"label\":\"Talla Pijamas\",\"options\":[{\"id\":\"3599\",\"label\":\"XS\",\"products\":[\"49565\",\"77283\",\"277901\"]},{\"id\":\"3605\",\"label\":\"S\",\"products\":[\"49568\",\"77286\",\"277904\"]},{\"id\":\"3608\",\"label\":\"M\",\"products\":[\"49571\"]},{\"id\":\"3614\",\"label\":\"L\",\"products\":[\"49574\",\"277910\"]},{\"id\":\"3617\",\"label\":\"XL\",\"products\":[\"49577\"]},{\"id\":\"3623\",\"label\":\"XXL\",\"products\":[]}],\"position\":\"1\"},\"905\":{\"id\":\"905\",\"code\":\"vs_size_pajamas_lenght\",\"label\":\"Talla Largo Pijama\",\"options\":[{\"id\":\"27179\",\"label\":\"Regular\",\"products\":[\"49565\",\"49568\",\"49571\",\"49574\",\"49577\",\"77283\",\"77286\",\"277901\",\"277904\",\"277910\"]}],\"position\":\"2\"}},\"template\":\"$<%- data.price %>\",\"currencyFormat\":\"$%s\",\"optionPrices\":{\"49565\":{\"baseOldPrice\":{\"amount\":89990},\"oldPrice\":{\"amount\":89990},\"basePrice\":{\"amount\":89990},\"finalPrice\":{\"amount\":89990},\"tierPrices\":[],\"msrpPrice\":{\"amount\":0}},\"49568\":{\"baseOldPrice\":{\"amount\":89990},\"oldPrice\":{\"amount\":89990},\"basePrice\":{\"amount\":89990},\"finalPrice\":{\"amount\":89990},\"tierPrices\":[],\"msrpPrice\":{\"amount\":0}},\"49571\":{\"baseOldPrice\":{\"amount\":89990},\"oldPrice\":{\"amount\":89990},\"basePrice\":{\"amount\":89990},\"finalPrice\":{\"amount\":89990},\"ti",
- "toolbar": [
-  "85"
+ "swatch_sample": {
+  "824": {
+   "7781": {
+    "type": "2",
+    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112541415w3s_pink_iconic_stripes.jpg",
+    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112541415w3s_pink_iconic_stripes.jpg",
+    "label": "Pink Iconic Stripes"
+   },
+   "10182": {
+    "type": "2",
+    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112650577bhk_sw.jpg",
+    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112650577bhk_sw.jpg",
+    "label": "Marzipan"
+   },
+   "33185": {
+    "type": "2",
+    "value": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_image/40x40/1/1/112541417wby_sw.jpg",
+    "thumb": "https://www.victoriassecret.cl/media/attribute/swatch/swatch_thumb/110x110/1/1/112541417wby_sw.jpg",
+    "label": "Angel Pink Wings"
+   }
+  }
+ },
+ "mediaCallback": [
+  "https\\u003A\\u002F\\u002Fwww.victoriassecret.cl\\u002Fswatches\\u002Fajax\\u002Fmedia\\u002F"
  ]
 }
