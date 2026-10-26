@@ -1,26 +1,542 @@
-{
- "worker": [
-  200,
-  "image/webp",
-  143842,
-  ""
- ],
- "direct": [
-  200,
-  "image/jpeg",
-  175631,
-  ""
- ],
- "direct_ref": [
-  200,
-  "image/jpeg",
-  175631,
-  ""
- ],
- "direct_noua": [
-  200,
-  "image/jpeg",
-  175631,
-  ""
- ]
-}
+[
+[
+"f",
+"RI",
+"Sport Bra Vsx Featherweight™ M",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11281108_v7u33_1.jpg"
+],
+[
+"f",
+"PJ",
+"Set De Pijama Pantalón De Fran",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11253402_v7bhk_1.jpg"
+],
+[
+"f",
+"RI",
+"Bottom De Bikini Fruncida Esse",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11262420_v85q1_1.jpg"
+],
+[
+"f",
+"RI",
+"Bra T Shirt Sin Aros Con Forro",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11250935_v95d1_2.jpg"
+],
+[
+"f",
+"RI",
+"Panty Cheeky Azul",
+200,
+200,
+"image/jpeg",
+"assecret.cl/media/catalog/product/1/1/11260609_v7m6x_1_1.jpg"
+],
+[
+"f",
+"PJ",
+"Set De Pijama Short Satín Negr",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11254823_v54a2_1.jpg"
+],
+[
+"f",
+"RI",
+"Slip Con Lazo Frontal Y Ribete",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11281244_v33f6_1.jpg"
+],
+[
+"f",
+"BE",
+"Mist Corporal Con Brillos Bare",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11257909_v8527_1.jpg"
+],
+[
+"f",
+"PJ",
+"Set De Pijama Short De Satín M",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11253923_v7mtm_1.jpg"
+],
+[
+"f",
+"RI",
+"Bra Dream Angels Sin Relleno C",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11286517_v54a2_1.jpg"
+],
+[
+"f",
+"PJ",
+"Remera Sin Mangas Acanalada Ro",
+200,
+200,
+"image/jpeg",
+"riassecret.cl/media/catalog/product/1/1/11276525_v7q7e_1.jpg"
+],
+[
+"f",
+"RI",
+"Bra Dream Angels Media Copa Cl",
+200,
+200,
+"image/jpeg",
+"ssecret.cl/media/catalog/product/1/1/1125490439h6_om_s_1.jpg"
+],
+[
+"a",
+"GO",
+"Snapback Nike NOCTA Amarillo",
+200,
+200,
+"image/webp",
+"M3MjI0OTg5MDFiNDAxNGEyOGE0ZDc4MmZhOWM0MjliYzAyMWY5MDE4ZjllZA"
+],
+[
+"a",
+"ZA",
+"Cortez Zapatillas Nike Mujer B",
+200,
+200,
+"image/webp",
+"c4MDFhYzJkMzkxZDY0MmZhODIyOTAzMTQyYjhkNmQ1MzQ0NWE0NzM0MTU0Mg"
+],
+[
+"a",
+"ZA",
+"Air Ultra Zapatillas Jordan Ho",
+200,
+200,
+"image/webp",
+"EzZGUwY2RkYTc5YzdlNWUyMWRkNGM2NDExZGFjNmZjNDQ3OTlhMjdjNWEzYQ"
+],
+[
+"a",
+"BZ",
+"Buzo Market Unisex x GD Call M",
+200,
+200,
+"image/webp",
+"cwMThlY2RiYjEzYzUyOTdkZDA5YTAxZDU5YzU5YzBkZTU2MmQ2MGU4NjZmYw"
+],
+[
+"a",
+"ZA",
+"Air 1 Low Zapatillas Jordan Ho",
+200,
+200,
+"image/webp",
+"ZiZmE4ZTA2NDMyODFjN2ZkZDk4MmEwN2VmNGI3NTdlMjBmODliZDQwNTUyOA"
+],
+[
+"a",
+"BZ",
+"Buzo Joia Unisex Gráfico Funke",
+200,
+200,
+"image/webp",
+"FlNmJjMDBlMzg5ZDBiMzg4MTg2MDllNGJkMzc4NzA3N2MzMWJhZjMyNjcxMA"
+],
+[
+"a",
+"RE",
+"Camiseta Nike NFL x Jordan Lov",
+200,
+200,
+"image/webp",
+"IzNjMxN2YzOTVkNmViMDc1NjYwMTIxZWNkMWRiMTc0MDk0OTExNjc4MDI4NQ"
+],
+[
+"a",
+"RE",
+"Remera Crop Jordan Mujer Proje",
+200,
+200,
+"image/webp",
+"ViNjMxOTMyNTJlYmMyODY1Zjc5NWJiMzIzZThlZmZkODgyYjBkNTM0ZmFiMw"
+],
+[
+"a",
+"ZA",
+"Air Jordan 1 Low Urbanas Jorda",
+200,
+200,
+"image/webp",
+"FiODRiMGQ0MWYxNmM4MGMzY2M0NzFlNTI1NjY2ZTcxMTI5NTNiZGE1MjMzNQ"
+],
+[
+"a",
+"ZA",
+"Campus 00s Zapatillas adidas H",
+200,
+200,
+"image/webp",
+"OTYyY2EyZGI2ODMwODU2YTM5ZjZkMDIzZjc1YjMzOTQ1YWU0ZmVjMDMzYzMz"
+],
+[
+"a",
+"ZA",
+"Air 1 Mid Zapatillas Jordan Mu",
+200,
+200,
+"image/webp",
+"cwNTM1YmY2ODM0N2JmMzM1MDQ4ZTI0NjM2NmEyZGQxNzRlOTdjMWUyZWM1OQ"
+],
+[
+"a",
+"ZA",
+"Adi2000 Zapatillas adidas Homb",
+200,
+200,
+"image/webp",
+"NTUzZGI0OGMxYTc4YWZhNGUxNDJmNWMxNDIzNjZmYTU3NmUxOGNhM2U2MWQx"
+],
+[
+"b",
+"RI",
+"Pack De 2 Medias De Cuadros",
+200,
+200,
+"image/jpeg",
+".br/arquivos/ids/4679156-700-auto/p-000000100001495085-1.jpg"
+],
+[
+"b",
+"BI",
+"Billetera Nappa Trifold",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4716409-700-auto/p-31tle1x027200-1.jpg"
+],
+[
+"b",
+"PA",
+"Joggers Flag Con Logo",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4633246-700-auto/p-mw0mw32013bds-2.jpg"
+],
+[
+"b",
+"GO",
+"Gorra Con Logo Bordado",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4695702-700-auto/p-aw0aw18358xle-1.jpg"
+],
+[
+"b",
+"PA",
+"Joggers Flag Con Logo",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4633697-700-auto/p-mw0mw32013dw5-1.jpg"
+],
+[
+"b",
+"RI",
+"Pack De 3 Bóxers Trunk Essenti",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4631939-700-auto/p-um0um027630wj-1.jpg"
+],
+[
+"b",
+"BI",
+"Billetera Plegable De Cuero Co",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4696570-700-auto/p-am0am14247bds-1.jpg"
+],
+[
+"b",
+"RE",
+"Remera Con Logo Bordado Regula",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4656895-700-auto/p-ww0ww46120p61-1.jpg"
+],
+[
+"b",
+"BZ",
+"Buzo Con Logo Lineal Bordado",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4697933-700-auto/p-dm0dm20249sev-1.jpg"
+],
+[
+"b",
+"PA",
+"Joggers Flag Con Logo",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4633422-700-auto/p-mw0mw32013p01-3.jpg"
+],
+[
+"b",
+"RE",
+"Remera Interlock Con Flores Re",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4701478-700-auto/p-ww0ww496260e6-1.jpg"
+],
+[
+"b",
+"ZA",
+"Zapatillas Archive De Cuero",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/4687447-700-auto/p-en0en02815aby-1.jpg"
+],
+[
+"c",
+"RI",
+"Pack de 3 Slips Brushed Micro ",
+200,
+200,
+"image/jpeg",
+"eximg.com.br/arquivos/ids/1527243-700-auto/p-nb4122005-1.jpg"
+],
+[
+"c",
+"RE",
+"Remera en Tejido Waffle con Et",
+200,
+200,
+"image/jpeg",
+"ximg.com.br/arquivos/ids/1532445-700-auto/p-4rd008g001-1.jpg"
+],
+[
+"c",
+"RI",
+"Bóxer Low Rise Trunk CK96",
+200,
+200,
+"image/jpeg",
+"-auto/p-nb3406070-1-cc3cda0d-3321-4f6b-a4f4-b568ea9a2654.jpg"
+],
+[
+"c",
+"RI",
+"Pack de 3 Medias Invisibles - ",
+200,
+200,
+"image/jpeg",
+"g.com.br/arquivos/ids/1515501-700-auto/p-ckw221ns02001-1.jpg"
+],
+[
+"c",
+"BZ",
+"Buzo Con Capucha y Estampado G",
+200,
+200,
+"image/jpeg",
+"ximg.com.br/arquivos/ids/1522112-700-auto/p-4re255g100-1.jpg"
+],
+[
+"c",
+"NE",
+"Bolso Weekender Bold",
+200,
+200,
+"image/jpeg",
+"ximg.com.br/arquivos/ids/1520075-700-auto/p-4d3115g301-1.jpg"
+],
+[
+"c",
+"RI",
+"Bralette Modern Cotton Light L",
+200,
+200,
+"image/jpeg",
+"auto/p-qf1654-100-1-aa92faab-f4ee-457b-8d9a-fba7debd303a.jpg"
+],
+[
+"c",
+"RI",
+"Pack de 3 Bóxers Low Rise Trun",
+200,
+200,
+"image/jpeg",
+"teximg.com.br/arquivos/ids/1526907-700-auto/p-u2664982-1.jpg"
+],
+[
+"c",
+"RI",
+"Colaless Shapewear Icon Cotton",
+200,
+200,
+"image/jpeg",
+"eximg.com.br/arquivos/ids/1527339-700-auto/p-qf8283001-1.jpg"
+],
+[
+"c",
+"GO",
+"Gorra con Logo Bordado",
+200,
+200,
+"image/jpeg",
+"ximg.com.br/arquivos/ids/1520951-700-auto/p-4f5003g110-1.jpg"
+],
+[
+"c",
+"RI",
+"Pack de 3 Bóxers Trunk Graphic",
+200,
+200,
+"image/jpeg",
+"eximg.com.br/arquivos/ids/1528449-700-auto/p-nb4472060-1.jpg"
+],
+[
+"c",
+"RI",
+"Pack de 3 Bóxers Brief Cotton ",
+200,
+200,
+"image/jpeg",
+"eximg.com.br/arquivos/ids/1504622-700-auto/p-nb1770100-1.jpg"
+],
+[
+"d",
+"ZA",
+"Zapatilla Nike Air Force 1 '07",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/400811-700-auto/84620.jpg"
+],
+[
+"d",
+"ZA",
+"Zapatilla Nike W Nike Shox Tl ",
+200,
+200,
+"image/png",
+"teximg.com.br/arquivos/ids/414379-700-auto/AR3566-106_F1.png"
+],
+[
+"d",
+"MO",
+"Mochila Nike Y Nk Boxy Bkpk Un",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/381538-700-auto/80264.jpg"
+],
+[
+"d",
+"ZA",
+"Zapatilla New Balance U740-7YI",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/397279-700-auto/84124.jpg"
+],
+[
+"d",
+"ZA",
+"Zapatilla Jordan Son of Mars L",
+200,
+200,
+"image/png",
+"teximg.com.br/arquivos/ids/459136-700-auto/580603-003_F1.png"
+],
+[
+"d",
+"BZ",
+"Buzo Nike M Nk Tch Flc Fz Wr H",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/298114-700-auto/36132.jpg"
+],
+[
+"d",
+"GO",
+"Gorra Puma Ess Metal Cat Bb Ca",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/390562-700-auto/72030.jpg"
+],
+[
+"d",
+"RE",
+"Remera Juicy Couture Juicy Bab",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/401035-700-auto/84995.jpg"
+],
+[
+"d",
+"RE",
+"Remera Juicy Couture Capped Ba",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/399924-700-auto/84881.jpg"
+],
+[
+"d",
+"BZ",
+"Buzo Puma Pumatech Fullzip Hoo",
+200,
+200,
+"image/jpeg",
+"cl.vteximg.com.br/arquivos/ids/410696-700-auto/634415_87.jpg"
+],
+[
+"d",
+"ZA",
+"Zapatilla Adidas Jabbar Lo Uni",
+200,
+200,
+"image/jpeg",
+"roupcl.vteximg.com.br/arquivos/ids/405881-700-auto/85171.jpg"
+],
+[
+"d",
+"PA",
+"Pantalón Adidas Beckenbauer Tp",
+200,
+200,
+"image/jpeg",
+"7-700-auto/KE3530_2_APPAREL_On-Model_Standard-View_white.jpg"
+]
+]
