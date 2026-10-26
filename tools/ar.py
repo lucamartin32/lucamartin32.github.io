@@ -1,7 +1,8 @@
 import requests, json
-t=json.load(open('tools/t.json')); out={}
-UA='Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-for name,u,h in [('worker','https://fotos.santacruzzluca27.workers.dev/'+t['tok'],{'User-Agent':UA}),('direct',t['url'],{'User-Agent':UA}),('direct_ref',t['url'],{'User-Agent':UA,'Referer':'https://lucaimportados.com/'}),('direct_noua',t['url'],{})]:
-  try: r=requests.get(u,headers=h,timeout=30); out[name]=(r.status_code,r.headers.get('content-type'),len(r.content),r.text[:150] if 'image' not in (r.headers.get('content-type') or '') else '')
-  except Exception as e: out[name]=str(e)[:150]
-json.dump(out,open('tools/ar.json','w'),indent=1)
+S=json.load(open('tools/t.json')); out=[]
+for st,cat,name,tok,url in S:
+  try:
+    r=requests.get('https://fotos.santacruzzluca27.workers.dev/'+tok,timeout=30); d=requests.get(url,timeout=30)
+    out.append((st,cat,name,r.status_code,d.status_code,d.headers.get('content-type'),url[-60:]))
+  except Exception as e: out.append((st,name,str(e)[:80]))
+json.dump(out,open('tools/ar.json','w'),indent=0,ensure_ascii=False)
