@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install requests==2.32.3 && python tools/ar.py
+      - run: pip install requests==2.32.3 && python tools/vs.py
       - run: |
           git config user.name robot; git config user.email robot@users.noreply.github.com
           git add tools/ar.json && git commit -m prueba && for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 3; done
