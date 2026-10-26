@@ -124,7 +124,7 @@ async function build(){
   let total = 0, html = '';
   for (const [name, list] of Object.entries(groups).sort((a, b) => b[1].length - a[1].length)){
     const sub = list.reduce((a, x) => a + (x.p.clp || 0) * x.qty, 0); total += sub;
-    html += `<section class="store"><h2>${esc(name)} <small>${list.reduce((a, x) => a + x.qty, 0)} prendas · ${clp(sub)}</small></h2>` +
+    html += `<section class="store"><h2>${esc(name)} <small>${(n => n + (n === 1 ? ' prenda' : ' prendas'))(list.reduce((a, x) => a + x.qty, 0))} · ${clp(sub)}</small></h2>` +
       list.map(x => { const k = x.code + '|' + x.size; return `<div class="it ${done[k] ? 'done' : ''}"><input type="checkbox" data-k="${esc(k)}" ${done[k] ? 'checked' : ''} aria-label="Comprado">
         <img alt="" src="${esc(x.p.img)}"><div><div class="nm">${esc(x.p.brand)} · ${esc(x.p.name)}</div>
         <div class="meta"><span class="tag">${esc(x.size || 'sin talle')}</span>x${x.qty} · ${clp((x.p.clp || 0) * x.qty)} · ${esc(x.code)}${x.p.color ? ' · ' + esc(x.p.color) : ''}</div>
