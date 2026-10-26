@@ -1,8 +1,8 @@
 (() => {
 const BASE = document.body.dataset.base || '.';
 const RAW = 'https://raw.githubusercontent.com/lucamartin32/lucamartin32.github.io/main/';
-const CAT = {RE:'Remeras',BZ:'Buzos',PA:'Pantalones',JE:'Jeans',SH:'Shorts',CA:'Camperas',GO:'Gorras',ZA:'Zapatillas',MO:'Mochilas',NE:'Bolsos y neceseres',BI:'Billeteras',CR:'Carteras',RI:'Ropa interior',PJ:'Pijamas',BE:'Belleza y accesorios'};
-const CAT_ORDER = ['ZA','BZ','RE','PA','JE','CA','SH','GO','RI','PJ','NE','MO','CR','BI','BE'];
+const CAT = {RE:'Remeras',BZ:'Buzos',PA:'Pantalones',JE:'Jeans',SH:'Shorts',CA:'Camperas',GO:'Gorras',ZA:'Zapatillas',MO:'Mochilas',NE:'Bolsos y neceseres',BI:'Billeteras',CR:'Carteras',RI:'Ropa interior',PJ:'Pijamas'};
+const CAT_ORDER = ['ZA','BZ','RE','PA','JE','CA','SH','GO','RI','PJ','NE','MO','CR','BI'];
 const TOPB = ['Nike','Jordan','Tommy Hilfiger','Calvin Klein','adidas','New Balance'];
 const $ = s => document.querySelector(s);
 const f = {sec:'all', cat:'all', brands:new Set(), sizes:new Set(), sale:false, q:'', sort:'top'};
@@ -512,6 +512,7 @@ async function start(){
   } catch(e){ $('#grid').innerHTML = '<p class="empty">No pudimos cargar el catálogo. Recargá la página en un momento.</p>'; return; }
   RATE = Number(CFG.cambio) || 1.67;
   const est = DATA.estado || {}, lim = 6 * 3600 * 1000;
+  DATA.productos = DATA.productos.filter(p => CAT[p.cat] && !/perfume|mist|loci[oó]n|crema|jab[oó]n|varilla|set de regalo/i.test(p.name));
   DATA.productos = DATA.productos.filter(p => { const e = est[p.store]; return !e || !e.ultimo_ok || (Date.now() - new Date(e.ultimo_ok)) < lim; });
   DATA.productos.forEach(p => {
     p.img = U(p.img); if (p.simg) p.simg = U(p.simg);
