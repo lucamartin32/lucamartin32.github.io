@@ -16,7 +16,10 @@ for lng,lat in [(-70.6082,-33.4182),(-70.5459,-33.3917),(-70.7383,-33.5035),(-70
           ps=sla.get('pickupStoreInfo') or {}
           if ps.get('isPickupStore'):
             a=ps.get('address') or {}
-            res.setdefault(nm,{})[ps.get('friendlyName')]=f"{a.get('street','')} {a.get('number','')}, {a.get('neighborhood') or a.get('city','')}".strip()
+            if sla.get('deliveryChannel')!='pickup-in-point': continue
+            res.setdefault(iid,{})[ps.get('friendlyName')]=f"{a.get('street','')} {a.get('number','')}, {a.get('neighborhood') or a.get('city','')}".strip()
     except Exception as e: out.setdefault('err',[]).append(str(e)[:80])
 out['pickup']=res
+out['sizes']={it['itemId']:(it.get('TALLA') or it.get('Talla') or [it['name']])[0] for it in p['items']}
+out['sla_sample']=None
 json.dump(out,open('tools/ar.json','w'),indent=1,ensure_ascii=False)
