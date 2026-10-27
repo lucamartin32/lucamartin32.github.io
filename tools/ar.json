@@ -1,0 +1,39 @@
+{
+ "name": "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX",
+ "items": [
+  [
+   "40256",
+   "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX",
+   0
+  ],
+  [
+   "68401",
+   "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX",
+   0
+  ],
+  [
+   "68418",
+   "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX",
+   100
+  ],
+  [
+   "68419",
+   "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX",
+   0
+  ]
+ ],
+ "pickup": {
+  "GORRO JORDAN U J RISE CAP S CB MTL JM UNISEX": {
+   "The Line Costanera Center": "Avenida Andrés Bello 2447, Providencia",
+   "The Line Parque Arauco": "Avenida Presidente Kennedy 5413, Las Condes",
+   "The Line Open Kennedy": "Avenida Presidente Kennedy 5601, Las Condes",
+   "The Line Vivo Centro": "Paseo Puente 689, Santiago",
+   "The Line Plaza Los Dominicos": "Avenida Padre Hurtado Sur 875, Las Condes",
+   "The Line Plaza Oeste": "Avenida Américo Vespucio 1501, Lo Espejo",
+   "The Line Alameda": "Avenida Libertador Bernardo O'Higgins 3470, Estación Central",
+   "The Line Plaza Vespucio": "Avenida Vicuña Mackenna Oriente 7110, La Florida",
+   "The Line Florida Center": "Avenida Vicuña Mackenna 6100, La Florida",
+   "The Line Plaza Norte": "Avenida Américo Vespucio 1737, Huechuraba"
+  }
+ }
+}
