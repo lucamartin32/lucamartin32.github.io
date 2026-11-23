@@ -65,6 +65,13 @@
    "CA",
    "RE",
    "GO"
+  ],
+  "especiales": [
+   {
+    "nombre": "Nike Tech",
+    "regex": "nike tech",
+    "recargo": 15000
+   }
   ]
  }
 }

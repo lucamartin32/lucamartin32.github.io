@@ -58,7 +58,8 @@ function tags(t, cat){
 const hasMay = p => CFG.recargos.mayorista[p.cat] != null;
 const MEM = () => CFG.membresia || null;
 const hasMem = p => !!MEM() && !p.fixed && MEM().categorias.includes(p.cat);
-const memPrice = p => { const s = CFG.redondeo || 500; return Math.ceil(p.clp * CFG.cambio / s) * s + MEM().recargo; };   // precio socio: costo + ganancia fija, sin redondeo
+const memPrice = p => { const s = CFG.redondeo || 500; return Math.ceil(p.clp * CFG.cambio / s) * s + memRec(p); };
+const memRec = p => { const e = (MEM().especiales || []).find(x => new RegExp(x.regex, 'i').test(p.brand + ' ' + p.name)); return e ? e.recargo : MEM().recargo; };   // precio socio: costo + ganancia fija, sin redondeo
 function price(p, clp, may){
   if (p.fixed) return p.fixed;
   const step = CFG.redondeo || 500;
