@@ -56,6 +56,9 @@ function tags(t, cat){
 }
 // ── precios ──
 const hasMay = p => CFG.recargos.mayorista[p.cat] != null;
+const MEM = () => CFG.membresia || null;
+const hasMem = p => !!MEM() && !p.fixed && MEM().categorias.includes(p.cat);
+const memPrice = p => { const s = CFG.redondeo || 500; return Math.ceil(p.clp * CFG.cambio / s) * s + MEM().recargo; };   // precio socio: costo + ganancia fija, sin redondeo
 function price(p, clp, may){
   if (p.fixed) return p.fixed;
   const step = CFG.redondeo || 500;
@@ -88,6 +91,7 @@ function card(p){
     ${flag}${p.units != null && p.units <= 2 ? '<span class="flag last">Últimas</span>' : ''}${favs.has(p.code) ? '<span class="fv" aria-label="Guardado">'+HEART(true)+'</span>' : ''}</div>
     <div class="meta"><span class="b">${esc(p.brand)}</span><span class="n">${esc(p.name)}</span>${sibs(p).length > 1 ? `<span class="cols">${sibs(p).length} colores</span>` : ''}
     <span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s>` : ''}</span>
+    ${hasMem(p) ? `<span class="memc">Socios ${money(memPrice(p))}</span>` : ''}
     ${arShow(p) ? `<span class="arc">En Argentina ${money(p.ar)}</span>` : ''}
     ${AUTO() && hasMay(p) ? `<span class="p2">${money(price(p, p.clp, true))} llevando ${MIN()}+ prendas</span>` : ''}</div></button>`;
 }
@@ -379,7 +383,8 @@ function openProduct(code, keep){
         <p class="tier-note">Sumá ${MIN()} prendas cualquiera al carrito, pueden ser distintas, y pagás todas a precio mayorista. No aplica a zapatillas.</p>`
       : `<span class="p"><span class="now ${was ? 'sale' : ''}">${money(now)}</span>${was ? `<s>${money(was)}</s><span class="off">−${Math.round(off(p)*100)}%</span>` : ''}</span>`}
       ${arShow(p) ? `<div class="arbox"><div><small>En Argentina sale</small><strong>${money(p.ar)}</strong></div><div><small>Con nosotros ahorrás</small><strong>${money(arSave(p))}</strong></div><p>Precio del mismo modelo en tiendas de Argentina, revisado esta semana.</p></div>` : ''}
-      ${!AUTO() && hasMay(p) ? `<a class="mini" target="_blank" rel="noopener" href="${WA('Hola! Soy revendedor y quiero el precio mayorista de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Comprás para revender? Consultá precio mayorista</a>` : ''}
+      ${hasMem(p) ? `<div class="membox"><div><small>Precio exclusivo ${esc(MEM().nombre)}</small><strong>${money(memPrice(p))}</strong></div><a target="_blank" rel="noopener" href="${WA('Hola! Quiero sumarme al ' + MEM().nombre + ' para tener precio exclusivo. Vi: ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">Quiero ser socio</a></div>`
+        : (!AUTO() && hasMay(p) ? `<a class="mini" target="_blank" rel="noopener" href="${WA('Hola! Soy revendedor y quiero el precio mayorista de ' + p.brand + ' ' + p.name + ' (código ' + p.code + ')')}">¿Comprás para revender? Consultá precio mayorista</a>` : '')}
       ${sb.length > 1 ? `<span class="lbl"><span>Color: ${esc(p.color || '')}</span></span><div class="sws">${sb.map(s => `<button type="button" class="sw" data-sw="${s.code}" aria-pressed="${s === p}" aria-label="${esc(s.color)}"><img alt="" src="${esc(s.img)}"><span>${esc(s.color)}</span></button>`).join('')}</div>` : ''}
       <span class="lbl"><span>Talle${pick ? ': ' + esc(pick) : ''}</span>${p.units != null && p.units <= 2 ? '<span style="color:var(--sale)">Últimas unidades</span>' : ''}</span>
       <div class="opts">${p.sizes.map(s => `<button type="button" class="opt" aria-pressed="${s.t === pick}" data-s="${esc(s.t)}">${esc(s.t)}</button>`).join('')}</div>

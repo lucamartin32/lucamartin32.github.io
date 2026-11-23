@@ -53,5 +53,18 @@
  "ar_min_dif": 40000,
  "redondeo_abajo_hasta": {
   "*": 2500
+ },
+ "membresia": {
+  "nombre": "Club de Socios",
+  "recargo": 11000,
+  "categorias": [
+   "BZ",
+   "PA",
+   "JE",
+   "SH",
+   "CA",
+   "RE",
+   "GO"
+  ]
  }
 }
