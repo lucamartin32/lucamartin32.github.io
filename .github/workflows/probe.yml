@@ -1,0 +1,11 @@
+name: probe
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+          for u in "https://www.nike.cl/" "https://www.nike.cl/api/catalog_system/pub/products/search?_from=0&_to=1" "https://www.nike.cl/api/catalog_system/pub/category/tree/2" "https://www.nike.com/cl/"; do
+            echo "=== $u"; curl -s -L -A "$UA" -o out.txt -w "%{http_code} %{url_effective} %{content_type}\n" "$u"; head -c 1500 out.txt | tr -d '\n' ; echo; done
+          curl -sI -A "$UA" https://www.nike.cl/ | head -30
